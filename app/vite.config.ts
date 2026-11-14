@@ -50,6 +50,6 @@ function demTiles(noTiles: boolean): Plugin {
 // l'application se rabat alors sur le MNT réduit à 1,2 km pour les sites personnalisés.
 export default defineConfig(({ mode }) => ({
   plugins: [react(), demTiles(Boolean(process.env.NO_TILES) || mode === "web")],
-  base: "./",
+  base: "/",
   server: { port: 5173 },
 }));

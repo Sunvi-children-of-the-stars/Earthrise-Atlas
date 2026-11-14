@@ -1,0 +1,119 @@
+/* Earthrise Atlas, direction "Polar Night".
+   Colours: black, white, ice green (Earth, actions) and pale gold (Sun, data only). Greys are
+   white with transparency. No italics. Poppins only. */
+:root {
+  --bg: #000;
+  --bg-2: #0a0c12;
+  --bg-3: #12151e;
+  --text: #fff;
+  --muted: rgba(255, 255, 255, 0.64);
+  --faint: rgba(255, 255, 255, 0.4);
+  --line: rgba(255, 255, 255, 0.12);
+  --line-strong: rgba(255, 255, 255, 0.24);
+  --ice: #9bf0d8;
+  --ice-soft: rgba(155, 240, 216, 0.14);
+  --ice-line: rgba(155, 240, 216, 0.35);
+  --sun: #f3e2b3;
+  --sun-soft: rgba(243, 226, 179, 0.16);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --gutter: 16px;
+  --max: 1180px;
+  --nav-h: 64px;
+  color-scheme: dark;
+  font-family: "Poppins", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+* { font-style: normal; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); overflow-x: hidden; }
+h1, h2, h3, h4 { margin: 0; font-weight: 300; line-height: 1.15; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2.1rem, 5.2vw, 4.2rem); }
+h2 { font-size: clamp(1.7rem, 3.6vw, 2.8rem); }
+h3 { font-size: 1.25rem; font-weight: 400; }
+h4 { font-size: 1rem; font-weight: 500; }
+p { margin: 0 0 1em; }
+a { color: var(--ice); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--ice); outline-offset: 3px; border-radius: 4px; }
+img, canvas, svg { max-width: 100%; }
+
+.container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+.page { padding-top: var(--nav-h); min-height: 100vh; }
+.page-head { padding: 56px 0 28px; text-align: center; }
+.page-head p { color: var(--muted); max-width: 640px; margin: 14px auto 0; }
+.eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ice); }
+.muted { color: var(--muted); }
+.faint { color: var(--faint); }
+.small { font-size: 0.85rem; }
+.center { text-align: center; }
+.stack > * + * { margin-top: 16px; }
+.row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 20px; border-radius: 999px;
+  font-weight: 500; font-size: 0.92rem; border: 1px solid transparent; cursor: pointer; background: none; text-decoration: none; }
+.btn:hover { text-decoration: none; }
+.btn-primary { background: var(--ice); color: #000; }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-ghost { border-color: var(--line-strong); color: var(--text); }
+.btn-ghost:hover { border-color: var(--ice-line); }
+.btn-small { padding: 7px 14px; font-size: 0.82rem; }
+
+/* Panels */
+.panel { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+
+/* Form controls */
+.field { display: flex; flex-direction: column; gap: 6px; font-size: 0.82rem; color: var(--muted); }
+.field input, .field select { background: var(--bg-3); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 9px 12px; color: var(--text); font-size: 0.92rem; }
+.field input:focus, .field select:focus { border-color: var(--ice-line); outline: none; }
+
+/* Navigation */
+.nav { position: fixed; inset: 0 0 auto 0; height: var(--nav-h); z-index: 50; display: flex; align-items: center;
+  background: rgba(0, 0, 0, 0.72); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.nav .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-weight: 500; letter-spacing: 0.01em; }
+.brand:hover { text-decoration: none; }
+.nav-links { display: flex; align-items: center; gap: 4px; }
+.nav-links a { color: var(--muted); padding: 8px 12px; border-radius: 999px; font-size: 0.9rem; }
+.nav-links a:hover { color: var(--text); text-decoration: none; }
+.nav-links a[aria-current="page"] { color: var(--text); background: var(--ice-soft); }
+.lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; margin-left: 8px; }
+.lang button { background: none; border: 0; padding: 5px 10px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; color: var(--faint); cursor: pointer; }
+.lang button[aria-pressed="true"] { color: #000; background: var(--ice); }
+.nav-toggle { display: none; background: none; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer; font-size: 0.85rem; }
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 16px; top: 12px; z-index: 100; background: var(--ice); color: #000; padding: 8px 14px; border-radius: 999px; }
+@media (max-width: 760px) {
+  .nav-toggle { display: inline-block; }
+  .nav-links { display: none; position: absolute; top: var(--nav-h); left: 0; right: 0; flex-direction: column; align-items: stretch;
+    background: rgba(0, 0, 0, 0.95); border-bottom: 1px solid var(--line); padding: 12px var(--gutter) 16px; }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 12px 14px; }
+  .lang { align-self: flex-start; margin: 8px 0 0 6px; }
+}
+
+/* Tabs */
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
+.tabs [role="tab"] { background: none; border: 0; padding: 12px 16px; color: var(--muted); cursor: pointer; font-size: 0.92rem;
+  border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap; }
+.tabs [role="tab"]:hover { color: var(--text); }
+.tabs [role="tab"][aria-selected="true"] { color: var(--text); border-bottom-color: var(--ice); }
+[role="tabpanel"] { padding-top: 24px; }
+
+/* Footer */
+.footer { border-top: 1px solid var(--line); margin-top: 96px; padding: 32px 0 48px; color: var(--faint); font-size: 0.82rem; }
+.footer .container { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
