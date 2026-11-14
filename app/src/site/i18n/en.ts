@@ -127,6 +127,19 @@ export const en = {
   "ch5.text": "Choose a site, a date and a mission length. See the sky, the light and the radio link, and find out whether a small lander would survive.",
   "ch5.play": "Play",
   "ch5.atlas": "Explore the atlas",
+  "atlas.eyebrow": "Atlas",
+  "atlas.title": "The south pole, site by site",
+  "atlas.lead": "A real photo of the lunar south pole with the candidate landing sites and the Artemis III regions. Click a site to learn more, or anywhere to try your own point.",
+  "atlas.hint": "Drag to move, scroll to zoom.",
+  "atlas.point": "Your point",
+  "atlas.region": "Region",
+  "atlas.temp": "Temperature (Diviner)",
+  "atlas.tempValue": "{avg} °C on average over a year, up to {max} °C",
+  "atlas.artemisNear": "outside, {km} km from {name}",
+  "atlas.playSite": "Play this site",
+  "atlas.playPoint": "Play this point",
+  "atlas.others": "Other landing sites",
+  "atlas.othersNote": "Beyond the polar map: for comparison, the Apollo missions and other landings.",
 } as const;
 
 export type MessageKey = keyof typeof en;
