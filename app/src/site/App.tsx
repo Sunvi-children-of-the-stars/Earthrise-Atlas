@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { DataProvider } from "./data/store";
 import { I18nProvider, useI18n, type MessageKey } from "./i18n";
 import { useRoute, type Page } from "./router";
@@ -7,6 +7,8 @@ import { Play } from "./play/Play";
 import { Story } from "./story/Story";
 import { Atlas } from "./atlas/Atlas";
 import { Nav } from "./ui/Nav";
+
+const Lab = lazy(() => import("./lab/Lab"));
 
 const TITLE: Record<Page, MessageKey> = {
   story: "page.story", atlas: "page.atlas", play: "page.play", lab: "page.lab", method: "page.method",
@@ -31,7 +33,7 @@ function Shell() {
   return (
     <>
       <Nav page={page} onNavigate={(p) => navigate(p)} />
-      <main id="main">{page === "method" ? <Method /> : page === "play" ? <Play /> : page === "story" ? <Story /> : page === "atlas" ? <Atlas /> : <Placeholder page={page} />}</main>
+      <main id="main">{page === "method" ? <Method /> : page === "play" ? <Play /> : page === "story" ? <Story /> : page === "atlas" ? <Atlas /> : page === "lab" ? <Suspense fallback={<Placeholder page={page} />}><Lab /></Suspense> : <Placeholder page={page} />}</main>
       <footer className="footer">
         <div className="container"><span>{t("footer.challenge")}</span><span>{t("footer.data")}</span></div>
       </footer>

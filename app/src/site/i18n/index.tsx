@@ -74,3 +74,10 @@ export function useI18n(): I18n {
   if (!v) throw new Error("useI18n outside I18nProvider");
   return v;
 }
+
+/** Display name of a relay orbit, from its id prefix (data files keep their own labels). */
+export function relayLabel(id: string, t: (k: MessageKey) => string, fallback: string): string {
+  const key = `relay.${id.split("_")[0]}` as MessageKey;
+  const s = t(key);
+  return s === key ? fallback : s;
+}

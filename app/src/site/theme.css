@@ -254,3 +254,31 @@ img, canvas, svg { max-width: 100%; }
 @media (max-width: 900px) { .atlas { grid-template-columns: 1fr; } }
 .site-card .facts { grid-template-columns: 1fr; gap: 0; margin-bottom: 18px; }
 .site-card .facts dd { margin-bottom: 10px; }
+
+/* Mission Lab */
+.lab [role="tabpanel"] { padding-top: 22px; }
+.lab-row { align-items: flex-end; margin-bottom: 8px; }
+.zones-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 22px; align-items: start; margin-top: 12px; }
+.zones-canvas { width: 100%; height: auto; image-rendering: pixelated; border-radius: var(--radius); border: 1px solid var(--line); cursor: crosshair; display: block; }
+.table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+.table th { text-align: left; font-weight: 500; color: var(--faint); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px; border-bottom: 1px solid var(--line); }
+.table td { padding: 8px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.table td.best { color: var(--ice); font-weight: 500; }
+.nowrap { white-space: nowrap; }
+.badge { display: inline-block; margin-left: 8px; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+  border: 1px solid var(--line-strong); border-radius: 999px; padding: 1px 8px; }
+.advanced { margin-top: 26px; border-top: 1px solid var(--line); padding-top: 14px; }
+.advanced summary { cursor: pointer; color: var(--muted); font-size: 0.92rem; }
+.advanced summary:hover { color: var(--text); }
+.adv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px 22px; margin-top: 16px; }
+.adv-grid input[type="range"] { accent-color: var(--ice); }
+.row-check { flex-direction: row; align-items: center; gap: 8px; }
+.windows { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.window { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 18px; }
+.window-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 4px; }
+.score { font-size: 1.3rem; font-weight: 300; color: var(--ice); }
+.calendar { margin-top: 18px; }
+.cal-grid { display: grid; gap: 3px; margin-top: 12px; font-size: 0.72rem; }
+.cal-head { color: var(--faint); text-align: center; }
+.cal-site { color: var(--muted); align-self: center; }
+.cal-cell { border-radius: 4px; text-align: center; padding: 6px 0; color: var(--text); }
