@@ -94,3 +94,20 @@ Points mineurs reportés, à traiter si le temps le permet :
 - deux gris bleutés (`--bg-3` et le dégradé de l'accueil) sortent légèrement de la plage noire ;
 - accessibilité : barres des mois lunaires (boutons dans une image) et `aria-controls` des
   onglets inactifs.
+
+## Mise en ligne (Vercel)
+
+Adresse : https://earthrise-atlas.vercel.app (projet Vercel `earthrise-atlas`).
+
+Le site est entièrement statique : les calculs tournent dans le navigateur, il n'y a pas de
+serveur. Les cartes d'horizon (78 Mo) ne sont pas dans git ; on construit donc la version en
+ligne sur une machine qui les a, puis on envoie le dossier `dist` tel quel :
+
+```bash
+cd app
+npm run build:web
+cd dist && npx vercel link --yes --project earthrise-atlas && npx vercel deploy --prod --yes
+```
+
+`app/public/vercel.json` remplace `_redirects` et `_headers` (Netlify) : retour vers
+`index.html` pour les pages, sauf `/data/` et `/assets/`, et en-têtes de cache des données.
