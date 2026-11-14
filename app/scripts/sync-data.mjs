@@ -17,6 +17,7 @@ for (const [from, to] of [
   ["relays", "relays"],
   ["calendar", "calendar"],
   ["lroc", "lroc"],
+  ["story", "story"],
 ]) {
   const p = join(src, from);
   if (existsSync(p)) cpSync(p, join(dst, to), { recursive: true, filter: (f) => !f.endsWith(".csv") });

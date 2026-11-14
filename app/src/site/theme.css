@@ -199,3 +199,37 @@ img, canvas, svg { max-width: 100%; }
   .facts { grid-template-columns: 1fr; gap: 2px 0; }
   .facts dd { margin-bottom: 8px; }
 }
+
+/* Story */
+.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: var(--nav-h);
+  overflow: hidden; background: radial-gradient(120% 80% at 70% 0%, #151a26 0%, var(--bg) 62%); text-align: center; }
+.hero-inner { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; padding-bottom: 150px; }
+.hero h1 { max-width: 19ch; margin: 18px 0 20px; }
+.hero-lead { color: var(--muted); max-width: 520px; font-size: 1.05rem; }
+.hero-cta { justify-content: center; margin-top: 10px; }
+.hero-arcs { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+.hero-arcs .arc { fill: none; stroke: var(--ice); }
+.hero-arcs .a1 { stroke-opacity: 0.32; }
+.hero-arcs .a2 { stroke-opacity: 0.2; }
+.hero-arcs .a3 { stroke-opacity: 0.12; }
+.hero-ground { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; }
+.hero-earth { position: absolute; left: 61%; bottom: 30px; width: 14px; height: 14px; border-radius: 50%; background: var(--text);
+  box-shadow: 0 0 22px rgba(255, 255, 255, 0.45); animation: earthrise 5s ease-out both; }
+@keyframes earthrise { from { transform: translateY(26px); opacity: 0; } to { transform: none; opacity: 1; } }
+.chapter { padding: 110px 0 30px; opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.chapter.in { opacity: 1; transform: none; }
+.chapter .container { max-width: 900px; text-align: center; }
+.chapter-num { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.22em; color: var(--ice); margin-bottom: 12px; }
+.chapter h2 { margin-bottom: 22px; }
+.chapter-lead { color: var(--muted); font-size: 1.05rem; max-width: 680px; margin-left: auto; margin-right: auto; }
+.chapter-figure { margin: 34px 0 0; }
+.chapter-figure figcaption { color: var(--faint); font-size: 0.85rem; margin-top: 12px; }
+.figure-title { text-align: left; color: var(--muted); font-weight: 400; margin: 18px 0 6px; font-size: 0.9rem; }
+.chapter-range { width: 100%; accent-color: var(--ice); margin-top: 12px; }
+.km-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px; }
+.km-big { font-size: clamp(1.4rem, 4vw, 2.4rem); font-weight: 300; }
+.km-big.earth { color: var(--ice); }
+.km-big.sun { color: var(--sun); }
+.center-row { justify-content: center; margin-top: 18px; }
+@media (prefers-reduced-motion: reduce) { .chapter { opacity: 1; transform: none; } }
+@media (max-width: 600px) { .hero-inner { padding-bottom: 120px; } .chapter { padding-top: 80px; } }

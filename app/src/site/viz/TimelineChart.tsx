@@ -64,7 +64,7 @@ export function TimelineChart({ samples, cursor, onCursor, relayWindows, uncerta
     e.preventDefault();
     onCursor(Math.min(n - 1, Math.max(0, cursor + d)));
   };
-  const cur = samples[Math.min(Math.max(cursor, 0), n - 1)];
+  const cur = cursor >= 0 ? samples[Math.min(cursor, n - 1)] : undefined; // cursor < 0: no cursor line
   const ticks = Array.from({ length: 5 }, (_, i) => t0 + ((t1 - t0) * i) / 4);
 
   return (
