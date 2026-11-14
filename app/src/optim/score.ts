@@ -55,7 +55,7 @@ export const LANDER_SLOPE = 8;
 export const ROVER_SLOPE = 15;
 const NO_NIGHT_LIMIT = 720;
 
-// Tuning notes (docs/optimisation_zones.md, "Profils"): checked on the 3 regions over 6.5 days and
+// Tuning notes (docs/zone_optimizer.md, "Profils"): checked on the 3 regions over 6.5 days and
 // one lunar day from 14/11/2026. Hard constraints are only used for physical or safety limits;
 // preferences go into weights, so that a profile never ends with zero zones for a period where
 // a reasonable compromise exists (e.g. Earth ≥ 60 % is impossible near the pole).

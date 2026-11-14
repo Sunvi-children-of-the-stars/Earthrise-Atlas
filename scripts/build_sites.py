@@ -7,7 +7,7 @@ Pour chaque site :
   * pré-indicateurs d'éclairement / visibilité Terre calculés avec un modèle orbital
     SIMPLIFIÉ, destinés uniquement à valider les masques. Les valeurs de référence
     sont celles de l'application (éphémérides intégrées, validées contre JPL Horizons :
-    voir docs/decision_ephemerides.md).
+    voir docs/ephemeris_decision.md).
 
 Usage :  .venv/Scripts/python scripts/build_sites.py
 """

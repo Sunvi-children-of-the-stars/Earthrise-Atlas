@@ -6,9 +6,9 @@
  * - Lunar orientation: IAU model (Archinal et al. 2011, "mean Earth" frame,
  *   the frame LOLA uses).
  *
- * Accuracy measured against JPL Horizons: see docs/membre3_application.md.
+ * Accuracy measured against JPL Horizons: see docs/member3_application.md.
  *
- * Official source (docs/decision_ephemerides.md): the JPL Horizons table (DE440, hourly, 2026-2030,
+ * Official source (docs/ephemeris_decision.md): the JPL Horizons table (DE440, hourly, 2026-2030,
  * scripts/fetch_ephemeris.py), loaded with setEphemerisTable(); bodiesFixed() uses it whenever it
  * covers the date (exact apparent vectors, interpolated hourly). These series are the fallback
  * outside the table's period (accuracy ≤ 0.19° on Earth, ≤ 0.005° on the Sun).

@@ -35,7 +35,7 @@ describe("mission retardée", () => {
     expect(lunarMonthDelays()).toHaveLength(13);
     const rows = shiftScan(site("mons-mouton"), mask("mons-mouton"), Date.UTC(2026, 10, 14), 156);
     expect(rows).toHaveLength(13);
-    // Earth visible all the time in November 2026, mostly hidden around August 2027 (docs/phase_A.md)
+    // Earth visible all the time in November 2026, mostly hidden around August 2027
     expect(rows[0].earthPct).toBeGreaterThan(95);
     expect(Math.min(...rows.map((x) => x.earthPct))).toBeLessThan(40);
   });

@@ -53,7 +53,7 @@ describe("fenêtres et indicateurs", () => {
 });
 
 describe("non-régression sur les sites candidats (jour lunaire du 14/11/2026, table Horizons)", () => {
-  // Reference values of docs/membre3_application.md and docs/phase_A.md (14/11/2026)
+  // Reference values of docs/member3_application.md (14/11/2026)
   const start = Date.UTC(2026, 10, 14, 16), hours = 708.7;
   const cases = [
     { id: "connecting-ridge", sun: 100, earth: 48.3, noEarthH: 321.5 },

@@ -110,7 +110,7 @@ data/
   lroc/               LROC image of the South Pole
   diviner/            Diviner temperatures (not versioned)
   validation_lola/    official LOLA maps and comparison results (maps not versioned)
-docs/                 team notes and method documents (in French)
+docs/                 team notes and method documents
 scripts/              Python data processing
 ```
 
@@ -207,31 +207,26 @@ pages back to `index.html` (except `/data/` and `/assets/`) and sets cache heade
 **Netlify** (alternative): after `npm run build:web`, run
 `npx netlify-cli deploy --dir=dist --prod` from `app/`.
 
-More details: [docs/site_public.md](docs/site_public.md) and
-[docs/phase_A.md](docs/phase_A.md).
+More details: [docs/public_site.md](docs/public_site.md).
 
 ---
 
-##  Documentation
-
-All documents are in French.
+## Documentation
 
 | Topic | Document |
 |---|---|
-| Public site (pages, design, code, deployment) | [docs/site_public.md](docs/site_public.md) |
-| Member 1: ephemerides (JPL Horizons) | [docs/membre1_ephemerides.md](docs/membre1_ephemerides.md) |
-| Member 2: sites and topography | [docs/membre2_sites_topographie.md](docs/membre2_sites_topographie.md) |
-| Member 3: application | [docs/membre3_application.md](docs/membre3_application.md) |
-| Member 4: energy and telecom budget | [docs/membre4_energie_telecom.md](docs/membre4_energie_telecom.md) |
-| Member 5: decision support and recommendation | [docs/membre5_decision.md](docs/membre5_decision.md) |
-| Zone optimizer | [docs/optimisation_zones.md](docs/optimisation_zones.md) |
-| Elevation tile pyramid | [docs/pyramide_tuiles.md](docs/pyramide_tuiles.md) |
+| Public site (pages, design, code, deployment) | [docs/public_site.md](docs/public_site.md) |
+| Member 1: ephemerides (JPL Horizons) | [docs/member1_ephemeris.md](docs/member1_ephemeris.md) |
+| Member 2: sites and topography | [docs/member2_sites_topography.md](docs/member2_sites_topography.md) |
+| Member 3: application | [docs/member3_application.md](docs/member3_application.md) |
+| Member 4: energy and telecom budget | [docs/member4_energy_telecom.md](docs/member4_energy_telecom.md) |
+| Member 5: decision support and recommendation | [docs/member5_decision.md](docs/member5_decision.md) |
+| Zone optimizer | [docs/zone_optimizer.md](docs/zone_optimizer.md) |
+| Elevation tile pyramid | [docs/tile_pyramid.md](docs/tile_pyramid.md) |
 | Validation vs official LOLA maps | [docs/validation_lola.md](docs/validation_lola.md) |
 | Validation vs QuickMap | [docs/validation_quickmap.md](docs/validation_quickmap.md) |
-| Moon Trek and Horizons resources | [docs/ressources_moontrek_horizons.md](docs/ressources_moontrek_horizons.md) |
-| Ephemeris decision | [docs/decision_ephemerides.md](docs/decision_ephemerides.md) |
-| Phase A (backend) progress | [docs/phase_A.md](docs/phase_A.md) |
-| Team tasks | [docs/taches_equipe.md](docs/taches_equipe.md) |
+| Moon Trek and Horizons resources | [docs/resources_moontrek_horizons.md](docs/resources_moontrek_horizons.md) |
+| Ephemeris decision | [docs/ephemeris_decision.md](docs/ephemeris_decision.md) |
 
 ---
 

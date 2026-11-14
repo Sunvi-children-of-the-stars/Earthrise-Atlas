@@ -6,7 +6,7 @@
  * ground-station G/T), giving the achievable data rate and the data volume over the period.
  *
  * Values are orders of magnitude for comparing sites and dates, not a vehicle design.
- * Sources and assumptions: docs/membre4_energie_telecom.md.
+ * Sources and assumptions: docs/member4_energy_telecom.md.
  */
 import { solarFlux, sunUp, earthUp, type Sample } from "./analysis";
 

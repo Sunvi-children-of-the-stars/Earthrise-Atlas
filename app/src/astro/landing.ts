@@ -8,7 +8,7 @@
  *  - no energy brownout during the mission.
  * The score also rewards "slip tolerance": how many days the window stays open after this date,
  * i.e. how much launch delay the date tolerates.
- * Weights are documented in docs/membre5_decision.md.
+ * Weights are documented in docs/member5_decision.md.
  */
 import { simulate, sunUp, earthUp, type Sample } from "./analysis";
 import { dataOnSlice, powerOnSlice, type Vehicle } from "./budget";

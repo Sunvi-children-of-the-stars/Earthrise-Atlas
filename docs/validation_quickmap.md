@@ -1,148 +1,143 @@
-# Validation des horizons contre les ombres QuickMap (20 m)
+# Validation of the horizons against the QuickMap shadows (20 m)
 
-*Réalisée le 14/11/2026, dans l'interface web de QuickMap (lecture manuelle).*
+*Done on 14 Nov 2026, in the QuickMap web interface (manual reading).*
 
-## Objectif
+## Goal
 
-Vérifier que nos masques d'horizon, calculés à 120 m/px (`data/horizons/`), prédisent
-correctement si le Soleil est visible depuis nos trois sites candidats. La référence est la
-couche QuickMap **« ACT: Temporal Illumination › Terrain Shadows @UTC (80S, 20mpp) »**, une
-simulation d'ombres à 20 m/px. Elle a deux conventions :
-- **1** = éclairé, **0** = ombre ;
-- l'éclairement est calculé pour le **centre** du disque solaire, comme dans notre outil.
+Check that our horizon masks, computed at 120 m/px (`data/horizons/`), correctly predict whether
+the Sun is visible from our three candidate sites. The reference is the QuickMap layer
+**"ACT: Temporal Illumination › Terrain Shadows @UTC (80S, 20mpp)"**, a shadow simulation at
+20 m/px. It has two conventions:
+- **1** = lit, **0** = shadow;
+- illumination is computed for the **centre** of the solar disk, as in our tool.
 
-## Méthode
+## Method
 
-1. Dans QuickMap : projection *Stereographic (South Pole)*, puis ajout de la couche d'ombres.
-2. Pour chaque site : « Go to » sur les coordonnées de `sites.json`, puis zoom maximal
-   (12,8 m/px). On lit la *Value at Cursor* au point exact et à 4 points voisins (~160 m au
-   nord, au sud, à l'est et à l'ouest).
-3. L'instant utilisé est celui qu'affiche la couche (*Requested Time*). Notre point
-   subsolaire concorde avec celui de QuickMap à **0,003° près** : les éphémérides ne sont
-   donc pas en cause.
-4. Notre prédiction pour le même instant : élévation du Soleil moins hauteur de l'horizon
-   dans sa direction, appelée **marge**. Le site est éclairé si la marge est positive.
+1. In QuickMap: *Stereographic (South Pole)* projection, then add the shadow layer.
+2. For each site: "Go to" the coordinates of `sites.json`, then maximum zoom (12.8 m/px). We read
+   the *Value at Cursor* at the exact point and at 4 neighbouring points (~160 m north, south,
+   east and west).
+3. The instant used is the one shown by the layer (*Requested Time*). Our subsolar point agrees
+   with QuickMap's to within **0.003°**: the ephemerides are therefore not in question.
+4. Our prediction for the same instant: Sun elevation minus horizon height in its direction,
+   called the **margin**. The site is lit if the margin is positive.
 
-> ⚠️ La valeur affichée par QuickMap **dépend du zoom** : à 200 m/px, la crête apparaît « 0 »,
-> alors qu'elle vaut « 1 » à 12,8 m/px. Il faut toujours lire au zoom maximal.
+> ⚠️ The value shown by QuickMap **depends on the zoom**: at 200 m/px, the ridge shows "0", while
+> it is "1" at 12.8 m/px. Always read at maximum zoom.
 
-## Résultats
+## Results
 
-| Instant (UTC) | Site | Soleil (élév. / az.) | Notre horizon | Marge | Notre prédiction | QuickMap (point / 5 points) | Accord |
+| Instant (UTC) | Site | Sun (elev. / az.) | Our horizon | Margin | Our prediction | QuickMap (point / 5 points) | Agreement |
 |---|---|---|---|---|---|---|---|
-| 14/11/2026 10:00 | Crête de liaison | 1,45° / 259° | −2,49° | +3,94° | éclairé | 1 / 4 sur 5 éclairés | ✅ |
-| 14/11/2026 10:00 | Malapert | −0,42° / 120° | −1,54° | +1,13° | éclairé | 0 / 5 sur 5 à l'ombre ; éclairé à ~75 m vers le Soleil | ⚠️ limite |
-| 14/11/2026 10:00 | Mons Mouton | 1,34° / 93° | +2,96° | −1,62° | ombre | 0 / 5 sur 5 à l'ombre | ✅ |
-| 24/11/2026 06:00 | Crête de liaison | 1,10° / 140° | −0,96° | +2,06° | éclairé | 0 / 4 sur 5 à l'ombre (bord d'ombre à ~160 m) | ❌ |
-| 24/11/2026 06:00 | Malapert | 5,54° / 360° | −1,76° | +7,29° | éclairé | 1 / 5 sur 5 éclairés | ✅ |
-| 24/11/2026 06:00 | Mons Mouton | 6,16° / 333° | −1,33° | +7,49° | éclairé | 1 / 5 sur 5 éclairés | ✅ |
+| 14 Nov 2026 10:00 | Connecting Ridge | 1.45° / 259° | −2.49° | +3.94° | lit | 1 / 4 of 5 lit | ✅ |
+| 14 Nov 2026 10:00 | Malapert | −0.42° / 120° | −1.54° | +1.13° | lit | 0 / 5 of 5 in shadow; lit ~75 m towards the Sun | ⚠️ borderline |
+| 14 Nov 2026 10:00 | Mons Mouton | 1.34° / 93° | +2.96° | −1.62° | shadow | 0 / 5 of 5 in shadow | ✅ |
+| 24 Nov 2026 06:00 | Connecting Ridge | 1.10° / 140° | −0.96° | +2.06° | lit | 0 / 4 of 5 in shadow (shadow edge at ~160 m) | ❌ |
+| 24 Nov 2026 06:00 | Malapert | 5.54° / 360° | −1.76° | +7.29° | lit | 1 / 5 of 5 lit | ✅ |
+| 24 Nov 2026 06:00 | Mons Mouton | 6.16° / 333° | −1.33° | +7.49° | lit | 1 / 5 of 5 lit | ✅ |
 
-**Bilan : 4 accords, 1 cas limite et 1 désaccord sur 6.**
+**Summary: 4 agreements, 1 borderline case and 1 disagreement out of 6.**
 
-- L'obstacle majeur de Mons Mouton (le sommet voisin, à +3° vers l'est) est confirmé : c'est
-  bien lui qui plonge le site dans l'ombre le 14/11.
-- Quand la marge dépasse 5°, l'accord est total.
+- The main obstacle of Mons Mouton (the nearby summit, at +3° towards the east) is confirmed: it is
+  indeed what puts the site in shadow on 14 Nov.
+- When the margin exceeds 5°, the agreement is total.
 
-## Analyse des deux écarts
+## Analysis of the two differences
 
-### 1. Malapert, 14/11 : effet de la résolution près du site
+### 1. Malapert, 14 Nov: effect of the resolution near the site
 
-Le Soleil est sous l'horizontale (−0,42°). Dans sa direction, notre horizon est formé par
-l'épaulement du massif lui-même, à **2 km**. Avec 120 m/px, la position exacte de la crête
-est incertaine d'un ou deux pixels. Or à 20 m/px, la zone éclairée commence **à ~75 m** de
-notre point, du côté du Soleil.
+The Sun is below the horizontal (−0.42°). In its direction, our horizon is formed by the shoulder
+of the massif itself, **2 km** away. At 120 m/px, the exact position of the crest is uncertain by
+one or two pixels. Yet at 20 m/px, the lit area starts **~75 m** from our point, on the Sun's
+side.
 
-**Conclusion :** à l'échelle de 120 m, le site est bien en bordure de lumière. Le point
-précis devra être repositionné sur la vraie crête avec un MNT à 20 m.
+**Conclusion:** at the 120 m scale, the site is indeed at the edge of the light. The exact point
+will have to be moved onto the real crest with a 20 m DEM.
 
-### 2. Crête de liaison, 24/11 : la courbure lunaire
+### 2. Connecting Ridge, 24 Nov: lunar curvature
 
-Dans la direction du Soleil (azimut 140°), l'obstacle de notre masque est le **massif de
-Malapert, à 135 km**. À cette distance, la courbure de la Lune abaisse le relief d'environ
-5,2 km, soit environ 2,2° :
+In the direction of the Sun (azimuth 140°), the obstacle in our mask is the **Malapert massif,
+135 km away**. At this distance, the curvature of the Moon lowers the relief by about 5.2 km,
+i.e. about 2.2°:
 
-| Calcul de l'horizon à l'azimut 140° | Hauteur de l'horizon | Soleil à 1,10° |
+| Horizon computation at azimuth 140° | Horizon height | Sun at 1.10° |
 |---|---|---|
-| Avec courbure (notre méthode) | −0,96° | éclairé |
-| Sans courbure (terrain « plat ») | **+1,26°** | **ombre**, comme QuickMap |
+| With curvature (our method) | −0.96° | lit |
+| Without curvature ("flat" terrain) | **+1.26°** | **shadow**, like QuickMap |
 
-J'ai refait les 5 cas sans ambiguïté avec un calcul **sans courbure** : tous coïncident
-alors avec QuickMap. Avec courbure, la crête du 24/11 est le seul désaccord. Le bord d'ombre
-rectiligne observé dans QuickMap correspond bien à une ombre portée par un relief lointain.
+We redid the 5 unambiguous cases with a computation **without curvature**: they then all match
+QuickMap. With curvature, the ridge on 24 Nov is the only disagreement. The straight shadow edge
+seen in QuickMap does match a shadow cast by distant relief.
 
-**C'est une hypothèse, pas une certitude.** Elle expliquerait l'écart si la couche
-QuickMap négligeait la courbure pour les obstacles très lointains. D'un point de vue
-physique, la courbure est réelle : notre calcul doit la garder.
+**This is a hypothesis, not a certainty.** It would explain the difference if the QuickMap layer
+ignored curvature for very distant obstacles. Physically, curvature is real: our computation must
+keep it.
 
-Pour trancher, il faudrait :
-- interroger l'équipe ACT, à qui QuickMap propose d'écrire (« Contact ACT ») ;
-- ou comparer avec une troisième source, par exemple l'outil d'éclairement de Moon Trek ou
-  les cartes d'éclairement moyen LOLA, publiées par Mazarico et al. (2011).
+To decide, we would need to:
+- ask the ACT team, whom QuickMap invites users to write to ("Contact ACT");
+- or compare with a third source, for example the Moon Trek illumination tool or the LOLA mean
+  illumination maps published by Mazarico et al. (2011).
 
-## Mise à jour du 14/11/2026 : horizons à 20 m (étape 2)
+## Update of 14 Nov 2026: 20 m horizons (step 2)
 
-Les 6 cas ont été recalculés **aux mêmes points**, ceux où QuickMap a été lu, avec les
-horizons multi-résolution : relief proche (< 25 km) à 20 m, relief lointain à 120 m.
+The 6 cases were recomputed **at the same points**, where QuickMap was read, with the
+multi-resolution horizons: near relief (< 25 km) at 20 m, far relief at 120 m.
 
-| Cas | Soleil | Horizon 120 m | Horizon 20 m | Prédiction | QuickMap |
+| Case | Sun | 120 m horizon | 20 m horizon | Prediction | QuickMap |
 |---|---|---|---|---|---|
-| 14/11 crête | 1,45° | −2,49° | −2,49° | éclairé | éclairé ✅ |
-| 14/11 Malapert | −0,42° | −1,54° | −1,55° | éclairé | ombre ⚠️ |
-| 14/11 Mons Mouton | 1,34° | +2,96° | +2,96° | ombre | ombre ✅ |
-| 24/11 crête | 1,10° | −0,96° | −0,96° | éclairé | ombre ❌ |
-| 24/11 Malapert | 5,54° | −1,76° | −1,82° | éclairé | éclairé ✅ |
-| 24/11 Mons Mouton | 6,16° | −1,34° | −1,34° | éclairé | éclairé ✅ |
+| 14 Nov ridge | 1.45° | −2.49° | −2.49° | lit | lit ✅ |
+| 14 Nov Malapert | −0.42° | −1.54° | −1.55° | lit | shadow ⚠️ |
+| 14 Nov Mons Mouton | 1.34° | +2.96° | +2.96° | shadow | shadow ✅ |
+| 24 Nov ridge | 1.10° | −0.96° | −0.96° | lit | shadow ❌ |
+| 24 Nov Malapert | 5.54° | −1.76° | −1.82° | lit | lit ✅ |
+| 24 Nov Mons Mouton | 6.16° | −1.34° | −1.34° | lit | lit ✅ |
 
-Le relief à 20 m **ne change aucune prédiction** : les obstacles en jeu sont à 2 km et plus,
-où 120 m suffisait déjà. L'hypothèse d'un effet de résolution pour Malapert est donc
-écartée. Deux explications distinctes restent :
+The 20 m relief **changes no prediction**: the obstacles involved are 2 km away or more, where
+120 m was already enough. The resolution hypothesis for Malapert is therefore ruled out. Two
+distinct explanations remain:
 
-**Malapert, 14/11 : une définition différente de « éclairé ».** QuickMap calcule
-l'éclairement **de la surface du sol**. Pour que le sol soit éclairé, le Soleil doit être à
-la fois au-dessus de l'horizon et au-dessus du **plan de la pente locale**. Au sommet,
-la pente à 20 m (≈1°) descend vers l'ouest-sud-ouest (azimut ≈255°), à l'opposé du Soleil
-(azimut 120°). Le Soleil, déjà sous l'horizontale (−0,42°), passe donc sous le plan du sol :
-−0,58° sur une base de 40 m et −1,21° sur 100 m. Le sol est dans **sa propre ombre**. Un
-capteur placé à 2 m du sol voit, lui, le Soleil au-dessus de l'horizon. Cela explique aussi
-pourquoi le sol redevient éclairé à ~75 m, sur le versant tourné vers le Soleil. Les autres
-cas ne contredisent pas cette règle.
+**Malapert, 14 Nov: a different definition of "lit".** QuickMap computes the illumination **of
+the ground surface**. For the ground to be lit, the Sun must be both above the horizon and above
+the **plane of the local slope**. At the summit, the 20 m slope (≈1°) goes down towards the
+west-south-west (azimuth ≈255°), opposite the Sun (azimuth 120°). The Sun, already below the
+horizontal (−0.42°), therefore passes below the ground plane: −0.58° over a 40 m base and −1.21°
+over 100 m. The ground is in **its own shadow**. A sensor 2 m above the ground, however, sees the
+Sun above the horizon. This also explains why the ground is lit again ~75 m away, on the slope
+facing the Sun. The other cases do not contradict this rule.
 
-> Notre outil évalue un **panneau solaire ou une antenne sur un mât** : c'est la bonne
-> question pour l'énergie et les communications. QuickMap évalue le **sol** : c'est la bonne
-> question pour la température de surface et la glace d'eau. Les deux ne sont pas
-> contradictoires.
+> Our tool evaluates a **solar panel or an antenna on a mast**: that is the right question for
+> energy and communications. QuickMap evaluates the **ground**: that is the right question for
+> surface temperature and water ice. The two do not contradict each other.
 
-**Crête, 24/11 : tranché le 14/11/2026, voir [validation_lola.md](validation_lola.md).** Les
-cartes officielles LOLA (Mazarico et al. 2011) sont reproduites avec courbure (RMS 3,1 points),
-pas sans courbure (RMS 11 points). Notre prédiction est donc la plus probable.
+**Ridge, 24 Nov: settled on 14 Nov 2026, see [validation_lola.md](validation_lola.md).** The
+official LOLA maps (Mazarico et al. 2011) are reproduced with curvature (RMS 3.1 points), not
+without curvature (RMS 11 points). Our prediction is therefore the most likely.
 
-*Analyse initiale :* l'obstacle est le massif de Malapert, à 135 km. Seul un
-calcul sans courbure lunaire reproduit la prédiction de QuickMap (Malapert à +1,26° au
-lieu de −0,96°). Le plan de la pente ne l'explique pas : le Soleil reste 0,5° à 0,9°
-au-dessus.
+*Initial analysis:* the obstacle is the Malapert massif, 135 km away. Only a computation without
+lunar curvature reproduces QuickMap's prediction (Malapert at +1.26° instead of −0.96°). The
+slope plane does not explain it: the Sun stays 0.5° to 0.9° above.
 
-**Bilan :** 4 accords, 1 écart expliqué par la définition et 1 écart tranché en faveur de
-notre calcul avec courbure, par une troisième source (cartes LOLA officielles).
+**Summary:** 4 agreements, 1 difference explained by the definition and 1 difference settled in
+favour of our computation with curvature, by a third source (official LOLA maps).
 
-## Recommandations
+## Recommendations
 
-1. **Garder la courbure** dans nos masques, mais signaler dans l'application les cas où
-   l'obstacle est à plus de 100 km et la marge inférieure à 2,5°. Ce sont les cas où les
-   outils divergent. **Fait** : verdict de fiabilité, voir `docs/membre3_application.md`.
-2. ~~Refaire les trois points à 20 m/px.~~ **Fait le 14/11/2026** avec `LDEM_85S_20M` : la
-   crête se déplace de 131 m, Malapert de 15 m, et les prédictions restent inchangées.
-4. Ajouter dans l'application un indicateur « **éclairement du sol** » (Soleil au-dessus du
-   plan de la pente locale), en plus de celui du capteur à 2 m. Il sert à la température et
-   à la science de surface.
-3. Afficher dans l'application une **marge de sécurité**. **Fait**, avec un seuil fixé à
-   ±0,5° : une fois le relief à 20 m utilisé, nos erreurs mesurées sont ≤ 0,2°, et un seuil
-   de ±1° classait tous les sites polaires comme « fragiles ».
+1. **Keep the curvature** in our masks, but flag in the application the cases where the obstacle
+   is more than 100 km away and the margin below 2.5°. These are the cases where the tools
+   diverge. **Done**: reliability verdict, see `docs/member3_application.md`.
+2. ~~Redo the three points at 20 m/px.~~ **Done on 14 Nov 2026** with `LDEM_85S_20M`: the ridge
+   moves by 131 m, Malapert by 15 m, and the predictions are unchanged.
+3. Show a **safety margin** in the application. **Done**, with a threshold set at ±0.5°: once the
+   20 m relief is used, our measured errors are ≤ 0.2°, and a ±1° threshold classified all polar
+   sites as "fragile".
+4. Add a "**ground illumination**" indicator to the application (Sun above the plane of the local
+   slope), in addition to the 2 m sensor one. It is useful for temperature and surface science.
 
-## Limites de cette validation
+## Limits of this validation
 
-- Seulement 2 instants × 3 sites, lus à la main. Il n'existe pas d'accès en masse aux tuiles
-  QuickMap : leur serveur n'est pas une API publique, et l'accès direct a été refusé.
-- La couche QuickMap annonce une précision de 0,5° en longitude subsolaire et de 0,1° en
-  latitude subsolaire.
-- Le pas de 160 m entre les 5 points est proche de notre pixel de 120 m : la comparaison est
-  locale, pas statistique.
+- Only 2 instants × 3 sites, read by hand. There is no bulk access to the QuickMap tiles: their
+  server is not a public API, and direct access was refused.
+- The QuickMap layer states an accuracy of 0.5° in subsolar longitude and 0.1° in subsolar
+  latitude.
+- The 160 m step between the 5 points is close to our 120 m pixel: the comparison is local, not
+  statistical.

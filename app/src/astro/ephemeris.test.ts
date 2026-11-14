@@ -21,7 +21,7 @@ describe("éphémérides", () => {
   });
 
   test("séries intégrées et table Horizons concordent dans les limites validées", () => {
-    // Documented accuracy of the series (docs/decision_ephemerides.md): Sun ≤ 0.005°, Earth ≤ 0.19°
+    // Documented accuracy of the series (docs/ephemeris_decision.md): Sun ≤ 0.005°, Earth ≤ 0.19°
     const series = dates.map((d) => bodiesFixed(d));
     useHorizonsTable();
     dates.forEach((d, i) => {

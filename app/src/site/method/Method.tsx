@@ -6,7 +6,7 @@ import { Tabs } from "../ui/Tabs";
 const REPO = "https://github.com/Sunvi-children-of-the-stars/Earthrise-Atlas";
 const DOC = (f: string) => `${REPO}/blob/main/docs/${f}`;
 
-/** Published validation results (docs/decision_ephemerides.md, docs/validation_lola.md, app tests). */
+/** Published validation results (docs/ephemeris_decision.md, docs/validation_lola.md, app tests). */
 const VALIDATION = { ephemerisMaxDeg: 0.003, seriesMaxDeg: 0.19, psrIoU: [0.8, 0.93], sunRms: [2.1, 2.5], curvRms: 3.1, flatRms: 11 };
 
 const SOURCES: { key: string; url: string }[] = [
@@ -15,7 +15,7 @@ const SOURCES: { key: string; url: string }[] = [
   { key: "lroc", url: "https://pds.lroc.asu.edu/" },
   { key: "diviner", url: "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_prp/" },
   { key: "lro", url: "https://ssd.jpl.nasa.gov/horizons/" },
-  { key: "relays", url: DOC("phase_A.md") },
+  { key: "relays", url: DOC("member3_application.md") },
 ];
 
 const TEAM = ["IDOHOU Cyrus", "Elge TOPANOU", "Ezékias AGLOSSI", "GBAGUIDI Ursus", "Marguerite ASSOU"];
@@ -50,7 +50,7 @@ export function Method() {
             <article className="card">
               <h3>{t("val.eph.title")}</h3>
               <p className="muted">{t("val.eph.text", { table: fmt.num(VALIDATION.ephemerisMaxDeg, 3), series: fmt.num(VALIDATION.seriesMaxDeg, 2) })}</p>
-              <a className="small" href={DOC("decision_ephemerides.md")} target="_blank" rel="noreferrer">{t("method.details")}</a>
+              <a className="small" href={DOC("ephemeris_decision.md")} target="_blank" rel="noreferrer">{t("method.details")}</a>
             </article>
             <article className="card">
               <h3>{t("val.psr.title")}</h3>

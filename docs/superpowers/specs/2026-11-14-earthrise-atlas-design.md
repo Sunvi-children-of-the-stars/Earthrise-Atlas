@@ -1,268 +1,251 @@
-# Earthrise Atlas : conception du site public
+# Earthrise Atlas: design of the public site
 
-*14/11/2026. Remplace entièrement l'interface actuelle de l'application (`app/src/App.tsx` et
-`app/src/components/`). Le moteur de calcul (`app/src/astro/`, `app/src/optim/`, `share.ts`)
-et les données (`data/`) sont conservés.*
+*14 Nov 2026. Fully replaces the current interface of the application (`app/src/App.tsx` and
+`app/src/components/`). The computation engine (`app/src/astro/`, `app/src/optim/`, `share.ts`)
+and the data (`data/`) are kept.*
 
-## 1. Intention
+## 1. Intent
 
-Le projet répond au défi NASA Space Apps 2026 « Lunar Landing Site Navigator » : aider des
-planificateurs de mission, des enseignants et le grand public à comparer des sites et des
-dates d'atterrissage au pôle Sud de la Lune, en montrant le Soleil et la Terre par rapport à
-l'horizon.
+The project answers the NASA Space Apps 2026 challenge "Lunar Landing Site Navigator": help mission
+planners, teachers and the general public compare landing sites and dates at the Moon's South
+Pole, by showing the Sun and the Earth relative to the horizon.
 
-L'interface actuelle est un outil d'expert, dense et en français. L'équipe veut à la place un
-**site grand public avec une direction artistique soignée**, sous le nom **Earthrise Atlas**.
-Le visiteur doit **d'abord comprendre** pourquoi se poser au pôle Sud est si difficile (un
-Soleil qui rase l'horizon, une Terre qui se cache des jours entiers), **puis pouvoir jouer**
-avec les vraies données. La puissance de l'outil reste accessible au jury et aux curieux,
-mais elle ne doit pas noyer le grand public.
+The current interface is an expert tool, dense and in French. Instead, the team wants a
+**public-facing site with a polished art direction**, under the name **Earthrise Atlas**. Visitors
+must **first understand** why landing at the South Pole is so hard (a Sun that skims the horizon,
+an Earth that hides for whole days), **then be able to play** with the real data. The power of the
+tool remains available to the jury and to curious visitors, but it must not overwhelm the general
+public.
 
-## 2. Objectifs, non-objectifs, anti-objectifs
+## 2. Goals, non-goals, anti-goals
 
-**Objectifs**
-- Une page d'accueil qui donne envie, puis un récit court qui fait comprendre le problème en
-  quelques minutes.
-- Un mode « jouer » où l'on choisit un site et une date, et où l'on voit le ciel et les chiffres
-  clés.
-- Toutes les fonctions de calcul existantes restent accessibles, dans une page dédiée
-  (Mission Lab).
-- Anglais par défaut, français par un bouton.
-- Un site statique, déployable sur Netlify avec `npm run build:web`.
+**Goals**
+- A home page that makes people want to explore, then a short story that explains the problem in
+  a few minutes.
+- A "play" mode where you choose a site and a date, and see the sky and the key figures.
+- All existing computation features remain available, on a dedicated page (Mission Lab).
+- English by default, French through a button.
+- A static site, deployable on Netlify with `npm run build:web`.
 
-**Non-objectifs**
-- Pas de nouveau calcul scientifique : le moteur est figé, testé (50 tests) et validé.
-- Pas de vue 3D du relief dans cette version.
-- Pas de compte utilisateur ni de serveur.
+**Non-goals**
+- No new scientific computation: the engine is frozen, tested (50 tests) and validated.
+- No 3D view of the relief in this version.
+- No user account and no server.
 
-**Anti-objectifs** (ce qui serait un échec même si tout fonctionne)
-- Un visiteur non spécialiste qui arrive sur un tableau de bord rempli de chiffres sans
-  explication.
-- Un site qui contredit la charte : plus de deux couleurs, tirets cadratins, italique
-  décorative.
-- Des chiffres affichés qui diffèrent de ceux du moteur (aucun chiffre écrit en dur dans les
-  textes s'il peut être calculé ; voir 9.3).
-- Une perte de fonctionnalité de l'outil actuel sans décision explicite.
+**Anti-goals** (what would be a failure even if everything works)
+- A non-specialist visitor landing on a dashboard full of numbers with no explanation.
+- A site that breaks the design rules: more than two colours, em dashes, decorative italics.
+- Displayed figures that differ from the engine's (no figure hard-coded in the texts if it can be
+  computed; see 9.3).
+- A loss of a feature of the current tool without an explicit decision.
 
-## 3. Contraintes de charte
+## 3. Design constraints
 
-| Élément | Règle |
+| Element | Rule |
 |---|---|
-| Nom | **Earthrise Atlas** |
-| Police | **Poppins** (Google Fonts), graisses 300, 400, 500, 600. Titres en 300 ou 400, grands et aérés |
-| Couleurs | Noir profond (fond, `#000` à `#0A0C12`), blanc (texte), **vert d'eau glacé `#9BF0D8`** (la Terre dans les graphiques, les actions, les liens, les accents), **or très pâle** (le Soleil, **uniquement dans les graphiques et les données**). Le bâtisseur choisit la valeur exacte de l'or pâle (ordre d'idée `#F3E2B3`), en vérifiant le contraste sur fond noir. Les gris sont des nuances du blanc par transparence, pas des couleurs en plus |
-| Ponctuation | **Aucun tiret cadratin** (—) dans les textes, en anglais comme en français. Utiliser deux-points, virgules, parenthèses ou phrases courtes |
-| Italique | Seulement pour un titre d'ouvrage cité, si besoin. Jamais pour l'emphase ni la décoration |
-| Ambiance | Direction « Nuit polaire » validée sur maquette : très sombre, aérée, composition centrée sur l'accueil, typographie légère, arcs fins vert d'eau, relief en silhouette au ras du bas de l'écran |
-| Logo | Un arc d'horizon vert d'eau et un petit disque blanc posé dessus (Terre se levant), comme sur la maquette C. Aussi utilisé en favicon |
+| Name | **Earthrise Atlas** |
+| Font | **Poppins** (Google Fonts), weights 300, 400, 500, 600. Titles in 300 or 400, large and airy |
+| Colours | Deep black (background, `#000` to `#0A0C12`), white (text), **icy ice green `#9BF0D8`** (the Earth in charts, actions, links, accents), **very pale gold** (the Sun, **only in charts and data**). The builder chooses the exact value of the pale gold (around `#F3E2B3`), checking the contrast on black. Greys are shades of white through transparency, not extra colours |
+| Punctuation | **No em dash** (—) in the texts, in English or in French. Use colons, commas, brackets or short sentences |
+| Italics | Only for the title of a cited work, if needed. Never for emphasis or decoration |
+| Mood | "Polar night" direction approved on a mock-up: very dark, airy, centred composition on the home page, light typography, thin ice-green arcs, relief in silhouette at the very bottom of the screen |
+| Logo | An ice-green horizon arc with a small white disk on it (the Earth rising), as on mock-up C. Also used as the favicon |
 
-La maquette validée est conservée dans `.superpowers/brainstorm/` (fichier
-`style-directions.html`, option C).
+The approved mock-up is kept in `.superpowers/brainstorm/` (file `style-directions.html`,
+option C).
 
-## 4. Approches envisagées
+## 4. Approaches considered
 
-| Approche | Avantages | Inconvénients | Décision |
+| Approach | Pros | Cons | Decision |
 |---|---|---|---|
-| **A. Refaire l'interface dans l'application React + Vite actuelle** | Réutilise le moteur et ses tests tels quels ; une seule base de code ; presque aucune dépendance nouvelle ; hébergement statique inchangé | Il faut réécrire tous les composants visuels | **Retenue** par l'équipe |
-| B. Vitrine statique séparée pour le récit, application actuelle pour le jeu | Récit un peu plus rapide à charger | Deux bases de code ; charte et traduction à synchroniser | Écartée |
-| C. Migration vers Next.js ou équivalent | Rendu serveur, référencement | Migration complète pour des bénéfices inutiles à un site statique de démonstration | Écartée |
+| **A. Rebuild the interface inside the current React + Vite application** | Reuses the engine and its tests as they are; a single code base; almost no new dependency; static hosting unchanged | All visual components must be rewritten | **Chosen** by the team |
+| B. Separate static showcase for the story, current application for play | Story slightly faster to load | Two code bases; design and translation to keep in sync | Rejected |
+| C. Migration to Next.js or similar | Server rendering, SEO | Full migration for benefits that a static demo site does not need | Rejected |
 
-## 5. Architecture des pages
+## 5. Page architecture
 
 ```
- /             Story (accueil + récit en 5 chapitres)
- /atlas        Atlas (carte du pôle Sud)
- /play         Play (expérience principale)      onglets : Sky · Timeline · Site
- /lab          Mission Lab (outils experts)      onglets : Zones · Landing dates · Power & radio · Compare
- /method       Method (données et validation)    onglets : Data · Validation · Team
+ /             Story (home + story in 5 chapters)
+ /atlas        Atlas (map of the South Pole)
+ /play         Play (main experience)           tabs: Sky · Timeline · Site
+ /lab          Mission Lab (expert tools)       tabs: Zones · Landing dates · Power & radio · Compare
+ /method       Method (data and validation)     tabs: Data · Validation · Team
 ```
 
-- Navigation fixe en haut : logo et nom à gauche ; Story, Atlas, Play, Lab, Method ; bouton
-  **EN | FR** à droite. Sur mobile, menu repliable.
-- **Onglets** : partout où un écran deviendrait trop chargé (règle de l'équipe : « des onglets
-  si nécessaire »). Ceux listés ci-dessus sont le point de départ ; le bâtisseur peut en
-  ajouter ou en fusionner selon la densité réelle.
-- **Routage par chemin** (`/play`, `/lab`…), pour laisser le **hash de l'URL au lien
-  partageable** existant (`share.ts`, format `#site=…&t=…&d=…`). Il faut donc une règle de
-  réécriture SPA côté hébergeur (`/* /index.html 200` dans `app/public/_redirects` pour
-  Netlify) et un `base` compatible (aujourd'hui `./` dans `vite.config.ts`, à passer en `/`).
-- Le lien partageable s'applique à Play et à Mission Lab : `/play#site=malapert-massif&t=…`.
+- Fixed navigation at the top: logo and name on the left; Story, Atlas, Play, Lab, Method;
+  **EN | FR** button on the right. On mobile, a collapsible menu.
+- **Tabs**: wherever a screen would become too crowded (team rule: "tabs if needed"). Those listed
+  above are the starting point; the builder can add or merge some depending on the real density.
+- **Path routing** (`/play`, `/lab`…), to leave the **URL hash to the existing shareable link**
+  (`share.ts`, format `#site=…&t=…&d=…`). This requires an SPA rewrite rule on the host
+  (`/* /index.html 200` in `app/public/_redirects` for Netlify) and a compatible `base` (currently
+  `./` in `vite.config.ts`, to switch to `/`).
+- The shareable link applies to Play and Mission Lab: `/play#site=malapert-massif&t=…`.
 
-## 6. Contenu page par page
+## 6. Content, page by page
 
 ### 6.1 Story (`/`)
 
-**Accueil (premier écran)**, d'après la maquette C : surtitre « Lunar south pole », titre
-« Where the Sun never sets, and the Earth hides for days. », une phrase d'introduction, deux
-boutons (« Start the journey » qui fait défiler vers le récit, « Play with the map » vers
-`/play`). Relief en silhouette au bas de l'écran, arcs fins vert d'eau, petit disque blanc
-(la Terre) posé sur l'horizon. Animation lente et discrète, désactivée si le visiteur demande
-moins de mouvement (`prefers-reduced-motion`).
+**Home (first screen)**, based on mock-up C: eyebrow "Lunar south pole", title "Where the Sun never
+sets, and the Earth hides for days.", an introductory sentence, two buttons ("Start the journey",
+which scrolls to the story, and "Play with the map", to `/play`). Relief in silhouette at the
+bottom of the screen, thin ice-green arcs, a small white disk (the Earth) sitting on the horizon.
+Slow, discreet animation, disabled if the visitor asks for less motion (`prefers-reduced-motion`).
 
-**Récit**, 5 chapitres qui apparaissent au défilement. Chacun a un titre, 2 à 4 phrases et une
-illustration **alimentée par les vraies données** :
+**Story**, 5 chapters that appear on scroll. Each has a title, 2 to 4 sentences and an illustration
+**fed by the real data**:
 
-| Chapitre | Message | Illustration et source |
+| Chapter | Message | Illustration and source |
 |---|---|---|
-| 1. Why the south pole | De la glace d'eau dort dans des cratères où le Soleil n'entre jamais | Photo LROC du pôle (`data/lroc/`) avec les ombres permanentes de la région « pole » en vert d'eau (`data/horizon_maps/pole.psr.u8`) |
-| 2. A Sun that never climbs | Au pôle, le Soleil tourne autour de l'horizon sans jamais monter haut (moins de 2° à la crête de liaison) | Panorama 360° simplifié de la crête de liaison sur un jour lunaire : horizon réel, trajectoire du Soleil en or pâle |
-| 3. An Earth that hides | La Terre bascule sous le relief et la liaison radio se coupe des jours entiers ; un satellite relais peut combler le trou | Bandeau temporel « Terre visible / cachée » sur un jour lunaire à la crête, avec la plus longue coupure, puis le même bandeau avec le relais LRO |
-| 4. One kilometre changes everything | Déplacer le site de quelques centaines de mètres change tout | **Curseur** que le visiteur fait glisser le long d'un transect de 2 km à Mons Mouton : la visibilité de la Terre et l'ensoleillement se mettent à jour (module `optim/neighborhood.ts`, `transect()`) |
-| 5. Your turn | Invitation à choisir son site et sa date | Bouton vers `/play`, et vers `/atlas` |
+| 1. Why the south pole | Water ice sleeps in craters the Sun never enters | LROC photo of the pole (`data/lroc/`) with the permanent shadows of the "pole" region in ice green (`data/horizon_maps/pole.psr.u8`) |
+| 2. A Sun that never climbs | At the pole, the Sun circles the horizon without ever climbing high (less than 2° at Connecting Ridge) | Simplified 360° panorama of Connecting Ridge over a lunar day: real horizon, path of the Sun in pale gold |
+| 3. An Earth that hides | The Earth tips below the relief and the radio link is cut for whole days; a relay satellite can fill the gap | "Earth visible / hidden" time strip over a lunar day at the ridge, with the longest blackout, then the same strip with the LRO relay |
+| 4. One kilometre changes everything | Moving the site by a few hundred metres changes everything | A **slider** the visitor drags along a 2 km transect at Mons Mouton: Earth visibility and sunlight update (module `optim/neighborhood.ts`, `transect()`) |
+| 5. Your turn | Invitation to choose a site and a date | Button to `/play`, and to `/atlas` |
 
-Les chiffres cités dans les textes sont calculés à l'ouverture de la page (voir 9.3).
+The figures quoted in the texts are computed when the page opens (see 9.3).
 
-**Période de référence du récit** *(choix du concepteur)* : les illustrations et les chiffres
-du récit portent sur une période **fixe**, le jour lunaire qui commence le 14/11/2026 à
-16:00 UTC, celle des valeurs de référence des tests et de la documentation. Ainsi, le récit
-raconte toujours la même histoire, quel que soit le jour de la visite. Play, lui, s'ouvre sur
-la date du jour.
+**Reference period of the story** *(designer's choice)*: the illustrations and figures of the story
+cover a **fixed** period, the lunar day starting on 14 Nov 2026 at 16:00 UTC, which is the period of
+the reference values of the tests and documentation. This way, the story always tells the same
+story, whatever the day of the visit. Play, on the other hand, opens on today's date.
 
 ### 6.2 Atlas (`/atlas`)
 
-- Grande carte du pôle Sud : photo LROC (`data/lroc/south_pole_wac_400m.jpg`, même grille que
-  le MNT réduit), contours des régions Artemis III (`data/sites/artemis3_regions_2022.geojson`),
-  les **14 sites** (`data/sites/sites.json`), qui se distinguent en sites candidats et sites
-  de référence.
-- Un clic sur un site ouvre une **fiche** : nom, mission, contexte, coordonnées, altitude,
-  ombre permanente la plus proche, température Diviner (`data/sites/diviner.json`) quand elle
-  existe, et un bouton « Play this site ».
-- Un clic ailleurs sur la carte propose « Play this point » (site personnalisé, calcul de
-  l'horizon à la demande comme aujourd'hui).
-- Les sites hors de la carte polaire (Apollo, Chang'e, SLIM, Blue Ghost) sont accessibles par
-  une liste « Other landing sites » à côté de la carte.
+- Large map of the South Pole: LROC photo (`data/lroc/south_pole_wac_400m.jpg`, same grid as the
+  reduced DEM), outlines of the Artemis III regions (`data/sites/artemis3_regions_2022.geojson`),
+  the **14 sites** (`data/sites/sites.json`), split into candidate sites and reference sites.
+- A click on a site opens a **card**: name, mission, context, coordinates, elevation, nearest
+  permanent shadow, Diviner temperature (`data/sites/diviner.json`) when it exists, and a
+  "Play this site" button.
+- A click elsewhere on the map offers "Play this point" (custom site, on-demand horizon
+  computation as today).
+- Sites outside the polar map (Apollo, Chang'e, SLIM, Blue Ghost) are reachable through an "Other
+  landing sites" list next to the map.
 
 ### 6.3 Play (`/play`)
 
-L'expérience principale, pour le grand public.
+The main experience, for the general public.
 
-- **Choix** : site (liste des 14 sites, plus « custom » depuis l'Atlas), date de début, durée
-  (3 jours, 7 jours, un jour lunaire). Valeurs par défaut : crête de liaison, aujourd'hui, un
-  jour lunaire.
-- **Chiffres clés** (3 ou 4 grandes cartes, langage simple) : part du temps au Soleil, part du
-  temps avec la Terre visible, plus longue nuit, et un **verdict** compréhensible (par exemple
-  « A small solar lander survives this mission » ou « Battery runs out after 3 days »), calculé
-  avec `astro/budget.ts` pour le véhicule « lander » par défaut.
-- **Onglet Sky** : panorama 360° avec l'horizon réel, les trajectoires du Soleil (or pâle) et
-  de la Terre (vert d'eau), et leur position à l'instant du curseur. Bouton lecture pour animer.
-- **Onglet Timeline** : chronologie de la période avec bandes Soleil, Terre, relais LRO,
-  curseur à faire glisser ; « coucher du Soleil dans… », « coucher de la Terre dans… ».
-- **Onglet Site** : fiche terrain (altitude, pentes, obstacles), fiabilité du résultat
-  (robuste, à confirmer, fragile, avec sa raison en une phrase), mois lunaires sur un an.
-- **Actions** : « Mission delayed by a month? » (compare la même durée un mois lunaire plus tard,
-  `optim/delay.ts`, `shiftScan()`), « Share » (copie le lien, `share.ts`), « Open in Mission
-  Lab ».
+- **Choice**: site (list of the 14 sites, plus "custom" from the Atlas), start date, duration
+  (3 days, 7 days, one lunar day). Defaults: Connecting Ridge, today, one lunar day.
+- **Key figures** (3 or 4 large cards, plain language): share of time in sunlight, share of time
+  with the Earth visible, longest night, and an understandable **verdict** (for example "A small
+  solar lander survives this mission" or "Battery runs out after 3 days"), computed with
+  `astro/budget.ts` for the default "lander" vehicle.
+- **Sky tab**: 360° panorama with the real horizon, the paths of the Sun (pale gold) and the Earth
+  (ice green), and their position at the cursor time. Play button to animate.
+- **Timeline tab**: timeline of the period with Sun, Earth and LRO relay bands, draggable cursor;
+  "sunset in…", "Earth sets in…".
+- **Site tab**: terrain card (elevation, slopes, obstacles), reliability of the result (robust,
+  to be confirmed, fragile, with its reason in one sentence), lunar months over a year.
+- **Actions**: "Mission delayed by a month?" (compares the same duration one lunar month later,
+  `optim/delay.ts`, `shiftScan()`), "Share" (copies the link, `share.ts`), "Open in Mission Lab".
 
 ### 6.4 Mission Lab (`/lab`)
 
-Pour le jury et les curieux. Réglages simplifiés par défaut, **options avancées repliées**
-dans chaque onglet.
+For the jury and curious visitors. Simplified settings by default, **advanced options folded** in
+each tab.
 
-| Onglet | Contenu | Moteur |
+| Tab | Content | Engine |
 |---|---|---|
-| Zones | Recherche des meilleures zones dans une des 9 régions, par profil de mission (carte de chaleur sur la photo LROC de la région, `<id>.wac.u8`). Avancé : poids, contraintes, calques. Un clic sur une zone l'ouvre dans Play | `optim/` (worker), `score.ts`, `PROFILES` |
-| Landing dates | Meilleures dates d'atterrissage pour les sites candidats, avec « pour » et « contre » en clair. Avancé : durée de mission, véhicule, pas | `astro/landing.ts` |
-| Power & radio | Bilan énergie (courbe de charge, batterie et panneaux nécessaires) et radio (débit, volume) pour un véhicule de référence. Avancé : tous les paramètres du véhicule | `astro/budget.ts` |
-| Compare | Tableau comparatif de scénarios (site × date × durée), meilleure valeur mise en avant, enregistré dans le navigateur | `astro/analysis.ts`, `relay.ts` |
+| Zones | Search for the best zones in one of the 9 regions, by mission profile (heat map on the region's LROC photo, `<id>.wac.u8`). Advanced: weights, constraints, layers. A click on a zone opens it in Play | `optim/` (worker), `score.ts`, `PROFILES` |
+| Landing dates | Best landing dates for the candidate sites, with "pros" and "cons" in plain words. Advanced: mission duration, vehicle, step | `astro/landing.ts` |
+| Power & radio | Energy budget (charge curve, battery and panels needed) and radio budget (data rate, volume) for a reference vehicle. Advanced: all vehicle parameters | `astro/budget.ts` |
+| Compare | Comparison table of scenarios (site × date × duration), best value highlighted, saved in the browser | `astro/analysis.ts`, `relay.ts` |
 
-Les fonctions de la phase A sans écran aujourd'hui y trouvent leur place quand c'est simple :
-calendrier site × mois (`data/calendar/sites.json`) dans Landing dates, relais modèles
-Gateway et Queqiao-2 (`loadRelays()`) comme option avancée de Power & radio ou de Compare,
-itinéraire de rover (`optim/rover.ts`) comme option avancée de Zones. Le bâtisseur peut les
-reporter s'ils alourdissent trop ; ce n'est pas bloquant.
+The phase A features that have no screen today find a place here when it is simple: site × month
+calendar (`data/calendar/sites.json`) in Landing dates, model relays Gateway and Queqiao-2
+(`loadRelays()`) as an advanced option of Power & radio or Compare, rover route (`optim/rover.ts`)
+as an advanced option of Zones. The builder can postpone them if they make things too heavy; it is
+not blocking.
 
 ### 6.5 Method (`/method`)
 
-- **Data** : une carte par source (LOLA, JPL Horizons, LRO/LROC, Diviner, orbite LRO), ce
-  qu'elle apporte, sa résolution, son lien.
-- **Validation** : les validations déjà documentées, résumées en clair (Horizons ≤ 0,003°,
-  ombres permanentes IoU 0,80 à 0,93 contre les cartes LOLA officielles, cas de la crête
-  tranché par la courbure), avec liens vers les documents du dépôt.
-- **Team** : l'équipe, le défi Space Apps 2026, le lien vers le code source
-  (https://github.com/Topelus/Lunar-landing-site-visualization-tool). Les cinq membres, tous
-  du **Bénin**, à afficher tels quels (pas de rôles : ils n'ont pas été fournis) :
+- **Data**: one card per source (LOLA, JPL Horizons, LRO/LROC, Diviner, LRO orbit), what it brings,
+  its resolution, its link.
+- **Validation**: the validations already documented, summarized in plain words (Horizons
+  ≤ 0.003°, permanent shadows IoU 0.80 to 0.93 against the official LOLA maps, ridge case settled
+  by curvature), with links to the repository documents.
+- **Team**: the team, the Space Apps 2026 challenge, the link to the source code
+  (https://github.com/Sunvi-children-of-the-stars/Earthrise-Atlas). The five members, all from
+  **Benin**, shown as they are (no roles: none were provided):
   - IDOHOU Cyrus
   - Elge TOPANOU
   - Ezékias AGLOSSI
   - GBAGUIDI Ursus
   - Marguerite ASSOU
 
-## 7. Langues
+## 7. Languages
 
-- Anglais par défaut, français par le bouton EN | FR. Le choix est mémorisé dans le navigateur
-  (`localStorage`, avec repli silencieux si indisponible) et reflété dans `<html lang>`.
-- Tous les textes de l'interface sont dans deux fichiers de dictionnaire (par exemple
-  `app/src/i18n/en.ts` et `fr.ts`) avec les **mêmes clés**. Pas de bibliothèque
-  d'internationalisation : un petit hook suffit.
-- Les textes du **récit** sont écrits par le bâtisseur en anglais, puis traduits en français,
-  en respectant la charte (pas de tiret cadratin, pas d'italique).
-- Les **données** gardent leur langue d'origine quand elles viennent des fichiers (par exemple
-  `sites.json`, en français) : le bâtisseur traduit à l'affichage les champs visibles (nom
-  court, région, contexte) avec un dictionnaire des 14 sites, plutôt que de modifier les
-  fichiers de données.
-- Formats : nombres et dates selon la langue (`Intl`), heures toujours en UTC et marquées
-  comme telles.
+- English by default, French through the EN | FR button. The choice is saved in the browser
+  (`localStorage`, with a silent fallback if unavailable) and reflected in `<html lang>`.
+- All interface texts are in two dictionary files (for example `app/src/i18n/en.ts` and `fr.ts`)
+  with the **same keys**. No internationalization library: a small hook is enough.
+- The **story** texts are written by the builder in English, then translated into French,
+  following the design rules (no em dash, no italics).
+- The **data** keep their original language when they come from the files (for example
+  `sites.json`, in French): the builder translates the visible fields (short name, region,
+  context) at display time with a dictionary of the 14 sites, rather than changing the data files.
+- Formats: numbers and dates according to the language (`Intl`), times always in UTC and marked as
+  such.
 
-## 8. Ce qui existe et ce qui change
+## 8. What exists and what changes
 
-| Existant | Devenir |
+| Existing | Becomes |
 |---|---|
-| `astro/`, `optim/`, `share.ts`, `data.ts`, `format.ts` | **Conservés**. Pas de modification de comportement. Tout ajout passe par de nouvelles fonctions testées |
-| `App.tsx`, `components/*.tsx`, `styles.css` | **Remplacés**. La logique d'état utile (chargement des sites, des masques, de la table Horizons, du relais, calcul à la demande des sites personnalisés) est reprise dans la nouvelle structure ; le visuel est réécrit |
-| `scripts/sync-data.mjs`, `vite.config.ts` (servir tuiles et cartes d'horizon) | Conservés ; `base` passe à `/` pour le routage par chemin |
-| 50 tests (`npm test`) | Doivent rester verts |
-| `npm run build:web` | Reste la commande de déploiement |
+| `astro/`, `optim/`, `share.ts`, `data.ts`, `format.ts` | **Kept**. No change of behaviour. Any addition goes through new tested functions |
+| `App.tsx`, `components/*.tsx`, `styles.css` | **Replaced**. The useful state logic (loading of the sites, masks, Horizons table, relay, on-demand computation of custom sites) is carried over into the new structure; the visuals are rewritten |
+| `scripts/sync-data.mjs`, `vite.config.ts` (serving tiles and horizon maps) | Kept; `base` switches to `/` for path routing |
+| 50 tests (`npm test`) | Must stay green |
+| `npm run build:web` | Remains the deployment command |
 
-Avant de supprimer un composant, vérifier que chaque fonction qu'il offrait a une place dans
-le nouveau site (section 6), ou que son abandon a été décidé.
+Before removing a component, check that each feature it offered has a place in the new site
+(section 6), or that dropping it has been decided.
 
-## 9. Exigences transverses
+## 9. Cross-cutting requirements
 
-### 9.1 Accessibilité et confort
-- Contraste suffisant du texte sur fond noir, y compris pour l'or pâle et le vert d'eau
-  (WCAG AA pour le texte).
-- Navigation au clavier, focus visible, onglets accessibles (rôles ARIA `tablist`, `tab`,
-  `tabpanel`).
-- Animations coupées avec `prefers-reduced-motion`.
-- Graphiques : un texte alternatif résumant ce que montre le graphique.
+### 9.1 Accessibility and comfort
+- Enough contrast for text on black, including the pale gold and the ice green (WCAG AA for text).
+- Keyboard navigation, visible focus, accessible tabs (ARIA roles `tablist`, `tab`, `tabpanel`).
+- Animations turned off with `prefers-reduced-motion`.
+- Charts: an alternative text summarizing what the chart shows.
 
 ### 9.2 Performance
-- Les données lourdes ne se chargent que sur la page qui en a besoin : cartes d'horizon
-  (jusqu'à 23 Mo) seulement dans Mission Lab > Zones, photo LROC (1,7 Mo) dans Atlas et Story.
-- Mission Lab est découpé dans son propre paquet JavaScript (import dynamique).
-- La page d'accueil s'affiche sans attendre les calculs ; les illustrations du récit se
-  calculent au fur et à mesure.
+- Heavy data load only on the page that needs them: horizon maps (up to 23 MB) only in Mission Lab
+  > Zones, LROC photo (1.7 MB) in Atlas and Story.
+- Mission Lab is split into its own JavaScript bundle (dynamic import).
+- The home page shows without waiting for the computations; the story illustrations are computed
+  progressively.
 
-### 9.3 Exactitude
-- Les chiffres affichés viennent du moteur au moment de l'affichage. Les textes les
-  contiennent par des emplacements (par exemple `{earthPct}`), pas en dur.
-- Quand un résultat est « fragile » selon `fragility()`, le site le dit en une phrase.
-- Les relais Gateway et Queqiao-2 sont toujours marqués « model » (orbites modèles, pas des
-  éphémérides).
+### 9.3 Accuracy
+- The displayed figures come from the engine at display time. The texts contain them through
+  placeholders (for example `{earthPct}`), not hard-coded.
+- When a result is "fragile" according to `fragility()`, the site says so in one sentence.
+- The Gateway and Queqiao-2 relays are always marked "model" (model orbits, not ephemerides).
 
-### 9.4 Écrans
-- Ordinateur d'abord (démonstration au jury), mais Story, Atlas et Play doivent rester
-  utilisables sur téléphone (pas de défilement horizontal de la page). Mission Lab peut être
-  réservé aux grands écrans, avec un message sur mobile.
+### 9.4 Screens
+- Desktop first (demo to the jury), but Story, Atlas and Play must remain usable on a phone (no
+  horizontal scrolling of the page). Mission Lab can be reserved for large screens, with a message
+  on mobile.
 
-## 10. Critères de réussite
+## 10. Success criteria
 
-- Un visiteur qui ne connaît rien à la Lune comprend, après le récit, pourquoi le Soleil, la
-  Terre et l'emplacement exact comptent au pôle Sud.
-- Depuis l'accueil, on arrive dans Play en un clic, et l'on voit le ciel d'un site en quelques
-  secondes.
-- Toutes les fonctions de l'outil actuel sont présentes (Play ou Mission Lab).
-- La charte est respectée partout, y compris en français.
-- `npm test` et `npm run build:web` passent ; le site déployé fonctionne sans la pyramide de
-  tuiles (repli sur le MNT réduit pour les sites personnalisés, comme aujourd'hui).
+- A visitor who knows nothing about the Moon understands, after the story, why the Sun, the Earth
+  and the exact location matter at the South Pole.
+- From the home page, Play is one click away, and the sky of a site appears in a few seconds.
+- All features of the current tool are present (Play or Mission Lab).
+- The design rules are respected everywhere, including in French.
+- `npm test` and `npm run build:web` pass; the deployed site works without the tile pyramid
+  (fallback to the reduced DEM for custom sites, as today).
 
-## 11. Laissé au bâtisseur
+## 11. Left to the builder
 
-- La valeur exacte de l'or pâle et des nuances de gris, les espacements et la grille.
-- Le choix du routeur (bibliothèque légère de version publiée depuis plus de deux semaines,
-  ou routage maison).
-- La rédaction des textes du récit et des pages, et leur traduction, dans le respect de la
-  charte et de la section 6.
-- Le découpage exact en onglets au-delà de ceux listés, selon la densité réelle.
-- La forme des illustrations du récit, tant qu'elles utilisent les vraies données.
-- L'ordre de construction des pages.
+- The exact value of the pale gold and of the grey shades, the spacing and the grid.
+- The choice of router (a lightweight library whose version was published more than two weeks
+  ago, or home-made routing).
+- The writing of the story and page texts, and their translation, following the design rules and
+  section 6.
+- The exact split into tabs beyond those listed, depending on the real density.
+- The form of the story illustrations, as long as they use the real data.
+- The order in which the pages are built.
