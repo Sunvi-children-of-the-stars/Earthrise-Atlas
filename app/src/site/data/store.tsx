@@ -69,6 +69,15 @@ export function useData(): DataState {
   return v;
 }
 
+/**
+ * Cache key of a horizon mask. A custom point created before the DEM finished loading has
+ * in_dem = false (smooth ground): it must not share its cache entry with the same point once the
+ * DEM is known, or a shared link would keep a flat horizon for good.
+ */
+export function maskCacheKey(site: SiteRecord): string {
+  return site.category === "custom" ? `${site.id}|${site.in_dem ? 1 : 0}` : site.id;
+}
+
 export interface MaskResult { mask: HorizonMask | null; source: MaskSource; elevation_m?: number; slope_local_deg?: number }
 
 const cache = new Map<string, MaskResult>();
@@ -94,18 +103,19 @@ function fetchMask(site: SiteRecord, dem: Dem | null): Promise<MaskResult> {
 /** Horizon mask of a site (cached); custom sites are computed in the background. */
 export function useMask(site: SiteRecord | null): MaskResult {
   const { dem } = useData();
-  const key = site?.id ?? "";
+  const key = site ? maskCacheKey(site) : "";
   const [res, setRes] = useState<MaskResult>(() => (key && cache.get(key)) || { mask: null, source: "loading" });
   useEffect(() => {
     if (!site) { setRes({ mask: null, source: "loading" }); return; }
-    const hit = cache.get(site.id);
+    const k = maskCacheKey(site);
+    const hit = cache.get(k);
     if (hit) { setRes(hit); return; }
     setRes({ mask: null, source: "loading" });
     let alive = true;
-    let p = inflight.get(site.id);
+    let p = inflight.get(k);
     if (!p) {
-      p = fetchMask(site, dem).then((r) => { cache.set(site.id, r); inflight.delete(site.id); return r; });
-      inflight.set(site.id, p);
+      p = fetchMask(site, dem).then((r) => { cache.set(k, r); inflight.delete(k); return r; });
+      inflight.set(k, p);
     }
     p.then((r) => alive && setRes(r));
     return () => { alive = false; };

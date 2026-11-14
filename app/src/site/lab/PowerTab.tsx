@@ -93,9 +93,9 @@ export function PowerTab({ site, mask, samples, start, hours }: { site: SiteReco
           <Num label={t("lab.v.tx")} value={v.txW} onChange={(x) => set({ txW: x })} />
           <Num label={t("lab.v.antenna")} value={v.antennaM} step={0.1} onChange={(x) => set({ antennaM: x })} />
           <label className="field">{t("lab.v.band")}
-            <select value={v.band} onChange={(e) => set({ band: e.target.value as Band })}>{(Object.keys(BANDS) as Band[]).map((b) => <option key={b} value={b}>{BANDS[b].label}</option>)}</select></label>
+            <select value={v.band} onChange={(e) => set({ band: e.target.value as Band })}>{(Object.keys(BANDS) as Band[]).map((b) => <option key={b} value={b}>{t(`band.${b}` as MessageKey)}</option>)}</select></label>
           <label className="field">{t("lab.v.station")}
-            <select value={v.station} onChange={(e) => set({ station: e.target.value as Station })}>{(Object.keys(STATIONS) as Station[]).map((s) => <option key={s} value={s}>{STATIONS[s].label}</option>)}</select></label>
+            <select value={v.station} onChange={(e) => set({ station: e.target.value as Station })}>{(Object.keys(STATIONS) as Station[]).map((s) => <option key={s} value={s}>{t(`station.${s}` as MessageKey)}</option>)}</select></label>
         </div>
       </details>
     </div>

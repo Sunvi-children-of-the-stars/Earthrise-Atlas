@@ -140,7 +140,7 @@ export function ZonesTab({ start, hours, onOpen }: { start: number; hours: numbe
     <div className="zones">
       <div className="row lab-row">
         <label className="field">{t("lab.zones.region")}
-          <select value={regionId} onChange={(e) => setRegionId(e.target.value)}>{index?.map((r) => <option key={r.id} value={r.id}>{r.name}</option>)}</select>
+          <select value={regionId} onChange={(e) => setRegionId(e.target.value)}>{index?.map((r) => <option key={r.id} value={r.id}>{t(`zone.region.${r.id}` as MessageKey) === `zone.region.${r.id}` ? r.id : t(`zone.region.${r.id}` as MessageKey)}</option>)}</select>
         </label>
         <label className="field">{t("lab.zones.profile")}
           <select value={profileId} onChange={(e) => applyProfile(e.target.value)}>{PROFILES.map((p) => <option key={p.id} value={p.id}>{t(profileKey(p.id))}</option>)}</select>

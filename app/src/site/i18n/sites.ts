@@ -97,16 +97,32 @@ export const SITE_TEXT: Record<string, Entry> = {
 };
 
 const CUSTOM: Entry = {
-  en: { name: "Custom site", short: "Custom site", region: "Your point",
-    context: "A point you picked on the map. Its horizon is computed in your browser from the lunar relief." },
-  fr: { name: "Site personnalisé", short: "Site personnalisé", region: "Votre point",
-    context: "Un point choisi sur la carte. Son horizon est calculé dans votre navigateur à partir du relief lunaire." },
+  en: { name: "Custom site", short: "Custom site", region: "Your point", context: "" },
+  fr: { name: "Site personnalisé", short: "Site personnalisé", region: "Votre point", context: "" },
 };
 
-export function siteText(site: SiteRecord, lang: Lang): SiteText {
+/** Context of a custom point, honest about where its horizon comes from. */
+const CUSTOM_CONTEXT: Record<Lang, Record<"tiles" | "preview" | "flat" | "pending", string>> = {
+  en: {
+    tiles: "A point you picked. Its horizon is computed in your browser from the detailed lunar relief around it.",
+    preview: "A point you picked. Its horizon is approximate: computed from a coarse 1.2 km relief, the detailed relief is not available here.",
+    flat: "A point you picked, outside the polar relief model: its horizon is smooth ground, with no relief.",
+    pending: "A point you picked. Its horizon is being computed from the lunar relief.",
+  },
+  fr: {
+    tiles: "Un point que vous avez choisi. Son horizon est calculé dans votre navigateur à partir du relief lunaire détaillé.",
+    preview: "Un point que vous avez choisi. Son horizon est approximatif : calculé sur un relief grossier à 1,2 km, le relief détaillé n'étant pas disponible ici.",
+    flat: "Un point que vous avez choisi, hors du modèle de relief polaire : son horizon est un sol lisse, sans relief.",
+    pending: "Un point que vous avez choisi. Son horizon est en cours de calcul à partir du relief lunaire.",
+  },
+};
+
+/** `source` (custom points only): where the horizon comes from; by default deduced from in_dem. */
+export function siteText(site: SiteRecord, lang: Lang, source?: string): SiteText {
   if (site.category === "custom") {
     const c = CUSTOM[lang];
-    return { ...c, short: site.short || c.short };
+    const src = source === "tiles" || source === "preview" || source === "flat" ? source : site.in_dem ? "pending" : "flat";
+    return { ...c, short: site.short || c.short, context: CUSTOM_CONTEXT[lang][src] };
   }
   const e = SITE_TEXT[site.id];
   if (e) return e[lang];

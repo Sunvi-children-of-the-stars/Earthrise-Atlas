@@ -26,4 +26,12 @@ describe("textes des sites", () => {
     expect(siteText(makeCustomSite(-85.5, 15, null), "en").name).toBe("Custom site");
     expect(siteText(makeCustomSite(-85.5, 15, null), "fr").name).toBe("Site personnalisé");
   });
+
+  test("le texte d'un point personnalisé dit d'où vient son horizon", () => {
+    const s = makeCustomSite(0.67, 23.47, null);
+    expect(siteText(s, "en", "flat").context).toMatch(/smooth|no relief/i);
+    expect(siteText(s, "en", "tiles").context).toMatch(/relief/i);
+    expect(siteText(s, "en", "flat").context).not.toBe(siteText(s, "en", "tiles").context);
+    expect(siteText(s, "fr", "preview").context).not.toBe(siteText(s, "fr", "tiles").context);
+  });
 });

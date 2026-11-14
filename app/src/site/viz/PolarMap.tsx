@@ -54,6 +54,8 @@ export function PolarMap({ sites, selectedId, onSelectSite, onPickPoint, labelOf
   const [view, setView] = useState(initial);
   const [size, setSize] = useState({ w: 600, h: height ?? 600 });
   const drag = useRef<{ x: number; y: number; cx: number; cy: number; moved: boolean } | null>(null);
+  // The wheel zooms only once the visitor has clicked the map: otherwise it scrolls the page.
+  const [active, setActive] = useState(false);
 
   useEffect(() => { loadLroc().then(setImg).catch(() => setImg(null)); }, []);
   useEffect(() => {
@@ -125,6 +127,19 @@ export function PolarMap({ sites, selectedId, onSelectSite, onPickPoint, labelOf
     }
   }, [img, view, size, ppm, sites, selectedId, artemis, overlay, labelOf, toCanvas]);
 
+  const zoomRef = useRef<(f: number, px?: number, py?: number) => void>(() => {});
+  useEffect(() => {
+    const c = canvas.current;
+    if (!c || !active) return;
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const r = c.getBoundingClientRect();
+      zoomRef.current(e.deltaY > 0 ? 1.25 : 0.8, e.clientX - r.left, e.clientY - r.top);
+    };
+    c.addEventListener("wheel", onWheel, { passive: false });
+    return () => c.removeEventListener("wheel", onWheel);
+  }, [active]);
+
   const zoom = (f: number, px = size.w / 2, py = size.h / 2) => {
     const [x, y] = toXY(px, py);
     setView((v) => {
@@ -134,7 +149,8 @@ export function PolarMap({ sites, selectedId, onSelectSite, onPickPoint, labelOf
     });
   };
 
-  const local = (e: React.PointerEvent | React.WheelEvent) => {
+  zoomRef.current = zoom;
+  const local = (e: React.PointerEvent) => {
     const r = canvas.current!.getBoundingClientRect();
     return [e.clientX - r.left, e.clientY - r.top] as const;
   };
@@ -167,8 +183,8 @@ export function PolarMap({ sites, selectedId, onSelectSite, onPickPoint, labelOf
   return (
     <div className={fill ? "polar-map fill" : "polar-map"} ref={wrap}>
       <canvas ref={canvas} style={{ width: size.w, height: size.h }} role="img" aria-label={t("map.aria")}
-        onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp}
-        onWheel={(e) => { const [px, py] = local(e); zoom(e.deltaY > 0 ? 1.25 : 0.8, px, py); }} />
+        onPointerDown={(e) => { setActive(true); onDown(e); }} onPointerMove={onMove} onPointerUp={onUp}
+        onPointerLeave={() => setActive(false)} />
       <div className="map-controls">
         <button className="btn btn-ghost btn-small" aria-label={t("map.zoomIn")} onClick={() => zoom(0.7)}>+</button>
         <button className="btn btn-ghost btn-small" aria-label={t("map.zoomOut")} onClick={() => zoom(1.4)}>−</button>

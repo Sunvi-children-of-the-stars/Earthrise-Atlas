@@ -80,7 +80,7 @@ export function Play() {
 
   if (!st || !site) return <section className="page container"><div className="page-head"><p>{t("common.loading")}</p></div></section>;
   const set = (p: Partial<PlayState>) => { setSt({ ...st, ...p, cursor: p.cursor ?? 0 }); setShowDelay(false); };
-  const text = siteText(site, lang);
+  const text = siteText(site, lang, source);
   const groups: [MessageKey, SiteRecord[]][] = [
     ["play.group.candidates", sites.filter((s) => s.category === "candidat")],
     ["play.group.past", sites.filter((s) => s.category === "reference")],
