@@ -354,6 +354,12 @@ export const en = {
   "sheet.period": "from {start}, for {d}",
   "sheet.relayNote": "Longest total blackout with the LRO relay: {h}",
   "sheet.foot": "Earthrise Atlas, NASA Space Apps Challenge 2026. Data: NASA LRO (LOLA, LROC, Diviner), JPL Horizons. Times in UTC.",
+  "play.tab.3d": "3D",
+  "td.aria": "3D view of the relief around the site, lit by the Sun at the chosen time",
+  "td.none": "The 3D view covers the south pole candidate regions (detailed 200 m relief). Pick one of their sites, or a point inside them.",
+  "td.photo": "Show the LROC photo",
+  "td.exag": "Double the relief height",
+  "td.legend": "{km} km × {km} km of real relief (LOLA, 200 m). The Sun is the only light: move the time to watch the shadows sweep. Gold: the Sun. Ice green: the Earth and the landing site. Drag to turn, scroll to zoom.",
 } as const;
 
 export type MessageKey = keyof typeof en;

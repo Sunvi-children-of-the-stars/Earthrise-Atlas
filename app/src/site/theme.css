@@ -391,3 +391,5 @@ img, canvas, svg { max-width: 100%; }
   .sheet-link { color: var(--ice); word-break: break-all; }
   .mission-sheet .viz { max-height: 62mm; }
 }
+.terrain3d { width: 100%; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: var(--bg); touch-action: pan-y; }
+.terrain3d canvas { display: block; }

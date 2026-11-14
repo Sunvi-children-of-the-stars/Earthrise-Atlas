@@ -1,5 +1,5 @@
 /** Play: pick a site and a date, see the sky, the timeline and what it means for a mission. */
-import { useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { fragility, metrics, seasonal, simulate, SYNODIC_DAYS } from "../../astro/analysis";
 import { relayAnalysis } from "../../astro/relay";
 import type { SiteRecord } from "../../data";
@@ -12,6 +12,8 @@ import { navigate } from "../router";
 import { StatCard } from "../ui/StatCard";
 import { DelayNearby } from "./DelayNearby";
 import { MissionSheet } from "./MissionSheet";
+
+const Terrain3D = lazy(() => import("./Terrain3D"));
 import { Tabs } from "../ui/Tabs";
 import { circularMeanDeg } from "../viz/geometry";
 import { SkyChart } from "../viz/SkyChart";
@@ -164,7 +166,7 @@ export function Play() {
           )}
 
           <Tabs idPrefix="play" active={tab} onChange={setTab}
-            tabs={[{ id: "sky", label: t("play.tab.sky") }, { id: "timeline", label: t("play.tab.timeline") }, { id: "site", label: t("play.tab.site") }]}>
+            tabs={[{ id: "sky", label: t("play.tab.sky") }, { id: "timeline", label: t("play.tab.timeline") }, { id: "3d", label: t("play.tab.3d") }, { id: "site", label: t("play.tab.site") }]}>
             {tab === "sky" && (
               <div className="stack">
                 <SkyChart samples={samples} cursor={cursor} mask={mask} centerAz={centerAz} />
@@ -191,6 +193,11 @@ export function Play() {
                 </div>
                 <p className="small faint">{rs ? t("play.relay.lro") : t("play.relay.na")}</p>
               </div>
+            )}
+            {tab === "3d" && (
+              <Suspense fallback={<p className="muted">{t("common.loading")}</p>}>
+                <Terrain3D site={site} samples={samples} cursor={cursor} onCursor={(i) => { setPlaying(false); setSt({ ...st, cursor: i }); }} />
+              </Suspense>
             )}
             {tab === "site" && (
               <div className="site-tab">

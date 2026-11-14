@@ -356,4 +356,10 @@ export const fr: Record<MessageKey, string> = {
   "sheet.period": "à partir du {start}, pendant {d}",
   "sheet.relayNote": "Plus longue coupure totale avec le relais LRO : {h}",
   "sheet.foot": "Earthrise Atlas, NASA Space Apps Challenge 2026. Données : NASA LRO (LOLA, LROC, Diviner), JPL Horizons. Heures en UTC.",
+  "play.tab.3d": "3D",
+  "td.aria": "Vue 3D du relief autour du site, éclairé par le Soleil à l'instant choisi",
+  "td.none": "La vue 3D couvre les régions candidates du pôle Sud (relief détaillé à 200 m). Choisissez un de leurs sites, ou un point à l'intérieur.",
+  "td.photo": "Afficher la photo LROC",
+  "td.exag": "Doubler la hauteur du relief",
+  "td.legend": "{km} km × {km} km de relief réel (LOLA, 200 m). Le Soleil est la seule lumière : déplacez le temps pour voir les ombres tourner. Or : le Soleil. Vert d'eau : la Terre et le site. Glisser pour tourner, molette pour zoomer.",
 };
