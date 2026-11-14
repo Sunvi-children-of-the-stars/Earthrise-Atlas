@@ -5,13 +5,15 @@ import { mapsBaseUrl, runRegion } from "../optim/client";
 import type { RegionMetrics } from "../optim/evaluate";
 import { loadRegion, loadRegionIndex, pixelLatLon, type RegionData, type RegionIndexEntry } from "../optim/region";
 import { CRITERIA, extractZones, ICE_RANGE_KM, NO_PSR_LIMIT, PROFILES, scoreRegion, type Constraints, type Criterion } from "../optim/score";
+import type { RelayData } from "../astro/relay";
 import type { SiteRecord } from "../data";
 import { fmtDate, fmtDeg, fmtDuration, fmtLatLon, fmtNum, fmtPct } from "../format";
 
-type Layer = "score" | "sun" | "night" | "earth" | "both" | "slope" | "psr";
+type Layer = "score" | "sun" | "night" | "earth" | "both" | "link" | "nolink" | "slope" | "psr";
 const LAYERS: { id: Layer; label: string }[] = [
   { id: "score", label: "Score" }, { id: "sun", label: "Soleil %" }, { id: "night", label: "Plus longue nuit" },
-  { id: "earth", label: "Terre %" }, { id: "both", label: "Soleil + Terre %" }, { id: "slope", label: "Pente" },
+  { id: "earth", label: "Terre %" }, { id: "both", label: "Soleil + Terre %" },
+  { id: "link", label: "Terre ou relais %" }, { id: "nolink", label: "Coupure totale" }, { id: "slope", label: "Pente" },
   { id: "psr", label: "Ombre permanente" },
 ];
 const STATIC_LAYERS: Layer[] = ["slope", "psr"];
@@ -30,9 +32,10 @@ interface Props {
   sites: SiteRecord[];
   onAnalyze: (lat: number, lon: number) => void;
   artemis?: ArtemisRegionSet | null;
+  relay?: RelayData | null;
 }
 
-export function Optimizer({ start, hours, sites, onAnalyze, artemis }: Props) {
+export function Optimizer({ start, hours, sites, onAnalyze, artemis, relay }: Props) {
   const [index, setIndex] = useState<RegionIndexEntry[] | null>(null);
   const [regionId, setRegionId] = useState("");
   const [region, setRegion] = useState<RegionData | null>(null);
@@ -60,10 +63,12 @@ export function Optimizer({ start, hours, sites, onAnalyze, artemis }: Props) {
     loadRegion(mapsBaseUrl(), entry.file, false).then(setRegion).catch((e) => setError(String(e)));
   }, [entry]);
 
+  const hasRelay = !!metrics && metrics.linkPct.length > 0;
+
   const run = () => {
     if (!entry) return;
     setError(null); setProgress({ phase: "load", f: 0 });
-    runRegion(entry.file, start, hours, (phase, f) => setProgress({ phase, f }))
+    runRegion(entry.file, start, hours, (phase, f) => setProgress({ phase, f }), relay)
       .then((m) => { setMetrics(m); setRanFor({ start, hours, region: entry.id }); setProgress(null); })
       .catch((e) => { setError(String(e)); setProgress(null); });
   };
@@ -105,13 +110,15 @@ export function Optimizer({ start, hours, sites, onAnalyze, artemis }: Props) {
       else if (layer === "sun") x = metrics.sunPct[p];
       else if (layer === "night") x = metrics.nightH[p];
       else if (layer === "earth") x = metrics.earthPct[p];
+      else if (layer === "link") x = metrics.linkPct.length ? metrics.linkPct[p] : NaN;
+      else if (layer === "nolink") x = metrics.noLinkH.length ? metrics.noLinkH[p] : NaN;
       else x = metrics.bothPct[p];
       v[p] = x;
       if (!Number.isNaN(x)) { lo = Math.min(lo, x); hi = Math.max(hi, x); }
     }
-    if (layer === "sun" || layer === "earth" || layer === "both") { lo = 0; hi = 100; }
+    if (layer === "sun" || layer === "earth" || layer === "both" || layer === "link") { lo = 0; hi = 100; }
     if (layer === "psr") { lo = 0; hi = ICE_RANGE_KM; }
-    return { v, lo, hi, invert: layer === "night" || layer === "slope" || layer === "psr" };
+    return { v, lo, hi, invert: layer === "night" || layer === "nolink" || layer === "slope" || layer === "psr" };
   }, [region, metrics, scored, layer]);
 
   useEffect(() => {
@@ -200,7 +207,7 @@ export function Optimizer({ start, hours, sites, onAnalyze, artemis }: Props) {
     const [lat, lon] = pixelLatLon(region.meta, picked % W, Math.floor(picked / W));
     return { lat, lon, p: picked };
   })() : null;
-  const fmtLegend = (x: number) => layer === "night" ? fmtDuration(x) : layer === "slope" ? fmtDeg(x)
+  const fmtLegend = (x: number) => layer === "night" || layer === "nolink" ? fmtDuration(x) : layer === "slope" ? fmtDeg(x)
     : layer === "psr" ? `${fmtNum(x)} km` : fmtNum(x);
 
   if (error && !index) return <p className="muted">{error}</p>;
@@ -233,7 +240,8 @@ export function Optimizer({ start, hours, sites, onAnalyze, artemis }: Props) {
           <div className="seg">
             {LAYERS.map((l) => (
               <button key={l.id} className={l.id === layer ? "on" : ""} onClick={() => setLayer(l.id)}
-                disabled={!metrics && !STATIC_LAYERS.includes(l.id)}>{l.label}</button>
+                disabled={(!metrics && !STATIC_LAYERS.includes(l.id)) || ((l.id === "link" || l.id === "nolink") && !!metrics && !metrics.linkPct.length)}
+                title={(l.id === "link" || l.id === "nolink") ? "Relais LRO : disponible quand son orbite couvre la période" : undefined}>{l.label}</button>
             ))}
           </div>
           {region ? (
@@ -308,7 +316,7 @@ export function Optimizer({ start, hours, sites, onAnalyze, artemis }: Props) {
           {region.psr[pickedInfo.p] ? " ombre permanente" : region.psrDistKm.length ? ` ombre permanente à ${fmtNum(region.psrDistKm[pickedInfo.p], 1)} km` : ""}
           {a3 && a3.mask[pickedInfo.p] ? ` · région Artemis III « ${a3.names[a3.mask[pickedInfo.p] - 1]} »` : ""}
           {metrics && <> · Soleil {fmtPct(metrics.sunPct[pickedInfo.p])} · nuit max {fmtDuration(metrics.nightH[pickedInfo.p])} ·
-            Terre {fmtPct(metrics.earthPct[pickedInfo.p])} · score {scored && !Number.isNaN(scored.score[pickedInfo.p]) ? fmtNum(scored.score[pickedInfo.p], 1) : "hors contraintes"}</>}
+            Terre {fmtPct(metrics.earthPct[pickedInfo.p])}{metrics.linkPct.length ? <> · Terre ou relais {fmtPct(metrics.linkPct[pickedInfo.p])} · coupure totale max {fmtDuration(metrics.noLinkH[pickedInfo.p])}</> : null} · score {scored && !Number.isNaN(scored.score[pickedInfo.p]) ? fmtNum(scored.score[pickedInfo.p], 1) : "hors contraintes"}</>}
           <button className="link" onClick={() => onAnalyze(pickedInfo.lat, pickedInfo.lon)}>Analyser ce point en détail</button>
         </div>
       )}
@@ -319,7 +327,7 @@ export function Optimizer({ start, hours, sites, onAnalyze, artemis }: Props) {
             <table className="cmp">
               <thead><tr>
                 <th>#</th><th>Meilleur point</th><th>Surface</th><th>Score</th><th>Soleil</th><th>Plus longue nuit</th>
-                <th>Terre</th><th>Coupure max</th><th>Soleil + Terre</th><th>Pente</th><th title="Distance à la zone d'ombre permanente la plus proche">Ombre perm.</th><th title="Région candidate officielle (NASA 2022) contenant le meilleur point">Région Artemis III</th><th />
+                <th>Terre</th><th>Coupure max</th>{hasRelay && <><th title="Part du temps avec la Terre ou le relais LRO">Terre ou LRO</th><th title="Plus longue période sans Terre ni relais">Coupure totale</th></>}<th>Soleil + Terre</th><th>Pente</th><th title="Distance à la zone d'ombre permanente la plus proche">Ombre perm.</th><th title="Région candidate officielle (NASA 2022) contenant le meilleur point">Région Artemis III</th><th />
               </tr></thead>
               <tbody>
                 {zones.map((z) => (
@@ -332,6 +340,7 @@ export function Optimizer({ start, hours, sites, onAnalyze, artemis }: Props) {
                     <td className="num">{fmtDuration(z.nightH)}</td>
                     <td className="num">{fmtPct(z.earthPct)}</td>
                     <td className="num">{fmtDuration(z.outageH)}</td>
+                    {hasRelay && <><td className="num">{fmtPct(z.linkPct)}</td><td className="num">{fmtDuration(z.noLinkH)}</td></>}
                     <td className="num">{fmtPct(z.bothPct)}</td>
                     <td className="num">{fmtDeg(z.slope)}</td>
                     <td className="num">{Number.isFinite(z.psrKm) ? `${fmtNum(z.psrKm, 1)} km` : "—"}</td>

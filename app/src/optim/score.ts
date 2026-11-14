@@ -5,7 +5,7 @@
 import type { RegionMetrics } from "./evaluate";
 import { pixelLatLon, type RegionData } from "./region";
 
-export type Criterion = "sun" | "night" | "earth" | "outage" | "both" | "flux" | "ice";
+export type Criterion = "sun" | "night" | "earth" | "outage" | "both" | "flux" | "ice" | "link" | "nolink";
 
 /** Beyond this distance (km) to a permanent shadow, the "ice proximity" criterion is 0. */
 export const ICE_RANGE_KM = 10;
@@ -17,6 +17,8 @@ export const CRITERIA: { id: Criterion; label: string; hint: string }[] = [
   { id: "earth", label: "Terre visible", hint: "Part du temps avec liaison directe possible" },
   { id: "outage", label: "Coupure courte", hint: "Plus longue période sans Terre : plus c'est court, mieux c'est" },
   { id: "both", label: "Soleil + Terre", hint: "Énergie et liaison directe en même temps" },
+  { id: "link", label: "Terre ou relais", hint: "Part du temps avec la Terre ou le relais LRO (> 5°) : liaison directe ou relayée. Sans orbite du relais pour la période, vaut « Terre visible »" },
+  { id: "nolink", label: "Coupure totale courte", hint: "Plus longue période sans Terre ni relais : plus c'est court, mieux c'est. Sans orbite du relais, vaut « Coupure courte »" },
   { id: "ice", label: "Proximité glace", hint: `Proche d'une zone d'ombre permanente (pièges froids où la glace d'eau peut subsister) : 1 sur place, 0 à ${ICE_RANGE_KM} km ou plus` },
 ];
 
@@ -31,7 +33,7 @@ export interface Constraints {
 
 export interface Profile { id: string; label: string; description: string; weights: Record<Criterion, number>; constraints: Constraints }
 
-const W0: Record<Criterion, number> = { sun: 0, night: 0, flux: 0, earth: 0, outage: 0, both: 0, ice: 0 };
+const W0: Record<Criterion, number> = { sun: 0, night: 0, flux: 0, earth: 0, outage: 0, both: 0, ice: 0, link: 0, nolink: 0 };
 export const NO_PSR_LIMIT = 50;
 
 export const PROFILES: Profile[] = [
@@ -52,6 +54,12 @@ export const PROFILES: Profile[] = [
     description: "Pas de relais : la Terre doit rester visible le plus longtemps possible.",
     weights: { ...W0, earth: 3, outage: 2, both: 1 },
     constraints: { slopeMax: 10, nightMaxH: 720, earthMinPct: 60, sunMinPct: 0, psrMaxKm: NO_PSR_LIMIT },
+  },
+  {
+    id: "relay", label: "Liaison avec relais",
+    description: "La Terre peut se cacher si un relais en orbite basse (orbite de LRO) prend le relais : on vise les coupures totales les plus courtes.",
+    weights: { ...W0, nolink: 3, link: 2, sun: 2 },
+    constraints: { slopeMax: 10, nightMaxH: 720, earthMinPct: 0, sunMinPct: 0, psrMaxKm: NO_PSR_LIMIT },
   },
   {
     id: "ice", label: "Science : glace d'eau",
@@ -76,6 +84,8 @@ function norm(region: RegionData, m: RegionMetrics, c: Criterion, p: number): nu
     case "flux": return m.flux[p] / 1361;
     case "night": return 1 - Math.min(1, m.nightH[p] / m.hours);
     case "outage": return 1 - Math.min(1, m.outageH[p] / m.hours);
+    case "link": return (m.linkPct.length ? m.linkPct[p] : m.earthPct[p]) / 100;
+    case "nolink": return 1 - Math.min(1, (m.noLinkH.length ? m.noLinkH[p] : m.outageH[p]) / m.hours);
     case "ice": return region.psrDistKm.length ? 1 - Math.min(1, region.psrDistKm[p] / ICE_RANGE_KM) : 0;
   }
 }
@@ -111,6 +121,7 @@ export interface Zone {
   bestCol: number; bestRow: number; lat: number; lon: number;
   score: number; sunPct: number; nightH: number; earthPct: number; outageH: number;
   bothPct: number; slope: number; elevation: number; psrKm: number;
+  linkPct: number; noLinkH: number; // NaN without relay orbit for the period
   artemis: string | null; // official Artemis III region containing the best point
 }
 
@@ -150,6 +161,7 @@ export function extractZones(region: RegionData, m: RegionMetrics, s: Scored, to
       score: s.score[bp], sunPct: m.sunPct[bp], nightH: m.nightH[bp], earthPct: m.earthPct[bp],
       outageH: m.outageH[bp], bothPct: m.bothPct[bp], slope: region.slopeMean[bp] / 10, elevation: region.elev[bp],
       psrKm: region.psrDistKm.length ? region.psrDistKm[bp] : NaN,
+      linkPct: m.linkPct.length ? m.linkPct[bp] : NaN, noLinkH: m.noLinkH.length ? m.noLinkH[bp] : NaN,
       artemis: artemis && artemis.mask[bp] ? artemis.names[artemis.mask[bp] - 1] : null,
     });
   }

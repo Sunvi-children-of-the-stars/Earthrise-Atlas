@@ -1,4 +1,6 @@
-import type { RegionMetrics } from "./evaluate";
+import { getEphemerisTable } from "../astro/ephemeris";
+import type { RelayData } from "../astro/relay";
+import type { RegionMetrics, RelayInput } from "./evaluate";
 
 let worker: Worker | null = null;
 let nextId = 1;
@@ -9,7 +11,10 @@ export function mapsBaseUrl(): string {
 
 /** Runs the regional evaluation in the background; progress in [0, 1]. */
 export function runRegion(file: string, start: number, hours: number,
-  onProgress: (phase: "load" | "eval", f: number) => void): Promise<RegionMetrics> {
+  onProgress: (phase: "load" | "eval", f: number) => void, relay?: RelayData | null): Promise<RegionMetrics> {
+  const relayIn: RelayInput | null = relay
+    ? { name: relay.meta.satellite, xyz: relay.xyz, startUtcMs: relay.startUtcMs, stepSeconds: relay.meta.step_seconds, count: relay.meta.count }
+    : null;
   if (!worker) worker = new Worker(new URL("./optim.worker.ts", import.meta.url), { type: "module" });
   const w = worker;
   const id = nextId++;
@@ -26,6 +31,6 @@ export function runRegion(file: string, start: number, hours: number,
       }
     };
     w.addEventListener("message", onMsg);
-    w.postMessage({ id, baseUrl: mapsBaseUrl(), file, start, hours });
+    w.postMessage({ id, baseUrl: mapsBaseUrl(), file, start, hours, eph: getEphemerisTable(), relay: relayIn });
   });
 }

@@ -44,6 +44,7 @@ header { grid-area: head; display: flex; justify-content: space-between; align-i
   border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px;
   color: var(--muted); font-size: 12px; background: var(--panel);
 }
+.badge.warn { color: #f5b942; border-color: #6b5320; }
 aside { grid-area: side; display: flex; flex-direction: column; gap: 16px; }
 main { grid-area: main; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
 aside section, .panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; }
@@ -219,3 +220,32 @@ footer { color: var(--muted); font-size: 12px; line-height: 1.5; padding: 0 4px 
 .check input { accent-color: #5ad1e6; }
 .band.relay { fill: #b48cff; }
 .card.relay { border-top-color: #b48cff; }
+
+/* Energy & telecom budget (member 4) */
+.budget-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-bottom: 10px; font-size: 13px; }
+.budget-head label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); }
+.bparams { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-bottom: 12px; }
+.bparams fieldset { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px 12px; display: grid; gap: 8px; min-width: 0; }
+.bparams legend { color: var(--muted); font-size: 12px; padding: 0 4px; }
+.bfield { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 13px; }
+.bfield span { display: flex; align-items: center; gap: 4px; }
+.bfield input { width: 90px; }
+.bfield select { max-width: 60%; }
+.bfield small { color: var(--muted); min-width: 44px; }
+.chart.soc { width: 100%; height: auto; display: block; margin-top: 10px; }
+.soc-sun { fill: var(--sun); opacity: 0.08; }
+.soc-earth { fill: var(--earth); opacity: 0.7; }
+.soc-line { fill: none; stroke: #4cc38a; stroke-width: 2; }
+.soc-floor { stroke: #f2555a; stroke-dasharray: 4 4; stroke-width: 1; }
+.sw.soc { background: #4cc38a; }
+.sw.floor { background: #f2555a; }
+
+/* Landing-date planner (member 5) */
+.chart.landing-strip { width: 100%; height: auto; display: block; margin-top: 8px; }
+.lcell { cursor: pointer; }
+.lcell:hover { stroke: var(--text); stroke-width: 1; }
+.lhover { font-size: 13px; min-height: 20px; margin: 6px 0 4px; }
+.landing h4 { margin: 14px 0 6px; font-size: 14px; }
+td.pros { color: #8fd9b0; font-size: 12px; }
+td.cons { color: #f0a0a3; font-size: 12px; }
+.lsum { margin-right: 10px; }

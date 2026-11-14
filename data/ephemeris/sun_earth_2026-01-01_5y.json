@@ -1,0 +1,20 @@
+{
+  "id": "sun_earth_2026-01-01_5y",
+  "source": "JPL Horizons (DE440), vecteurs apparents (VEC_CORR='LT+S')",
+  "frame": "ICRF (équateur moyen J2000), centre de la Lune (500@301)",
+  "units": "km",
+  "start_jd_tdb": 2461041.5,
+  "step_seconds": 3600,
+  "count": 43825,
+  "file": "sun_earth_2026-01-01_5y.f32",
+  "layout": "float32 little-endian : soleil x y z, terre x y z, par point",
+  "sun_distance_au": {
+    "min": 0.98066,
+    "max": 1.0193
+  },
+  "earth_distance_km": {
+    "min": 356653,
+    "max": 406677
+  },
+  "retrieved": "2026-11-14"
+}

@@ -7,7 +7,11 @@
  *   the frame LOLA uses).
  *
  * Accuracy measured against JPL Horizons: see docs/membre3_application.md.
- * These are fallback values until member 1 delivers the Horizons files.
+ *
+ * When the Horizons table (member 1, scripts/fetch_ephemeris.py) is loaded with
+ * setEphemerisTable() and covers the date, bodiesFixed() uses it instead of the series:
+ * exact apparent vectors (DE440), interpolated hourly. The series remain the fallback outside
+ * the table's period.
  */
 
 export type Vec3 = [number, number, number];
@@ -96,17 +100,66 @@ function mul(a: number[][], b: number[][]): number[][] {
 const apply = (m: number[][], v: Vec3): Vec3 =>
   [0, 1, 2].map((i) => m[i][0] * v[0] + m[i][1] * v[1] + m[i][2] * v[2]) as Vec3;
 
+// ---------------------------------------------------------------------------
+// Horizons table (member 1): Sun and Earth vectors from the Moon's center, ICRF, km
+// ---------------------------------------------------------------------------
+export interface EphemerisMeta {
+  id: string; source: string; start_jd_tdb: number; step_seconds: number; count: number; file: string;
+}
+export interface EphemerisTable { meta: EphemerisMeta; data: Float32Array; startUtcMs: number; endUtcMs: number }
+
+let table: EphemerisTable | null = null;
+
+/** Builds a table from its metadata and the raw float32 buffer (6 values per point). */
+export function makeEphemerisTable(meta: EphemerisMeta, buf: ArrayBuffer): EphemerisTable {
+  const startUtcMs = (meta.start_jd_tdb - 2440587.5) * 86_400_000 - DELTA_T_S * 1000;
+  return { meta, data: new Float32Array(buf), startUtcMs, endUtcMs: startUtcMs + (meta.count - 1) * meta.step_seconds * 1000 };
+}
+
+/** Loads the first table listed in <base>/index.json (null if there is none). */
+export async function loadEphemerisTable(base = "data/ephemeris"): Promise<EphemerisTable | null> {
+  try {
+    const index: string[] = await (await fetch(`${base}/index.json`, { cache: "no-cache" })).json();
+    const meta: EphemerisMeta = await (await fetch(`${base}/${index[0]}`, { cache: "no-cache" })).json();
+    return makeEphemerisTable(meta, await (await fetch(`${base}/${meta.file}`)).arrayBuffer());
+  } catch {
+    return null;
+  }
+}
+
+/** Activates (or removes, with null) the Horizons table for every computation in this thread. */
+export function setEphemerisTable(t: EphemerisTable | null) { table = t; }
+export function getEphemerisTable() { return table; }
+
+/** "horizons" if the table covers this instant, otherwise "series". */
+export function ephemerisSourceAt(tUtcMs: number): "horizons" | "series" {
+  return table && tUtcMs >= table.startUtcMs && tUtcMs <= table.endUtcMs ? "horizons" : "series";
+}
+
+/** Moon-centered ICRF vectors (km) at a UTC instant: from the table, or from the series. */
+export function bodiesIcrf(date: Date): { sun: Vec3; earth: Vec3 } {
+  const t = date.getTime();
+  if (table && t >= table.startUtcMs && t <= table.endUtcMs) {
+    const f = (t - table.startUtcMs) / (table.meta.step_seconds * 1000);
+    const i = Math.min(Math.floor(f), table.meta.count - 2);
+    const a = f - i, d = table.data, o = 6 * i;
+    const v = (k: number) => d[o + k] * (1 - a) + d[o + 6 + k] * a;
+    return { sun: [v(0), v(1), v(2)], earth: [v(3), v(4), v(5)] };
+  }
+  const dd = daysJ2000(date);
+  const moon = moonGeocentric(dd);
+  const sun = sunGeocentric(dd);
+  return { sun: [sun[0] - moon[0], sun[1] - moon[1], sun[2] - moon[2]], earth: [-moon[0], -moon[1], -moon[2]] };
+}
+
 /** Sun and Earth positions relative to the Moon's center, in the body-fixed frame (km). */
 export function bodiesFixed(date: Date): { sun: Vec3; earth: Vec3 } {
-  const d = daysJ2000(date);
-  const moon = moonGeocentric(d);
-  const sun = sunGeocentric(d);
-  const R = moonRotation(d);
-  return {
-    sun: apply(R, [sun[0] - moon[0], sun[1] - moon[1], sun[2] - moon[2]]),
-    earth: apply(R, [-moon[0], -moon[1], -moon[2]]),
-  };
+  const b = bodiesIcrf(date);
+  const R = moonRotation(daysJ2000(date));
+  return { sun: apply(R, b.sun), earth: apply(R, b.earth) };
 }
+
+export const AU = AU_KM;
 
 export interface Site { lat: number; lon: number; elevation_m?: number | null }
 

@@ -112,12 +112,17 @@ cas ne contredisent pas cette règle.
 > question pour la température de surface et la glace d'eau. Les deux ne sont pas
 > contradictoires.
 
-**Crête, 24/11 : toujours ouvert.** L'obstacle est le massif de Malapert, à 135 km. Seul un
+**Crête, 24/11 : tranché le 14/11/2026, voir [validation_lola.md](validation_lola.md).** Les
+cartes officielles LOLA (Mazarico et al. 2011) sont reproduites avec courbure (RMS 3,1 points),
+pas sans courbure (RMS 11 points). Notre prédiction est donc la plus probable.
+
+*Analyse initiale :* l'obstacle est le massif de Malapert, à 135 km. Seul un
 calcul sans courbure lunaire reproduit la prédiction de QuickMap (Malapert à +1,26° au
 lieu de −0,96°). Le plan de la pente ne l'explique pas : le Soleil reste 0,5° à 0,9°
 au-dessus.
 
-**Bilan :** 4 accords, 1 écart expliqué par la définition et 1 écart ouvert.
+**Bilan :** 4 accords, 1 écart expliqué par la définition et 1 écart tranché en faveur de
+notre calcul avec courbure, par une troisième source (cartes LOLA officielles).
 
 ## Recommandations
 

@@ -1,0 +1,100 @@
+{
+  "source": "https://pgda.gsfc.nasa.gov/data/MoonIllumination/",
+  "regions": {
+    "pole": {
+      "covered_pct": 100.0,
+      "psr": {
+        "ours_km2": 1121.2,
+        "official_km2": 1109.5,
+        "agreement_iou": 0.934,
+        "ours_only_km2": 63.7,
+        "official_only_km2": 10.9,
+        "pixel_agreement_pct": 98.83
+      },
+      "sun": {
+        "pixels": 160000,
+        "bias_pts": -1.01,
+        "rms_pts": 2.49,
+        "p95_abs_pts": 4.0,
+        "correlation": 0.985
+      },
+      "earth": {
+        "pixels": 160000,
+        "bias_pts": -2.53,
+        "rms_pts": 4.46,
+        "p95_abs_pts": 8.5,
+        "correlation": 0.988
+      }
+    },
+    "malapert": {
+      "covered_pct": 100.0,
+      "psr": {
+        "ours_km2": 34.6,
+        "official_km2": 35.5,
+        "agreement_iou": 0.801,
+        "ours_only_km2": 5.5,
+        "official_only_km2": 1.8,
+        "pixel_agreement_pct": 99.71
+      },
+      "sun": {
+        "pixels": 62500,
+        "bias_pts": -1.27,
+        "rms_pts": 2.14,
+        "p95_abs_pts": 3.9,
+        "correlation": 0.992
+      },
+      "earth": {
+        "pixels": 62500,
+        "bias_pts": -4.38,
+        "rms_pts": 6.27,
+        "p95_abs_pts": 12.4,
+        "correlation": 0.994
+      }
+    },
+    "mons-mouton": {
+      "covered_pct": 77.6,
+      "psr": {
+        "ours_km2": 50.7,
+        "official_km2": 54.1,
+        "agreement_iou": 0.882,
+        "ours_only_km2": 3.5,
+        "official_only_km2": 2.8,
+        "pixel_agreement_pct": 99.67
+      },
+      "sun": {
+        "pixels": 48500,
+        "bias_pts": -0.51,
+        "rms_pts": 2.45,
+        "p95_abs_pts": 4.3,
+        "correlation": 0.984
+      },
+      "earth": {
+        "pixels": 48500,
+        "bias_pts": -3.72,
+        "rms_pts": 5.82,
+        "p95_abs_pts": 11.2,
+        "correlation": 0.989
+      }
+    }
+  },
+  "sites": {
+    "connecting-ridge": {
+      "ours_sun_pct": 87.7,
+      "official_sun_pct": 57.0,
+      "ours_earth_pct": 53.7,
+      "official_earth_pct": 53.9
+    },
+    "malapert-massif": {
+      "ours_sun_pct": 67.3,
+      "official_sun_pct": 56.8,
+      "ours_earth_pct": 82.4,
+      "official_earth_pct": 83.7
+    },
+    "mons-mouton": {
+      "ours_sun_pct": 45.1,
+      "official_sun_pct": 46.0,
+      "ours_earth_pct": 81.0,
+      "official_earth_pct": 92.3
+    }
+  }
+}

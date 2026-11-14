@@ -48,6 +48,7 @@
 | Atterrisseur solaire | Soleil 3, Soleil + Terre 2, Terre 1, nuit courte 1 | pente ≤ 8° |
 | Survie à la nuit | nuit courte 4, Soleil 2, flux 1 | pente ≤ 15° |
 | Liaison directe Terre | Terre 3, coupure courte 2, Soleil + Terre 1 | pente ≤ 10°, Terre ≥ 60 % |
+| Liaison avec relais | coupure totale courte 3, Terre ou relais 2, Soleil 2 | pente ≤ 10° |
 | Science : glace d'eau | proximité glace 3, Soleil 2, Terre 1, nuit courte 1 | pente ≤ 10°, Soleil ≥ 30 %, ombre permanente ≤ 5 km |
 | Personnalisé | tous les réglages sont libres | |
 
@@ -227,3 +228,32 @@ point 88,705°S, 68,334°O confirme 100 % de Soleil et 50 % de Terre. Le résult
 **À ne pas confondre :** une ombre permanente indique où la glace **peut** subsister (piège
 froid). Elle ne garantit pas sa présence : il faudrait des données de spectrométrie
 (LRO LEND, LAMP, M³). C'est une piste pour la suite.
+
+## Relais LRO dans la recherche de zones
+
+Deux critères s'ajoutent : **Terre ou relais** (part du temps avec la Terre, ou LRO au-dessus du
+relief et à plus de 5°) et **Coupure totale courte** (plus longue période sans l'un ni
+l'autre). Le profil **Liaison avec relais** les met en avant. Les calques « Terre ou relais % »
+et « Coupure totale » s'affichent sur la carte. Deux colonnes s'ajoutent au tableau des zones.
+
+**Calcul** (`app/src/optim/evaluate.ts`) :
+- LRO tourne en moins de 2 h, donc on suit ses passages **toutes les 2 minutes**. Calculer
+  chaque pixel à ce pas serait trop lent. Vu de 100 km d'altitude, la position de LRO change peu
+  d'un kilomètre à l'autre : on la calcule sur une **grille d'un point par km**, soit un pixel
+  sur 5.
+- La visibilité de la Terre, elle, peut changer en 200 m sur un sommet : elle reste **calculée
+  pixel par pixel**.
+- Les deux sont combinées pixel par pixel. Pour chaque pas de l'évaluation principale, on garde
+  le temps couvert par LRO et les durées sans LRO au début, au milieu et à la fin du pas. Les
+  coupures totales sont ainsi mesurées à 2 min près.
+- Ces critères n'existent que si l'orbite de LRO couvre la période (novembre 2026 à avril
+  2027). Sinon, ils valent « Terre visible » et « Coupure courte ».
+
+**Contrôle :** au sommet de Malapert, sur le jour lunaire du 14/11/2026, l'optimiseur donne
+83,2 % de liaison et 1 h 50 de coupure totale maximale. Le calcul détaillé du site donne
+83,4 % et 1 h 50. Durée : environ 9 s pour la région Malapert et 25 s pour la région du pôle.
+
+**Résultat (pôle, 14/11/2026, profil « Liaison avec relais ») :** les meilleures zones sont sur
+le bord de de Gerlache, dans la région Artemis III « de Gerlache Rim ». Elles ont 100 % de
+Soleil, 52 % de Terre, et ne restent jamais plus de **1 h 50** sans liaison, contre 12,5 jours
+avec la Terre seule.
