@@ -292,13 +292,18 @@ export const en = {
   "val.psr.text": "Compared with the official LOLA illumination maps (Mazarico and colleagues, 2011): overlap of the permanent shadows between {lo} and {hi}, mean sunlight within {rlo} to {rhi} points.",
   "val.curv.title": "The curvature of the Moon",
   "val.curv.text": "Distant mountains can hide the Earth. Taking the curvature into account reproduces the official maps (error {with} points); ignoring it does not ({without} points).",
-  "val.tests.title": "Automated tests",
-  "val.tests.text": "{n} automated tests check the computations, the reference values of the candidate sites and the site itself at every change.",
   "val.limits.title": "Limits",
   "val.limits.text": "This atlas compares sites and dates. It does not replace mission planning: exact times to the minute need JPL Horizons, and results within half a degree of the horizon are flagged as fragile.",
   "team.lead": "Earthrise Atlas was built in Benin for the NASA Space Apps Challenge 2026, Lunar Landing Site Navigator.",
   "team.country": "Benin",
   "team.code": "Source code on GitHub",
+  "atlas.coords": "Your own coordinates",
+  "atlas.lat": "Latitude",
+  "atlas.lon": "Longitude (east)",
+  "atlas.go": "Show",
+  "atlas.coordsHint": "Decimal degrees, for example -85.5 and 15, or 85.5 S and 15 E. Anywhere on the Moon.",
+  "atlas.coordsError": "These coordinates are not valid: latitude between -90 and 90, longitude between -180 and 360.",
+  "atlas.jump": "Jump to a site",
 } as const;
 
 export type MessageKey = keyof typeof en;

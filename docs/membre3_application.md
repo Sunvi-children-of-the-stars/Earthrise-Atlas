@@ -1,3 +1,6 @@
+> **Novembre 2026 :** l'interface décrite ici a été remplacée par le site public Earthrise Atlas.
+> Voir [site_public.md](site_public.md). Les calculs décrits ci-dessous sont inchangés.
+
 # Membre 3 — Application web (React)
 
 > Question : *comment présenter toutes ces informations dans un outil simple ?*

@@ -1,4 +1,4 @@
-# Lunar South Pole Planner
+# Earthrise Atlas (Lunar South Pole Planner)
 
 Outil de comparaison rapide de sites et de dates d'atterrissage au pôle Sud lunaire :
 positions du Soleil et de la Terre par rapport à l'horizon, potentiel énergétique et
@@ -49,7 +49,8 @@ npm install
 npm run dev
 ```
 
-Puis ouvrir http://localhost:5173.
+Puis ouvrir http://localhost:5173 : c'est le site public **Earthrise Atlas** (Story, Atlas, Play,
+Mission Lab, Method). Détails : [docs/site_public.md](docs/site_public.md).
 
 Tests automatiques des calculs (50 tests, ~2 s), dans `app/` :
 

@@ -24,6 +24,10 @@ interface Props {
   /** Initial view: centre (stereographic m) and half-width (m). */
   initial?: { cx: number; cy: number; half: number };
   height?: number;
+  /** Fill the parent's height (the parent sets it) instead of a fixed or square height. */
+  fill?: boolean;
+  /** Centre the view on this point (stereographic m) whenever it changes; dx shifts it (fraction of the width). */
+  focus?: { x: number; y: number; dx?: number } | null;
 }
 
 let lrocImage: Promise<HTMLImageElement> | null = null;
@@ -42,7 +46,7 @@ function loadLroc(): Promise<HTMLImageElement> {
 const css = (name: string) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 const DEFAULT_VIEW = { cx: 0, cy: 100_000, half: 270_000 };
 
-export function PolarMap({ sites, selectedId, onSelectSite, onPickPoint, labelOf, artemis, overlay, initial = DEFAULT_VIEW, height }: Props) {
+export function PolarMap({ sites, selectedId, onSelectSite, onPickPoint, labelOf, artemis, overlay, initial = DEFAULT_VIEW, height, fill = false, focus }: Props) {
   const { t } = useI18n();
   const wrap = useRef<HTMLDivElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -57,11 +61,15 @@ export function PolarMap({ sites, selectedId, onSelectSite, onPickPoint, labelOf
     if (!el) return;
     const ro = new ResizeObserver(() => {
       const w = el.clientWidth;
-      setSize({ w, h: height ?? Math.min(w, 720) });
+      setSize({ w, h: fill ? Math.max(200, el.clientHeight) : height ?? Math.min(w, 720) });
     });
     ro.observe(el);
     return () => ro.disconnect();
-  }, [height]);
+  }, [height, fill]);
+  useEffect(() => {
+    if (!focus) return;
+    setView((v) => ({ ...v, cx: focus.x + (focus.dx ?? 0) * 2 * v.half, cy: focus.y }));
+  }, [focus?.x, focus?.y, focus?.dx]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const ppm = size.w / 2 / view.half; // canvas px per metre
   const toCanvas: ToCanvas = useCallback((x, y) => [(x - view.cx) * ppm + size.w / 2, (view.cy - y) * ppm + size.h / 2], [view, ppm, size]);
@@ -157,7 +165,7 @@ export function PolarMap({ sites, selectedId, onSelectSite, onPickPoint, labelOf
   };
 
   return (
-    <div className="polar-map" ref={wrap}>
+    <div className={fill ? "polar-map fill" : "polar-map"} ref={wrap}>
       <canvas ref={canvas} style={{ width: size.w, height: size.h }} role="img" aria-label={t("map.aria")}
         onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp}
         onWheel={(e) => { const [px, py] = local(e); zoom(e.deltaY > 0 ? 1.25 : 0.8, px, py); }} />
