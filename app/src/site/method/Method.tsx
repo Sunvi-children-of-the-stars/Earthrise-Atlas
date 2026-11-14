@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useI18n, type MessageKey } from "../i18n";
 import { Tabs } from "../ui/Tabs";
 
-const REPO = "https://github.com/Topelus/Lunar-landing-site-visualization-tool";
+const REPO = "https://github.com/Sunvi-children-of-the-stars/Earthrise-Atlas";
 const DOC = (f: string) => `${REPO}/blob/main/docs/${f}`;
 
 /** Published validation results (docs/decision_ephemerides.md, docs/validation_lola.md, app tests). */
