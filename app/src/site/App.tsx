@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { DataProvider } from "./data/store";
 import { I18nProvider, useI18n, type MessageKey } from "./i18n";
 import { useRoute, type Page } from "./router";
 import { Nav } from "./ui/Nav";
@@ -35,5 +36,5 @@ function Shell() {
 }
 
 export default function App() {
-  return <I18nProvider><Shell /></I18nProvider>;
+  return <I18nProvider><DataProvider><Shell /></DataProvider></I18nProvider>;
 }
