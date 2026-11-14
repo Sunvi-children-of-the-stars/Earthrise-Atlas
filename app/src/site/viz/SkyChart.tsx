@@ -46,7 +46,7 @@ export function SkyChart({ samples, cursor, mask, centerAz = 180, compact = fals
       if (!cur || cur.vis !== v || wrap) {
         if (cur) segs.push(cur);
         // A visibility change continues from the previous point (no gap); a wrap at the edge starts afresh
-        const from = cur && !wrap ? `M${prevX.toFixed(1)},${prevY.toFixed(1)} L` : "M";
+        const from: string = cur && !wrap ? `M${prevX.toFixed(1)},${prevY.toFixed(1)} L` : "M";
         cur = { d: `${from}${xx.toFixed(1)},${yy.toFixed(1)}`, vis: v };
       } else cur.d += ` L${xx.toFixed(1)},${yy.toFixed(1)}`;
       prevX = xx; prevY = yy;
