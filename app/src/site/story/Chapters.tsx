@@ -12,6 +12,7 @@ import { PolarMap, type Overlay } from "../viz/PolarMap";
 import { SkyChart } from "../viz/SkyChart";
 import { TimelineChart } from "../viz/TimelineChart";
 import { STORY_HOURS, STORY_START, type StoryFigures } from "./figures";
+import { homeFacts } from "./home";
 
 /** Reveals its content when scrolled into view (instantly when the visitor prefers reduced motion). */
 function Chapter({ id, n, title, children }: { id: string; n: number; title: string; children: ReactNode }) {
@@ -88,6 +89,14 @@ export function Chapters({ ridge, ridgeMask, lro, figs }: { ridge: SiteRecord | 
   const [tr, setTr] = useState<Transect | null>(null);
   const [km, setKm] = useState(0);
   useEffect(() => { fetch("data/story/mons-mouton-transect.json").then((r) => r.json()).then(setTr).catch(() => {}); }, []);
+  const [ridgeTemp, setRidgeTemp] = useState<number | null>(null);
+  useEffect(() => {
+    fetch("data/sites/diviner.json").then((r) => r.json()).then((j) => {
+      const k = j.sites?.["connecting-ridge"]?.temp_avg_k;
+      if (typeof k === "number") setRidgeTemp(k - 273.15);
+    }).catch(() => {});
+  }, []);
+  const home = figs && ridgeTemp !== null ? homeFacts(figs.sunMaxAlt, ridgeTemp) : null;
   const point = tr?.points.reduce((a, p) => (Math.abs(p.distKm - km) < Math.abs(a.distKm - km) ? p : a), tr.points[0]);
   const site0 = tr?.points.find((p) => p.distKm === 0);
   const polar = sites.filter((s) => s.category === "candidat");
@@ -134,7 +143,26 @@ export function Chapters({ ridge, ridgeMask, lro, figs }: { ridge: SiteRecord | 
         )}
       </Chapter>
 
-      <Chapter id="chapter-4" n={4} title={t("ch4.title")}>
+      <Chapter id="chapter-home" n={4} title={t("home.title")}>
+        <p className="chapter-lead">{t("home.text")}</p>
+        {home && (
+          <figure className="chapter-figure">
+            <table className="home-table">
+              <thead><tr><th></th><th>{t("home.earth")}</th><th>{t("home.moon")}</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">{t("home.day")}</th><td>{fmt.hours(home.earthDayH)}</td><td className="moon">{fmt.hours(home.moonDayH)}</td></tr>
+                <tr><th scope="row">{t("home.sun")}</th><td>{t("home.sunRange", { min: fmt.num(home.earthSunMin, 0), max: fmt.num(home.earthSunMax, 0) })}</td><td className="moon">{t("home.sunMoon", { max: fmt.num(home.moonSunMax, 1) })}</td></tr>
+                <tr><th scope="row">{t("home.temp")}</th><td>{fmt.num(home.earthTempC, 0)} °C</td><td className="moon">{fmt.num(home.moonTempC, 0)} °C</td></tr>
+                <tr><th scope="row">{t("home.sky")}</th><td>{t("home.skyEarth")}</td><td className="moon">{t("home.skyMoon")}</td></tr>
+                <tr><th scope="row">{t("home.radio")}</th><td>{t("home.radioEarth")}</td><td className="moon">{t("home.radioMoon", { s: fmt.num(home.radioDelayS, 1) })}</td></tr>
+              </tbody>
+            </table>
+            <figcaption>{t("home.caption")}</figcaption>
+          </figure>
+        )}
+      </Chapter>
+
+      <Chapter id="chapter-4" n={5} title={t("ch4.title")}>
         <p className="chapter-lead">{t("ch4.text", { site: mouton ? siteText(mouton, lang).short : "Mons Mouton" })}</p>
         {tr && point && site0 && (
           <figure className="chapter-figure km">
@@ -151,7 +179,7 @@ export function Chapters({ ridge, ridgeMask, lro, figs }: { ridge: SiteRecord | 
         )}
       </Chapter>
 
-      <Chapter id="chapter-5" n={5} title={t("ch5.title")}>
+      <Chapter id="chapter-5" n={6} title={t("ch5.title")}>
         <p className="chapter-lead">{t("ch5.text")}</p>
         <div className="row center-row">
           <a className="btn btn-primary" href="/play" onClick={(e) => { e.preventDefault(); navigate("play"); }}>{t("ch5.play")}</a>

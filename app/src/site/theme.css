@@ -357,3 +357,9 @@ img, canvas, svg { max-width: 100%; }
 .atlas-card-mobile .site-card .facts dd { margin-bottom: 0; }
 .delay-nearby { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 14px; }
 .delay .btn-primary { margin-top: 6px; }
+.home-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+.home-table th, .home-table td { padding: 14px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.home-table thead th { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); }
+.home-table tbody th { font-weight: 400; color: var(--muted); width: 30%; }
+.home-table td.moon { color: var(--ice); }
+@media (max-width: 600px) { .home-table { font-size: 0.82rem; } .home-table th, .home-table td { padding: 10px 6px; } }

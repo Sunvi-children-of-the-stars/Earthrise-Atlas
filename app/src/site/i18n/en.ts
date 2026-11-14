@@ -333,6 +333,22 @@ export const en = {
   "delay.noAlt": "No feasible spot within 10 km at the new date.",
   "delay.distance": "Distance",
   "delay.method": "Best spots within 10 km at the delayed date, from the 200 m horizon map of {region}.",
+  "home.title": "Not like home",
+  "home.text": "Everything we take for granted on Earth works differently on the Moon. Here is one ordinary day in Paris next to one day on the Connecting Ridge.",
+  "home.earth": "On Earth, in Paris",
+  "home.moon": "On the Moon, Connecting Ridge",
+  "home.day": "One day, sunrise to sunrise",
+  "home.sun": "Sun at its highest",
+  "home.sunRange": "{min}° in winter to {max}° in summer",
+  "home.sunMoon": "never above {max}°",
+  "home.temp": "Average temperature",
+  "home.sky": "Daytime sky",
+  "home.skyEarth": "Blue: the air scatters sunlight",
+  "home.skyMoon": "Black: no air, stars visible in daylight",
+  "home.radio": "Message to mission control",
+  "home.radioEarth": "Instant",
+  "home.radioMoon": "{s} s each way, when the Earth is in view",
+  "home.caption": "Moon values computed for the Connecting Ridge (sunlight over the reference lunar day, annual mean temperature from Diviner). Earth values: textbook figures.",
 } as const;
 
 export type MessageKey = keyof typeof en;
