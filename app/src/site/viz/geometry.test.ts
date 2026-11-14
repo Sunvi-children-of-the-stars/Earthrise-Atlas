@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { azToX, lrocPixel, lrocXY, niceTicks } from "./geometry";
+import { azToX, circularMeanDeg, lrocPixel, lrocXY, niceTicks } from "./geometry";
 
 describe("géométrie des graphiques", () => {
   test("panorama centré sur le sud : 180° au milieu, le nord sur les bords", () => {
@@ -27,5 +27,12 @@ describe("géométrie des graphiques", () => {
   test("graduations lisibles", () => {
     expect(niceTicks(-3, 4)).toEqual([-2, 0, 2, 4]);
     expect(niceTicks(-10, 60)).toEqual([0, 15, 30, 45, 60]);
+  });
+
+  test("direction moyenne sur un cercle (pour centrer le panorama sur la Terre)", () => {
+    expect(circularMeanDeg([350, 10])).toBeCloseTo(0, 6);
+    expect(circularMeanDeg([170, 190])).toBeCloseTo(180, 6);
+    expect(circularMeanDeg([80, 100, 90])).toBeCloseTo(90, 6);
+    expect(circularMeanDeg([])).toBe(180);
   });
 });

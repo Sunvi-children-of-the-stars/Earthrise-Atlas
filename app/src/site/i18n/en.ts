@@ -349,6 +349,11 @@ export const en = {
   "home.radioEarth": "Instant",
   "home.radioMoon": "{s} s each way, when the Earth is in view",
   "home.caption": "Moon values computed for the Connecting Ridge (sunlight over the reference lunar day, annual mean temperature from Diviner). Earth values: textbook figures.",
+  "sheet.print": "Mission sheet (PDF)",
+  "sheet.title": "Mission sheet",
+  "sheet.period": "from {start}, for {d}",
+  "sheet.relayNote": "Longest total blackout with the LRO relay: {h}",
+  "sheet.foot": "Earthrise Atlas, NASA Space Apps Challenge 2026. Data: NASA LRO (LOLA, LROC, Diviner), JPL Horizons. Times in UTC.",
 } as const;
 
 export type MessageKey = keyof typeof en;

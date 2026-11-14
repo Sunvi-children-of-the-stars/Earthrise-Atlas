@@ -11,7 +11,9 @@ import { siteText } from "../i18n/sites";
 import { navigate } from "../router";
 import { StatCard } from "../ui/StatCard";
 import { DelayNearby } from "./DelayNearby";
+import { MissionSheet } from "./MissionSheet";
 import { Tabs } from "../ui/Tabs";
+import { circularMeanDeg } from "../viz/geometry";
 import { SkyChart } from "../viz/SkyChart";
 import { TimelineChart } from "../viz/TimelineChart";
 import { initialPlayState, playHref, playShare, stepFor, type PlayState } from "./state";
@@ -90,7 +92,8 @@ export function Play() {
     try { await navigator.clipboard.writeText(shareUrl(playShare(st), window.location.href)); setCopied(true); setTimeout(() => setCopied(false), 2500); }
     catch { /* clipboard refused: the URL in the address bar is the link */ }
   };
-  const centerAz = site.lat < 0 ? 180 : 0;
+  // Centre the panorama on the Earth's mean direction: it stays in one piece in the middle of the chart
+  const centerAz = samples.length ? circularMeanDeg(samples.map((s) => s.eAz)) : site.lat < 0 ? 180 : 0;
   const now = m?.now;
 
   return (
@@ -122,6 +125,7 @@ export function Play() {
           <button className="btn btn-ghost btn-small" onClick={() => setShowDelay((v) => !v)} aria-expanded={showDelay}>{t("play.delay")}</button>
           <button className="btn btn-ghost btn-small" onClick={share}>{copied ? t("play.copied") : t("play.share")}</button>
           <button className="btn btn-ghost btn-small" onClick={() => navigate("lab", window.location.hash)}>{t("play.openLab")}</button>
+          <button className="btn btn-ghost btn-small" onClick={() => window.print()} disabled={!m}>{t("sheet.print")}</button>
         </div>
       </div>
 
@@ -221,6 +225,10 @@ export function Play() {
             )}
           </Tabs>
         </>
+      )}
+      {m && mask && samples.length > 0 && (
+        <MissionSheet centerAz={centerAz} site={site} source={source} start={st.start} hours={st.hours} samples={samples} mask={mask} m={m} frag={frag}
+          verdict={verdict} relay={rs} relayWindows={rs ? relay!.windows : null} link={shareUrl(playShare(st), window.location.href)} />
       )}
     </section>
   );

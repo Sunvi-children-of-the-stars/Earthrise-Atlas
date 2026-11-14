@@ -351,4 +351,9 @@ export const fr: Record<MessageKey, string> = {
   "home.radioEarth": "Instantané",
   "home.radioMoon": "{s} s dans chaque sens, quand la Terre est visible",
   "home.caption": "Valeurs lunaires calculées pour la crête de liaison (Soleil sur le jour lunaire de référence, température moyenne annuelle mesurée par Diviner). Valeurs terrestres : chiffres de référence.",
+  "sheet.print": "Fiche de mission (PDF)",
+  "sheet.title": "Fiche de mission",
+  "sheet.period": "à partir du {start}, pendant {d}",
+  "sheet.relayNote": "Plus longue coupure totale avec le relais LRO : {h}",
+  "sheet.foot": "Earthrise Atlas, NASA Space Apps Challenge 2026. Données : NASA LRO (LOLA, LROC, Diviner), JPL Horizons. Heures en UTC.",
 };

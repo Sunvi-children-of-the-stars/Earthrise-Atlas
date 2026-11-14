@@ -26,3 +26,12 @@ export function niceTicks(lo: number, hi: number): number[] {
   for (let v = Math.ceil(lo / step) * step; v <= hi + 1e-9; v += step) out.push(v + 0);
   return out.map((v) => (Object.is(v, -0) ? 0 : v));
 }
+
+/** Mean of angles in degrees (0 to 360), e.g. the Earth's average azimuth; 180 for an empty list. */
+export function circularMeanDeg(angles: number[]): number {
+  if (!angles.length) return 180;
+  let s = 0, c = 0;
+  for (const a of angles) { s += Math.sin((a * Math.PI) / 180); c += Math.cos((a * Math.PI) / 180); }
+  const m = (Math.atan2(s, c) * 180) / Math.PI;
+  return ((m % 360) + 360) % 360;
+}
