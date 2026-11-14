@@ -49,7 +49,14 @@ npm install
 npm run dev
 ```
 
-Puis ouvrir http://localhost:5173. Détails : [docs/membre3_application.md](docs/membre3_application.md).
+Puis ouvrir http://localhost:5173.
+
+Tests automatiques des calculs (50 tests, ~2 s), dans `app/` :
+
+```bash
+npm test
+```
+ Détails : [docs/membre3_application.md](docs/membre3_application.md).
 
 ## Ordre complet des traitements (données)
 

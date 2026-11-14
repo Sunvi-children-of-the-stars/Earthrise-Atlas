@@ -1247,6 +1247,317 @@
         "earth_visibility_pct_terrain": 100.0,
         "earth_visibility_pct_no_terrain": 100.0
       }
+    },
+    {
+      "id": "apollo-12",
+      "name": "Océan des Tempêtes – Apollo 12",
+      "short": "Apollo 12",
+      "category": "reference",
+      "region": "Équateur, face visible",
+      "context": "Deuxième alunissage habité (19 novembre 1969), à 180 m de la sonde Surveyor 3. Proche de l'équateur : jours et nuits d'environ 14,8 jours.",
+      "lat": -3.01239,
+      "lon": -23.42157,
+      "refs": [
+        "https://en.wikipedia.org/wiki/Apollo_12",
+        "https://www.lpi.usra.edu/lunar/missions/apollo/apollo_12/landing_site/"
+      ],
+      "coord_method": "Coordonnées publiées (voir refs)",
+      "in_dem": false,
+      "dist_to_pole_km": 2637.8,
+      "elevation_m": null,
+      "terrain": null,
+      "horizon_source": "sphère lisse (site hors de l'emprise du MNT polaire)",
+      "horizon": {
+        "file": "horizons/apollo-12.json",
+        "max_elev_deg": -0.09,
+        "max_elev_az_deg": 0.0,
+        "mean_elev_deg": -0.09,
+        "pct_azimuths_above_1deg": 0.0,
+        "dem_coverage_pct": 0.0,
+        "flat_ground_horizon_deg": -0.087
+      },
+      "obstacles": [],
+      "horizon_sectors": [],
+      "pre_indicators": {
+        "_note": "Modèle orbital simplifié (Soleil et Terre ponctuels, librations sinusoïdales). Sert à valider les masques d'horizon ; les valeurs de référence sont celles de l'application (éphémérides intégrées).",
+        "sun_elev_max_deg": 88.51,
+        "sun_illumination_pct_terrain": 49.6,
+        "sun_illumination_pct_no_terrain": 49.6,
+        "earth_elev_min_deg": 57.12,
+        "earth_elev_max_deg": 74.41,
+        "earth_az_range_deg": [
+          70.2,
+          103.8
+        ],
+        "earth_visibility_pct_terrain": 100.0,
+        "earth_visibility_pct_no_terrain": 100.0
+      }
+    },
+    {
+      "id": "apollo-15",
+      "name": "Hadley-Apennin – Apollo 15",
+      "short": "Apollo 15",
+      "category": "reference",
+      "region": "Latitudes moyennes nord, face visible",
+      "context": "Premier rover lunaire (30 juillet 1971), au pied des Apennins. Hors des régions polaires, l'outil calcule un horizon lisse, sans relief.",
+      "lat": 26.1322,
+      "lon": 3.6339,
+      "refs": [
+        "https://en.wikipedia.org/wiki/Apollo_15",
+        "https://www.lpi.usra.edu/lunar/missions/apollo/apollo_15/landing_site/"
+      ],
+      "coord_method": "Coordonnées publiées (voir refs)",
+      "in_dem": false,
+      "dist_to_pole_km": 3521.5,
+      "elevation_m": null,
+      "terrain": null,
+      "horizon_source": "sphère lisse (site hors de l'emprise du MNT polaire)",
+      "horizon": {
+        "file": "horizons/apollo-15.json",
+        "max_elev_deg": -0.09,
+        "max_elev_az_deg": 0.0,
+        "mean_elev_deg": -0.09,
+        "pct_azimuths_above_1deg": 0.0,
+        "dem_coverage_pct": 0.0,
+        "flat_ground_horizon_deg": -0.087
+      },
+      "obstacles": [],
+      "horizon_sectors": [],
+      "pre_indicators": {
+        "_note": "Modèle orbital simplifié (Soleil et Terre ponctuels, librations sinusoïdales). Sert à valider les masques d'horizon ; les valeurs de référence sont celles de l'application (éphémérides intégrées).",
+        "sun_elev_max_deg": 65.41,
+        "sun_illumination_pct_terrain": 48.9,
+        "sun_illumination_pct_no_terrain": 48.9,
+        "earth_elev_min_deg": 55.19,
+        "earth_elev_max_deg": 70.45,
+        "earth_az_range_deg": [
+          167.5,
+          202.3
+        ],
+        "earth_visibility_pct_terrain": 100.0,
+        "earth_visibility_pct_no_terrain": 100.0
+      }
+    },
+    {
+      "id": "apollo-17",
+      "name": "Taurus-Littrow – Apollo 17",
+      "short": "Apollo 17",
+      "category": "reference",
+      "region": "Latitudes moyennes nord, face visible",
+      "context": "Dernier alunissage habité à ce jour (11 décembre 1972), dans la vallée de Taurus-Littrow. Horizon lisse : le relief n'est modélisé qu'au sud de 75°S.",
+      "lat": 20.1908,
+      "lon": 30.7717,
+      "refs": [
+        "https://en.wikipedia.org/wiki/Apollo_17",
+        "https://www.lpi.usra.edu/lunar/missions/apollo/apollo_17/landing_site/"
+      ],
+      "coord_method": "Coordonnées publiées (voir refs)",
+      "in_dem": false,
+      "dist_to_pole_km": 3341.4,
+      "elevation_m": null,
+      "terrain": null,
+      "horizon_source": "sphère lisse (site hors de l'emprise du MNT polaire)",
+      "horizon": {
+        "file": "horizons/apollo-17.json",
+        "max_elev_deg": -0.09,
+        "max_elev_az_deg": 0.0,
+        "mean_elev_deg": -0.09,
+        "pct_azimuths_above_1deg": 0.0,
+        "dem_coverage_pct": 0.0,
+        "flat_ground_horizon_deg": -0.087
+      },
+      "obstacles": [],
+      "horizon_sectors": [],
+      "pre_indicators": {
+        "_note": "Modèle orbital simplifié (Soleil et Terre ponctuels, librations sinusoïdales). Sert à valider les masques d'horizon ; les valeurs de référence sont celles de l'application (éphémérides intégrées).",
+        "sun_elev_max_deg": 71.35,
+        "sun_illumination_pct_terrain": 49.0,
+        "sun_illumination_pct_no_terrain": 49.0,
+        "earth_elev_min_deg": 43.26,
+        "earth_elev_max_deg": 63.92,
+        "earth_az_range_deg": [
+          231.9,
+          247.8
+        ],
+        "earth_visibility_pct_terrain": 100.0,
+        "earth_visibility_pct_no_terrain": 100.0
+      }
+    },
+    {
+      "id": "change-4",
+      "name": "Cratère Von Kármán – Chang'e-4",
+      "short": "Chang'e-4",
+      "category": "reference",
+      "region": "Face cachée, bassin Pôle Sud-Aitken",
+      "context": "Premier atterrissage sur la face cachée (3 janvier 2019, CNSA). La Terre n'y est jamais visible : toutes les communications passent par le relais Queqiao.",
+      "lat": -45.444,
+      "lon": 177.599,
+      "refs": [
+        "https://en.wikipedia.org/wiki/Chang%27e_4"
+      ],
+      "coord_method": "Coordonnées publiées (voir refs)",
+      "in_dem": false,
+      "dist_to_pole_km": 1351.1,
+      "elevation_m": null,
+      "terrain": null,
+      "horizon_source": "sphère lisse (site hors de l'emprise du MNT polaire)",
+      "horizon": {
+        "file": "horizons/change-4.json",
+        "max_elev_deg": -0.09,
+        "max_elev_az_deg": 0.0,
+        "mean_elev_deg": -0.09,
+        "pct_azimuths_above_1deg": 0.0,
+        "dem_coverage_pct": 0.0,
+        "flat_ground_horizon_deg": -0.087
+      },
+      "obstacles": [],
+      "horizon_sectors": [],
+      "pre_indicators": {
+        "_note": "Modèle orbital simplifié (Soleil et Terre ponctuels, librations sinusoïdales). Sert à valider les masques d'horizon ; les valeurs de référence sont celles de l'application (éphémérides intégrées).",
+        "sun_elev_max_deg": 46.08,
+        "sun_illumination_pct_terrain": 51.0,
+        "sun_illumination_pct_no_terrain": 51.0,
+        "earth_elev_min_deg": -50.98,
+        "earth_elev_max_deg": -37.85,
+        "earth_az_range_deg": [
+          172.9,
+          196.1
+        ],
+        "earth_visibility_pct_terrain": 0.0,
+        "earth_visibility_pct_no_terrain": 0.0
+      }
+    },
+    {
+      "id": "change-5",
+      "name": "Mons Rümker – Chang'e-5",
+      "short": "Chang'e-5",
+      "category": "reference",
+      "region": "Océan des Tempêtes, face visible",
+      "context": "Retour d'échantillons de la CNSA (1er décembre 2020), le plus au nord des sites étudiés ici.",
+      "lat": 43.0576,
+      "lon": -51.9161,
+      "refs": [
+        "https://en.wikipedia.org/wiki/Chang%27e_5"
+      ],
+      "coord_method": "Coordonnées publiées (voir refs)",
+      "in_dem": false,
+      "dist_to_pole_km": 4034.8,
+      "elevation_m": null,
+      "terrain": null,
+      "horizon_source": "sphère lisse (site hors de l'emprise du MNT polaire)",
+      "horizon": {
+        "file": "horizons/change-5.json",
+        "max_elev_deg": -0.09,
+        "max_elev_az_deg": 0.0,
+        "mean_elev_deg": -0.09,
+        "pct_azimuths_above_1deg": 0.0,
+        "dem_coverage_pct": 0.0,
+        "flat_ground_horizon_deg": -0.087
+      },
+      "obstacles": [],
+      "horizon_sectors": [],
+      "pre_indicators": {
+        "_note": "Modèle orbital simplifié (Soleil et Terre ponctuels, librations sinusoïdales). Sert à valider les masques d'horizon ; les valeurs de référence sont celles de l'application (éphémérides intégrées).",
+        "sun_elev_max_deg": 48.47,
+        "sun_illumination_pct_terrain": 50.3,
+        "sun_illumination_pct_no_terrain": 50.3,
+        "earth_elev_min_deg": 21.74,
+        "earth_elev_max_deg": 31.19,
+        "earth_az_range_deg": [
+          106.6,
+          129.6
+        ],
+        "earth_visibility_pct_terrain": 100.0,
+        "earth_visibility_pct_no_terrain": 100.0
+      }
+    },
+    {
+      "id": "slim",
+      "name": "Près du cratère Shioli – SLIM",
+      "short": "SLIM",
+      "category": "reference",
+      "region": "Mer du Nectar, face visible",
+      "context": "Atterrissage de précision de la JAXA (19 janvier 2024), à moins de 100 m de la cible. Posée sur le flanc, la sonde a survécu à plusieurs nuits lunaires.",
+      "lat": -13.316,
+      "lon": 25.251,
+      "refs": [
+        "https://en.wikipedia.org/wiki/Smart_Lander_for_Investigating_Moon"
+      ],
+      "coord_method": "Coordonnées publiées (voir refs)",
+      "in_dem": false,
+      "dist_to_pole_km": 2325.3,
+      "elevation_m": null,
+      "terrain": null,
+      "horizon_source": "sphère lisse (site hors de l'emprise du MNT polaire)",
+      "horizon": {
+        "file": "horizons/slim.json",
+        "max_elev_deg": -0.09,
+        "max_elev_az_deg": 0.0,
+        "mean_elev_deg": -0.09,
+        "pct_azimuths_above_1deg": 0.0,
+        "dem_coverage_pct": 0.0,
+        "flat_ground_horizon_deg": -0.087
+      },
+      "obstacles": [],
+      "horizon_sectors": [],
+      "pre_indicators": {
+        "_note": "Modèle orbital simplifié (Soleil et Terre ponctuels, librations sinusoïdales). Sert à valider les masques d'horizon ; les valeurs de référence sont celles de l'application (éphémérides intégrées).",
+        "sun_elev_max_deg": 78.22,
+        "sun_illumination_pct_terrain": 49.0,
+        "sun_illumination_pct_no_terrain": 49.0,
+        "earth_elev_min_deg": 55.57,
+        "earth_elev_max_deg": 67.09,
+        "earth_az_range_deg": [
+          278.3,
+          318.1
+        ],
+        "earth_visibility_pct_terrain": 100.0,
+        "earth_visibility_pct_no_terrain": 100.0
+      }
+    },
+    {
+      "id": "blue-ghost-1",
+      "name": "Mare Crisium – Blue Ghost M1",
+      "short": "Blue Ghost 1",
+      "category": "reference",
+      "region": "Mer des Crises, face visible",
+      "context": "Atterrisseur CLPS de Firefly (2 mars 2025), premier atterrissage commercial entièrement réussi. Mission d'un jour lunaire, terminée à la tombée de la nuit.",
+      "lat": 18.56,
+      "lon": 61.81,
+      "refs": [
+        "https://en.wikipedia.org/wiki/Blue_Ghost_Mission_1"
+      ],
+      "coord_method": "Coordonnées publiées (voir refs)",
+      "in_dem": false,
+      "dist_to_pole_km": 3291.9,
+      "elevation_m": null,
+      "terrain": null,
+      "horizon_source": "sphère lisse (site hors de l'emprise du MNT polaire)",
+      "horizon": {
+        "file": "horizons/blue-ghost-1.json",
+        "max_elev_deg": -0.09,
+        "max_elev_az_deg": 0.0,
+        "mean_elev_deg": -0.09,
+        "pct_azimuths_above_1deg": 0.0,
+        "dem_coverage_pct": 0.0,
+        "flat_ground_horizon_deg": -0.087
+      },
+      "obstacles": [],
+      "horizon_sectors": [],
+      "pre_indicators": {
+        "_note": "Modèle orbital simplifié (Soleil et Terre ponctuels, librations sinusoïdales). Sert à valider les masques d'horizon ; les valeurs de référence sont celles de l'application (éphémérides intégrées).",
+        "sun_elev_max_deg": 72.98,
+        "sun_illumination_pct_terrain": 48.9,
+        "sun_illumination_pct_no_terrain": 48.9,
+        "earth_elev_min_deg": 16.58,
+        "earth_elev_max_deg": 36.06,
+        "earth_az_range_deg": [
+          254.7,
+          266.1
+        ],
+        "earth_visibility_pct_terrain": 100.0,
+        "earth_visibility_pct_no_terrain": 100.0
+      }
     }
   ]
 }

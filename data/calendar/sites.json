@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-14T18:12:16.877Z",
+ "generated": "2026-11-14T18:38:52.766Z",
  "method": "app/src/astro/calendar.ts : un jour lunaire (29,53 j) par case, pas de 2 h, horizons précalculés",
  "start": "2026-11-01T00:00:00.000Z",
  "months": 13,
@@ -40,6 +40,10 @@
    "label": "Liaison directe Terre"
   },
   {
+   "id": "relay",
+   "label": "Liaison avec relais"
+  },
+  {
    "id": "ice",
    "label": "Science : glace d'eau (atterrisseur)"
   }
@@ -54,13 +58,14 @@
      "earth_pct": 54.9,
      "longest_no_earth_h": 316,
      "both_pct": 54.9,
-     "mean_flux_wm2": 1360,
+     "mean_flux_wm2": 1391,
      "grades": {
       "lander": 75,
       "artemis": 79.6,
-      "night": 94.4,
+      "night": 94.6,
       "rover": 91,
       "dte": 55.1,
+      "relay": 68,
       "ice": 88.7
      }
     },
@@ -70,13 +75,14 @@
      "earth_pct": 47,
      "longest_no_earth_h": 316,
      "both_pct": 47,
-     "mean_flux_wm2": 1361,
+     "mean_flux_wm2": 1405,
      "grades": {
       "lander": 70.6,
       "artemis": 76.7,
-      "night": 93.4,
+      "night": 93.8,
       "rover": 89.4,
       "dte": 50.6,
+      "relay": 65.8,
       "ice": 86.8
      }
     },
@@ -86,13 +92,14 @@
      "earth_pct": 47.6,
      "longest_no_earth_h": 260,
      "both_pct": 47.6,
-     "mean_flux_wm2": 1361,
+     "mean_flux_wm2": 1407,
      "grades": {
       "lander": 70.9,
       "artemis": 77.6,
-      "night": 93.4,
+      "night": 93.9,
       "rover": 89.5,
       "dte": 54.3,
+      "relay": 69.3,
       "ice": 86.9
      }
     },
@@ -102,13 +109,14 @@
      "earth_pct": 47.6,
      "longest_no_earth_h": 208,
      "both_pct": 43.9,
-     "mean_flux_wm2": 1309,
+     "mean_flux_wm2": 1344,
      "grades": {
       "lander": 68,
       "artemis": 75.6,
-      "night": 90.2,
+      "night": 90.5,
       "rover": 86.5,
       "dte": 57,
+      "relay": 71.4,
       "ice": 84.1
      }
     },
@@ -118,13 +126,14 @@
      "earth_pct": 47.6,
      "longest_no_earth_h": 216,
      "both_pct": 37.2,
-     "mean_flux_wm2": 1089,
+     "mean_flux_wm2": 1104,
      "grades": {
       "lander": 59.3,
       "artemis": 67.4,
-      "night": 79.6,
+      "night": 79.7,
       "rover": 76.4,
       "dte": 55.5,
+      "relay": 66.3,
       "ice": 73.7
      }
     },
@@ -134,13 +143,14 @@
      "earth_pct": 47.3,
      "longest_no_earth_h": 274,
      "both_pct": 34.9,
-     "mean_flux_wm2": 844,
+     "mean_flux_wm2": 843,
      "grades": {
       "lander": 51,
       "artemis": 57.4,
       "night": 65.8,
       "rover": 63.6,
       "dte": 51.6,
+      "relay": 57.5,
       "ice": 61.2
      }
     },
@@ -150,13 +160,14 @@
      "earth_pct": 50.1,
      "longest_no_earth_h": 314,
      "both_pct": 39.2,
-     "mean_flux_wm2": 802,
+     "mean_flux_wm2": 788,
      "grades": {
       "lander": 51.5,
       "artemis": 56.3,
-      "night": 63,
+      "night": 62.9,
       "rover": 61.3,
       "dte": 51,
+      "relay": 55,
       "ice": 59.3
      }
     },
@@ -166,13 +177,14 @@
      "earth_pct": 55.5,
      "longest_no_earth_h": 316,
      "both_pct": 54.4,
-     "mean_flux_wm2": 972,
+     "mean_flux_wm2": 944,
      "grades": {
       "lander": 62.6,
       "artemis": 65.1,
-      "night": 71.4,
+      "night": 71.2,
       "rover": 69.8,
       "dte": 55.3,
+      "relay": 60,
       "ice": 68.4
      }
     },
@@ -182,13 +194,14 @@
      "earth_pct": 55.2,
      "longest_no_earth_h": 318,
      "both_pct": 55.2,
-     "mean_flux_wm2": 1235,
+     "mean_flux_wm2": 1195,
      "grades": {
       "lander": 71,
       "artemis": 74.6,
-      "night": 86.3,
+      "night": 85.9,
       "rover": 83.6,
       "dte": 55.2,
+      "relay": 65.3,
       "ice": 81.8
      }
     },
@@ -198,13 +211,14 @@
      "earth_pct": 55.5,
      "longest_no_earth_h": 316,
      "both_pct": 55.5,
-     "mean_flux_wm2": 1361,
+     "mean_flux_wm2": 1323,
      "grades": {
       "lander": 75.3,
       "artemis": 79.8,
-      "night": 94.4,
+      "night": 94.1,
       "rover": 91.1,
       "dte": 55.5,
+      "relay": 68.2,
       "ice": 88.9
      }
     },
@@ -214,13 +228,14 @@
      "earth_pct": 56.1,
      "longest_no_earth_h": 312,
      "both_pct": 56.1,
-     "mean_flux_wm2": 1361,
+     "mean_flux_wm2": 1339,
      "grades": {
       "lander": 75.6,
       "artemis": 80,
-      "night": 94.5,
+      "night": 94.3,
       "rover": 91.2,
       "dte": 56,
+      "relay": 68.6,
       "ice": 89
      }
     },
@@ -237,6 +252,7 @@
       "night": 94.6,
       "rover": 91.4,
       "dte": 56.9,
+      "relay": 69.2,
       "ice": 89.2
      }
     },
@@ -246,13 +262,14 @@
      "earth_pct": 56.3,
      "longest_no_earth_h": 306,
      "both_pct": 56.3,
-     "mean_flux_wm2": 1360,
+     "mean_flux_wm2": 1383,
      "grades": {
       "lander": 75.7,
       "artemis": 80.2,
-      "night": 94.5,
+      "night": 94.7,
       "rover": 91.3,
       "dte": 56.5,
+      "relay": 69,
       "ice": 89.1
      }
     }
@@ -260,9 +277,10 @@
    "best_month": {
     "lander": 11,
     "artemis": 11,
-    "night": 11,
+    "night": 12,
     "rover": 11,
     "dte": 3,
+    "relay": 3,
     "ice": 11
    }
   },
@@ -275,13 +293,14 @@
      "earth_pct": 82.8,
      "longest_no_earth_h": 122,
      "both_pct": 82.8,
-     "mean_flux_wm2": 1254,
+     "mean_flux_wm2": 1282,
      "grades": {
       "lander": 87.4,
       "artemis": 88.9,
-      "night": 92.7,
+      "night": 92.9,
       "rover": 91.7,
       "dte": 82.8,
+      "relay": 85.5,
       "ice": 90.7
      }
     },
@@ -291,13 +310,14 @@
      "earth_pct": 82.3,
      "longest_no_earth_h": 126,
      "both_pct": 74.9,
-     "mean_flux_wm2": 1206,
+     "mean_flux_wm2": 1244,
      "grades": {
       "lander": 82.5,
       "artemis": 84.1,
-      "night": 87.2,
+      "night": 87.5,
       "rover": 86.9,
       "dte": 81.2,
+      "relay": 84.1,
       "ice": 86.8
      }
     },
@@ -307,13 +327,14 @@
      "earth_pct": 77.2,
      "longest_no_earth_h": 136,
      "both_pct": 59.7,
-     "mean_flux_wm2": 1059,
+     "mean_flux_wm2": 1093,
      "grades": {
       "lander": 71.7,
       "artemis": 74.7,
-      "night": 77.8,
+      "night": 78.1,
       "rover": 77.8,
       "dte": 76.2,
+      "relay": 78.9,
       "ice": 77.7
      }
     },
@@ -323,13 +344,14 @@
      "earth_pct": 72.7,
      "longest_no_earth_h": 116,
      "both_pct": 37.7,
-     "mean_flux_wm2": 863,
+     "mean_flux_wm2": 883,
      "grades": {
       "lander": 57.1,
       "artemis": 62.6,
-      "night": 65.2,
+      "night": 65.4,
       "rover": 65.8,
       "dte": 72.4,
+      "relay": 74.7,
       "ice": 66.1
      }
     },
@@ -339,13 +361,14 @@
      "earth_pct": 73.5,
      "longest_no_earth_h": 128,
      "both_pct": 29.6,
-     "mean_flux_wm2": 764,
+     "mean_flux_wm2": 770,
      "grades": {
       "lander": 51.1,
       "artemis": 56.8,
-      "night": 58.2,
+      "night": 58.3,
       "rover": 59.6,
       "dte": 70.9,
+      "relay": 72.2,
       "ice": 60.5
      }
     },
@@ -355,13 +378,14 @@
      "earth_pct": 82.8,
      "longest_no_earth_h": 120,
      "both_pct": 36.3,
-     "mean_flux_wm2": 728,
+     "mean_flux_wm2": 721,
      "grades": {
       "lander": 54.3,
       "artemis": 58.4,
       "night": 57.1,
       "rover": 59.3,
       "dte": 76.3,
+      "relay": 74.5,
       "ice": 60.8
      }
     },
@@ -371,13 +395,14 @@
      "earth_pct": 83.4,
      "longest_no_earth_h": 118,
      "both_pct": 34.4,
-     "mean_flux_wm2": 695,
+     "mean_flux_wm2": 678,
      "grades": {
       "lander": 52.8,
       "artemis": 57.2,
-      "night": 55.7,
+      "night": 55.6,
       "rover": 58,
       "dte": 76.4,
+      "relay": 74.1,
       "ice": 59.5
      }
     },
@@ -387,13 +412,14 @@
      "earth_pct": 82,
      "longest_no_earth_h": 128,
      "both_pct": 34.4,
-     "mean_flux_wm2": 713,
+     "mean_flux_wm2": 689,
      "grades": {
       "lander": 53,
       "artemis": 57.4,
-      "night": 56.5,
+      "night": 56.3,
       "rover": 58.6,
       "dte": 75.2,
+      "relay": 73.5,
       "ice": 60
      }
     },
@@ -403,13 +429,14 @@
      "earth_pct": 80.8,
      "longest_no_earth_h": 136,
      "both_pct": 42.3,
-     "mean_flux_wm2": 760,
+     "mean_flux_wm2": 733,
      "grades": {
       "lander": 56.9,
       "artemis": 60.2,
-      "night": 59,
+      "night": 58.8,
       "rover": 60.9,
       "dte": 75.3,
+      "relay": 73.7,
       "ice": 62.1
      }
     },
@@ -419,13 +446,14 @@
      "earth_pct": 80.8,
      "longest_no_earth_h": 136,
      "both_pct": 52.1,
-     "mean_flux_wm2": 870,
+     "mean_flux_wm2": 845,
      "grades": {
       "lander": 63.8,
       "artemis": 66.5,
-      "night": 66.2,
+      "night": 65.9,
       "rover": 67.4,
       "dte": 76.7,
+      "relay": 76,
       "ice": 68.2
      }
     },
@@ -435,13 +463,14 @@
      "earth_pct": 81.7,
      "longest_no_earth_h": 130,
      "both_pct": 62.3,
-     "mean_flux_wm2": 1021,
+     "mean_flux_wm2": 1005,
      "grades": {
       "lander": 72.3,
       "artemis": 74.5,
-      "night": 75.8,
+      "night": 75.7,
       "rover": 76.4,
       "dte": 78.9,
+      "relay": 79.8,
       "ice": 76.7
      }
     },
@@ -458,6 +487,7 @@
       "night": 84.5,
       "rover": 84.4,
       "dte": 82.4,
+      "relay": 83.6,
       "ice": 84.4
      }
     },
@@ -467,13 +497,14 @@
      "earth_pct": 83.9,
      "longest_no_earth_h": 114,
      "both_pct": 83.9,
-     "mean_flux_wm2": 1249,
+     "mean_flux_wm2": 1269,
      "grades": {
       "lander": 87.8,
       "artemis": 89,
-      "night": 92.3,
+      "night": 92.4,
       "rover": 91.4,
       "dte": 83.9,
+      "relay": 86.2,
       "ice": 90.6
      }
     }
@@ -484,6 +515,7 @@
     "night": 0,
     "rover": 0,
     "dte": 12,
+    "relay": 12,
     "ice": 0
    }
   },
@@ -496,13 +528,14 @@
      "earth_pct": 83.4,
      "longest_no_earth_h": 118,
      "both_pct": 52.7,
-     "mean_flux_wm2": 710,
+     "mean_flux_wm2": 726,
      "grades": {
       "lander": 59.4,
       "artemis": 60.9,
-      "night": 56.3,
+      "night": 56.5,
       "rover": 58.7,
       "dte": 79,
+      "relay": 74.5,
       "ice": 60.2
      }
     },
@@ -512,13 +545,14 @@
      "earth_pct": 82.5,
      "longest_no_earth_h": 124,
      "both_pct": 51.5,
-     "mean_flux_wm2": 702,
+     "mean_flux_wm2": 723,
      "grades": {
       "lander": 58.5,
       "artemis": 60,
-      "night": 55.4,
+      "night": 55.6,
       "rover": 57.8,
       "dte": 78.1,
+      "relay": 73.7,
       "ice": 59.4
      }
     },
@@ -528,13 +562,14 @@
      "earth_pct": 77.7,
      "longest_no_earth_h": 132,
      "both_pct": 46.2,
-     "mean_flux_wm2": 656,
+     "mean_flux_wm2": 675,
      "grades": {
       "lander": 54.3,
       "artemis": 56.7,
-      "night": 52.7,
+      "night": 52.9,
       "rover": 54.8,
       "dte": 74.8,
+      "relay": 70.9,
       "ice": 56
      }
     },
@@ -544,13 +579,14 @@
      "earth_pct": 73,
      "longest_no_earth_h": 114,
      "both_pct": 37.2,
-     "mean_flux_wm2": 616,
+     "mean_flux_wm2": 629,
      "grades": {
       "lander": 49.1,
       "artemis": 53.1,
-      "night": 50.2,
+      "night": 50.3,
       "rover": 52,
       "dte": 72.5,
+      "relay": 69.8,
       "ice": 52.9
      }
     },
@@ -560,13 +596,14 @@
      "earth_pct": 74.4,
      "longest_no_earth_h": 124,
      "both_pct": 29.3,
-     "mean_flux_wm2": 535,
+     "mean_flux_wm2": 538,
      "grades": {
       "lander": 44.6,
       "artemis": 49.9,
       "night": 47.5,
       "rover": 49.4,
       "dte": 71.4,
+      "relay": 67.9,
       "ice": 50
      }
     },
@@ -576,13 +613,14 @@
      "earth_pct": 83.7,
      "longest_no_earth_h": 116,
      "both_pct": 21.1,
-     "mean_flux_wm2": 485,
+     "mean_flux_wm2": 479,
      "grades": {
       "lander": 42.7,
       "artemis": 49,
-      "night": 46.9,
+      "night": 46.8,
       "rover": 49.4,
       "dte": 74.7,
+      "relay": 69.9,
       "ice": 50.3
      }
     },
@@ -592,13 +630,14 @@
      "earth_pct": 83.9,
      "longest_no_earth_h": 114,
      "both_pct": 19.2,
-     "mean_flux_wm2": 484,
+     "mean_flux_wm2": 472,
      "grades": {
       "lander": 42,
       "artemis": 48.6,
-      "night": 46.8,
+      "night": 46.6,
       "rover": 49.4,
       "dte": 74.7,
+      "relay": 70.1,
       "ice": 50.2
      }
     },
@@ -608,13 +647,14 @@
      "earth_pct": 82.5,
      "longest_no_earth_h": 124,
      "both_pct": 22.3,
-     "mean_flux_wm2": 542,
+     "mean_flux_wm2": 523,
      "grades": {
       "lander": 44.2,
       "artemis": 50.2,
-      "night": 48.6,
+      "night": 48.4,
       "rover": 51.1,
       "dte": 73.9,
+      "relay": 70.3,
       "ice": 52.2
      }
     },
@@ -624,13 +664,14 @@
      "earth_pct": 81.4,
      "longest_no_earth_h": 132,
      "both_pct": 28.7,
-     "mean_flux_wm2": 609,
+     "mean_flux_wm2": 587,
      "grades": {
       "lander": 47.9,
       "artemis": 52.7,
-      "night": 50.9,
+      "night": 50.7,
       "rover": 53.3,
       "dte": 73.9,
+      "relay": 70.9,
       "ice": 54.7
      }
     },
@@ -640,13 +681,14 @@
      "earth_pct": 80.8,
      "longest_no_earth_h": 136,
      "both_pct": 37.2,
-     "mean_flux_wm2": 643,
+     "mean_flux_wm2": 625,
      "grades": {
       "lander": 51.6,
       "artemis": 55.1,
-      "night": 52.3,
+      "night": 52.1,
       "rover": 54.7,
       "dte": 74.6,
+      "relay": 71.3,
       "ice": 56.1
      }
     },
@@ -656,13 +698,14 @@
      "earth_pct": 82,
      "longest_no_earth_h": 128,
      "both_pct": 46.8,
-     "mean_flux_wm2": 677,
+     "mean_flux_wm2": 666,
      "grades": {
       "lander": 56,
       "artemis": 58,
-      "night": 53.8,
+      "night": 53.7,
       "rover": 56.3,
       "dte": 76.9,
+      "relay": 72.8,
       "ice": 57.9
      }
     },
@@ -672,13 +715,14 @@
      "earth_pct": 83.4,
      "longest_no_earth_h": 118,
      "both_pct": 51,
-     "mean_flux_wm2": 696,
+     "mean_flux_wm2": 697,
      "grades": {
       "lander": 58.3,
       "artemis": 59.9,
       "night": 55.1,
       "rover": 57.6,
       "dte": 78.7,
+      "relay": 74.2,
       "ice": 59.2
      }
     },
@@ -688,13 +732,14 @@
      "earth_pct": 84.5,
      "longest_no_earth_h": 110,
      "both_pct": 53,
-     "mean_flux_wm2": 711,
+     "mean_flux_wm2": 724,
      "grades": {
       "lander": 59.8,
       "artemis": 61.4,
-      "night": 56.7,
+      "night": 56.8,
       "rover": 59,
       "dte": 80,
+      "relay": 75.3,
       "ice": 60.6
      }
     }
@@ -705,6 +750,7 @@
     "night": 12,
     "rover": 12,
     "dte": 12,
+    "relay": 12,
     "ice": 12
    }
   },
@@ -717,13 +763,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 42.5,
-     "mean_flux_wm2": 574,
+     "mean_flux_wm2": 586,
      "grades": {
       "lander": 55.3,
       "artemis": 58.2,
-      "night": 49.7,
+      "night": 49.8,
       "rover": 54,
       "dte": 91.8,
+      "relay": 83.6,
       "ice": 56.9
      }
     },
@@ -733,13 +780,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 42.5,
-     "mean_flux_wm2": 570,
+     "mean_flux_wm2": 587,
      "grades": {
       "lander": 55.2,
       "artemis": 58.1,
-      "night": 49.6,
+      "night": 49.7,
       "rover": 53.9,
       "dte": 91.8,
+      "relay": 83.5,
       "ice": 56.8
      }
     },
@@ -749,13 +797,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 41.1,
-     "mean_flux_wm2": 554,
+     "mean_flux_wm2": 570,
      "grades": {
       "lander": 54.2,
       "artemis": 57.1,
-      "night": 48.4,
+      "night": 48.5,
       "rover": 52.8,
       "dte": 91.6,
+      "relay": 83.2,
       "ice": 55.8
      }
     },
@@ -765,13 +814,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 38.9,
-     "mean_flux_wm2": 524,
+     "mean_flux_wm2": 534,
      "grades": {
       "lander": 52.4,
       "artemis": 55.5,
-      "night": 46.4,
+      "night": 46.5,
       "rover": 51,
       "dte": 91.3,
+      "relay": 82.5,
       "ice": 54.1
      }
     },
@@ -781,13 +831,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 37.2,
-     "mean_flux_wm2": 501,
+     "mean_flux_wm2": 503,
      "grades": {
       "lander": 51.1,
       "artemis": 54.3,
       "night": 44.9,
       "rover": 49.7,
       "dte": 91,
+      "relay": 82,
       "ice": 52.8
      }
     },
@@ -797,13 +848,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 36.1,
-     "mean_flux_wm2": 485,
+     "mean_flux_wm2": 479,
      "grades": {
       "lander": 50.2,
       "artemis": 53.4,
-      "night": 43.9,
+      "night": 43.8,
       "rover": 48.7,
       "dte": 90.9,
+      "relay": 81.7,
       "ice": 51.9
      }
     },
@@ -813,13 +865,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 35.5,
-     "mean_flux_wm2": 479,
+     "mean_flux_wm2": 466,
      "grades": {
       "lander": 49.8,
       "artemis": 53,
-      "night": 43.4,
+      "night": 43.3,
       "rover": 48.3,
       "dte": 90.8,
+      "relay": 81.5,
       "ice": 51.6
      }
     },
@@ -829,13 +882,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 36.1,
-     "mean_flux_wm2": 486,
+     "mean_flux_wm2": 468,
      "grades": {
       "lander": 50.2,
       "artemis": 53.4,
-      "night": 43.9,
+      "night": 43.8,
       "rover": 48.8,
       "dte": 90.9,
+      "relay": 81.7,
       "ice": 52
      }
     },
@@ -845,13 +899,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 37.2,
-     "mean_flux_wm2": 500,
+     "mean_flux_wm2": 482,
      "grades": {
       "lander": 51.1,
       "artemis": 54.3,
-      "night": 44.9,
+      "night": 44.7,
       "rover": 49.7,
       "dte": 91,
+      "relay": 82,
       "ice": 52.8
      }
     },
@@ -861,13 +916,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 38.6,
-     "mean_flux_wm2": 520,
+     "mean_flux_wm2": 505,
      "grades": {
       "lander": 52.2,
       "artemis": 55.3,
-      "night": 46.2,
+      "night": 46,
       "rover": 50.8,
       "dte": 91.2,
+      "relay": 82.5,
       "ice": 53.9
      }
     },
@@ -877,13 +933,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 40.6,
-     "mean_flux_wm2": 544,
+     "mean_flux_wm2": 535,
      "grades": {
       "lander": 53.7,
       "artemis": 56.7,
       "night": 47.8,
       "rover": 52.4,
       "dte": 91.5,
+      "relay": 83,
       "ice": 55.3
      }
     },
@@ -900,6 +957,7 @@
       "night": 49.2,
       "rover": 53.6,
       "dte": 91.7,
+      "relay": 83.5,
       "ice": 56.6
      }
     },
@@ -909,13 +967,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 42.5,
-     "mean_flux_wm2": 575,
+     "mean_flux_wm2": 584,
      "grades": {
       "lander": 55.4,
       "artemis": 58.2,
-      "night": 49.7,
+      "night": 49.8,
       "rover": 54.1,
       "dte": 91.8,
+      "relay": 83.6,
       "ice": 57
      }
     }
@@ -926,6 +985,7 @@
     "night": 12,
     "rover": 12,
     "dte": 0,
+    "relay": 12,
     "ice": 12
    }
   },
@@ -938,13 +998,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 52.7,
-     "mean_flux_wm2": 688,
+     "mean_flux_wm2": 703,
      "grades": {
       "lander": 63.5,
       "artemis": 66.4,
-      "night": 59.9,
+      "night": 60.1,
       "rover": 63.4,
       "dte": 93.2,
+      "relay": 86.4,
       "ice": 65.2
      }
     },
@@ -954,13 +1015,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 51.8,
-     "mean_flux_wm2": 684,
+     "mean_flux_wm2": 705,
      "grades": {
       "lander": 63,
       "artemis": 66,
-      "night": 59.5,
+      "night": 59.7,
       "rover": 63,
       "dte": 93.1,
+      "relay": 86.3,
       "ice": 64.9
      }
     },
@@ -970,13 +1032,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 51.3,
-     "mean_flux_wm2": 672,
+     "mean_flux_wm2": 693,
      "grades": {
       "lander": 62.4,
       "artemis": 65.5,
-      "night": 58.9,
+      "night": 59.1,
       "rover": 62.4,
       "dte": 93,
+      "relay": 86,
       "ice": 64.3
      }
     },
@@ -986,13 +1049,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 49.9,
-     "mean_flux_wm2": 657,
+     "mean_flux_wm2": 671,
      "grades": {
       "lander": 61.5,
       "artemis": 64.7,
-      "night": 58,
+      "night": 58.1,
       "rover": 61.5,
       "dte": 92.8,
+      "relay": 85.7,
       "ice": 63.4
      }
     },
@@ -1002,13 +1066,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 48.7,
-     "mean_flux_wm2": 644,
+     "mean_flux_wm2": 648,
      "grades": {
       "lander": 60.6,
       "artemis": 63.9,
       "night": 57.2,
       "rover": 60.7,
       "dte": 92.7,
+      "relay": 85.3,
       "ice": 62.6
      }
     },
@@ -1018,13 +1083,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 48.2,
-     "mean_flux_wm2": 634,
+     "mean_flux_wm2": 627,
      "grades": {
       "lander": 60.1,
       "artemis": 63.5,
       "night": 56.7,
       "rover": 60.3,
       "dte": 92.6,
+      "relay": 85.1,
       "ice": 62.2
      }
     },
@@ -1034,13 +1100,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 47.9,
-     "mean_flux_wm2": 633,
+     "mean_flux_wm2": 617,
      "grades": {
       "lander": 60,
       "artemis": 63.4,
-      "night": 56.7,
+      "night": 56.6,
       "rover": 60.3,
       "dte": 92.6,
+      "relay": 85.1,
       "ice": 62.1
      }
     },
@@ -1050,13 +1117,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 48.5,
-     "mean_flux_wm2": 639,
+     "mean_flux_wm2": 617,
      "grades": {
       "lander": 60.4,
       "artemis": 63.7,
-      "night": 57,
+      "night": 56.8,
       "rover": 60.6,
       "dte": 92.6,
+      "relay": 85.2,
       "ice": 62.4
      }
     },
@@ -1066,13 +1134,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 49,
-     "mean_flux_wm2": 650,
+     "mean_flux_wm2": 627,
      "grades": {
       "lander": 60.9,
       "artemis": 64.3,
-      "night": 57.6,
+      "night": 57.4,
       "rover": 61.2,
       "dte": 92.7,
+      "relay": 85.5,
       "ice": 63.1
      }
     },
@@ -1082,13 +1151,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 50.4,
-     "mean_flux_wm2": 664,
+     "mean_flux_wm2": 645,
      "grades": {
       "lander": 61.9,
       "artemis": 65.1,
-      "night": 58.5,
+      "night": 58.3,
       "rover": 62,
       "dte": 92.9,
+      "relay": 85.8,
       "ice": 63.9
      }
     },
@@ -1098,13 +1168,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 51.5,
-     "mean_flux_wm2": 677,
+     "mean_flux_wm2": 666,
      "grades": {
       "lander": 62.7,
       "artemis": 65.8,
-      "night": 59.3,
+      "night": 59.2,
       "rover": 62.8,
       "dte": 93.1,
+      "relay": 86.1,
       "ice": 64.6
      }
     },
@@ -1118,9 +1189,10 @@
      "grades": {
       "lander": 63.3,
       "artemis": 66.3,
-      "night": 59.8,
+      "night": 59.9,
       "rover": 63.3,
       "dte": 93.2,
+      "relay": 86.4,
       "ice": 65.1
      }
     },
@@ -1130,13 +1202,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 52.4,
-     "mean_flux_wm2": 687,
+     "mean_flux_wm2": 699,
      "grades": {
       "lander": 63.4,
       "artemis": 66.4,
-      "night": 59.9,
+      "night": 60,
       "rover": 63.3,
       "dte": 93.2,
+      "relay": 86.4,
       "ice": 65.2
      }
     }
@@ -1147,6 +1220,7 @@
     "night": 0,
     "rover": 0,
     "dte": 0,
+    "relay": 0,
     "ice": 0
    }
   },
@@ -1159,13 +1233,14 @@
      "earth_pct": 0,
      "longest_no_earth_h": 710,
      "both_pct": 0,
-     "mean_flux_wm2": 575,
+     "mean_flux_wm2": 588,
      "grades": {
       "lander": 22.5,
       "artemis": 27.6,
-      "night": 43.3,
+      "night": 43.4,
       "rover": 40.5,
       "dte": 0,
+      "relay": 14.5,
       "ice": 38
      }
     },
@@ -1175,13 +1250,14 @@
      "earth_pct": 0,
      "longest_no_earth_h": 710,
      "both_pct": 0,
-     "mean_flux_wm2": 572,
+     "mean_flux_wm2": 592,
      "grades": {
       "lander": 22.4,
       "artemis": 27.5,
-      "night": 43.1,
+      "night": 43.2,
       "rover": 40.3,
       "dte": 0,
+      "relay": 14.4,
       "ice": 37.8
      }
     },
@@ -1191,13 +1267,14 @@
      "earth_pct": 0,
      "longest_no_earth_h": 710,
      "both_pct": 0,
-     "mean_flux_wm2": 571,
+     "mean_flux_wm2": 593,
      "grades": {
       "lander": 22.3,
       "artemis": 27.4,
-      "night": 42.8,
+      "night": 43,
       "rover": 40.1,
       "dte": 0,
+      "relay": 14.4,
       "ice": 37.6
      }
     },
@@ -1207,13 +1284,14 @@
      "earth_pct": 0,
      "longest_no_earth_h": 710,
      "both_pct": 0,
-     "mean_flux_wm2": 569,
+     "mean_flux_wm2": 588,
      "grades": {
       "lander": 22.1,
       "artemis": 27.2,
-      "night": 42.6,
+      "night": 42.7,
       "rover": 39.8,
       "dte": 0,
+      "relay": 14.2,
       "ice": 37.4
      }
     },
@@ -1223,13 +1301,14 @@
      "earth_pct": 0,
      "longest_no_earth_h": 710,
      "both_pct": 0,
-     "mean_flux_wm2": 569,
+     "mean_flux_wm2": 580,
      "grades": {
       "lander": 22,
       "artemis": 27,
-      "night": 42.4,
+      "night": 42.5,
       "rover": 39.6,
       "dte": 0,
+      "relay": 14.2,
       "ice": 37.1
      }
     },
@@ -1239,13 +1318,14 @@
      "earth_pct": 0,
      "longest_no_earth_h": 710,
      "both_pct": 0,
-     "mean_flux_wm2": 569,
+     "mean_flux_wm2": 571,
      "grades": {
       "lander": 21.9,
       "artemis": 26.9,
       "night": 42.2,
       "rover": 39.4,
       "dte": 0,
+      "relay": 14.1,
       "ice": 37
      }
     },
@@ -1255,13 +1335,14 @@
      "earth_pct": 0,
      "longest_no_earth_h": 710,
      "both_pct": 0,
-     "mean_flux_wm2": 573,
+     "mean_flux_wm2": 565,
      "grades": {
       "lander": 22,
       "artemis": 27,
-      "night": 42.4,
+      "night": 42.3,
       "rover": 39.6,
       "dte": 0,
+      "relay": 14.1,
       "ice": 37.1
      }
     },
@@ -1271,13 +1352,14 @@
      "earth_pct": 0,
      "longest_no_earth_h": 710,
      "both_pct": 0,
-     "mean_flux_wm2": 574,
+     "mean_flux_wm2": 559,
      "grades": {
       "lander": 22,
       "artemis": 27,
-      "night": 42.4,
+      "night": 42.3,
       "rover": 39.6,
       "dte": 0,
+      "relay": 14.2,
       "ice": 37.2
      }
     },
@@ -1287,13 +1369,14 @@
      "earth_pct": 0,
      "longest_no_earth_h": 710,
      "both_pct": 0,
-     "mean_flux_wm2": 577,
+     "mean_flux_wm2": 560,
      "grades": {
       "lander": 22.2,
       "artemis": 27.3,
-      "night": 42.8,
+      "night": 42.7,
       "rover": 40,
       "dte": 0,
+      "relay": 14.3,
       "ice": 37.5
      }
     },
@@ -1303,13 +1386,14 @@
      "earth_pct": 0,
      "longest_no_earth_h": 710,
      "both_pct": 0,
-     "mean_flux_wm2": 578,
+     "mean_flux_wm2": 562,
      "grades": {
       "lander": 22.4,
       "artemis": 27.5,
-      "night": 43.1,
+      "night": 42.9,
       "rover": 40.3,
       "dte": 0,
+      "relay": 14.4,
       "ice": 37.7
      }
     },
@@ -1319,13 +1403,14 @@
      "earth_pct": 0,
      "longest_no_earth_h": 710,
      "both_pct": 0,
-     "mean_flux_wm2": 578,
+     "mean_flux_wm2": 568,
      "grades": {
       "lander": 22.5,
       "artemis": 27.6,
-      "night": 43.3,
+      "night": 43.2,
       "rover": 40.5,
       "dte": 0,
+      "relay": 14.5,
       "ice": 38
      }
     },
@@ -1342,6 +1427,7 @@
       "night": 43.3,
       "rover": 40.6,
       "dte": 0,
+      "relay": 14.5,
       "ice": 38.1
      }
     },
@@ -1351,13 +1437,14 @@
      "earth_pct": 0,
      "longest_no_earth_h": 710,
      "both_pct": 0,
-     "mean_flux_wm2": 575,
+     "mean_flux_wm2": 584,
      "grades": {
       "lander": 22.5,
       "artemis": 27.6,
-      "night": 43.3,
+      "night": 43.4,
       "rover": 40.5,
       "dte": 0,
+      "relay": 14.5,
       "ice": 38
      }
     }
@@ -1365,9 +1452,10 @@
    "best_month": {
     "lander": 11,
     "artemis": 11,
-    "night": 11,
+    "night": 0,
     "rover": 11,
     "dte": 0,
+    "relay": 11,
     "ice": 11
    }
   },
@@ -1380,13 +1468,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 50.1,
-     "mean_flux_wm2": 436,
+     "mean_flux_wm2": 446,
      "grades": {
       "lander": 61.5,
       "artemis": 64.3,
-      "night": 55.2,
+      "night": 55.3,
       "rover": 61,
       "dte": 92.9,
+      "relay": 85.7,
       "ice": 63.1
      }
     },
@@ -1396,13 +1485,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 50.1,
-     "mean_flux_wm2": 435,
+     "mean_flux_wm2": 449,
      "grades": {
       "lander": 61.4,
       "artemis": 64.3,
-      "night": 55,
+      "night": 55.2,
       "rover": 60.9,
       "dte": 92.9,
+      "relay": 85.8,
       "ice": 63.1
      }
     },
@@ -1412,13 +1502,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 50.1,
-     "mean_flux_wm2": 435,
+     "mean_flux_wm2": 448,
      "grades": {
       "lander": 61.4,
       "artemis": 64.2,
-      "night": 54.9,
+      "night": 55,
       "rover": 60.8,
       "dte": 92.9,
+      "relay": 85.8,
       "ice": 63
      }
     },
@@ -1428,13 +1519,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 50.1,
-     "mean_flux_wm2": 435,
+     "mean_flux_wm2": 444,
      "grades": {
       "lander": 61.4,
       "artemis": 64.1,
       "night": 54.8,
       "rover": 60.6,
       "dte": 92.9,
+      "relay": 85.8,
       "ice": 62.9
      }
     },
@@ -1444,13 +1536,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 49.9,
-     "mean_flux_wm2": 433,
+     "mean_flux_wm2": 436,
      "grades": {
       "lander": 61.2,
       "artemis": 63.9,
       "night": 54.6,
       "rover": 60.5,
       "dte": 92.8,
+      "relay": 85.7,
       "ice": 62.8
      }
     },
@@ -1460,13 +1553,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 49.9,
-     "mean_flux_wm2": 433,
+     "mean_flux_wm2": 428,
      "grades": {
       "lander": 61.2,
       "artemis": 63.9,
       "night": 54.5,
       "rover": 60.4,
       "dte": 92.8,
+      "relay": 85.7,
       "ice": 62.8
      }
     },
@@ -1476,13 +1570,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 50.1,
-     "mean_flux_wm2": 434,
+     "mean_flux_wm2": 423,
      "grades": {
       "lander": 61.3,
       "artemis": 64.1,
-      "night": 54.7,
+      "night": 54.6,
       "rover": 60.6,
       "dte": 92.9,
+      "relay": 85.7,
       "ice": 62.9
      }
     },
@@ -1492,13 +1587,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 49.9,
-     "mean_flux_wm2": 433,
+     "mean_flux_wm2": 419,
      "grades": {
       "lander": 61.2,
       "artemis": 64,
-      "night": 54.7,
+      "night": 54.6,
       "rover": 60.6,
       "dte": 92.8,
+      "relay": 85.7,
       "ice": 62.8
      }
     },
@@ -1508,13 +1604,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 49.9,
-     "mean_flux_wm2": 433,
+     "mean_flux_wm2": 418,
      "grades": {
       "lander": 61.2,
       "artemis": 64.1,
-      "night": 54.8,
+      "night": 54.7,
       "rover": 60.7,
       "dte": 92.8,
+      "relay": 85.7,
       "ice": 62.9
      }
     },
@@ -1524,13 +1621,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 49.9,
-     "mean_flux_wm2": 432,
+     "mean_flux_wm2": 420,
      "grades": {
       "lander": 61.2,
       "artemis": 64.1,
-      "night": 54.9,
+      "night": 54.8,
       "rover": 60.8,
       "dte": 92.8,
+      "relay": 85.7,
       "ice": 62.9
      }
     },
@@ -1540,13 +1638,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 50.1,
-     "mean_flux_wm2": 435,
+     "mean_flux_wm2": 428,
      "grades": {
       "lander": 61.4,
       "artemis": 64.3,
-      "night": 55.2,
+      "night": 55.1,
       "rover": 60.9,
       "dte": 92.9,
+      "relay": 85.7,
       "ice": 63.1
      }
     },
@@ -1556,13 +1655,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 50.1,
-     "mean_flux_wm2": 435,
+     "mean_flux_wm2": 436,
      "grades": {
       "lander": 61.4,
       "artemis": 64.3,
       "night": 55.2,
       "rover": 60.9,
       "dte": 92.9,
+      "relay": 85.7,
       "ice": 63.1
      }
     },
@@ -1572,13 +1672,14 @@
      "earth_pct": 100,
      "longest_no_earth_h": 0,
      "both_pct": 50.1,
-     "mean_flux_wm2": 436,
+     "mean_flux_wm2": 444,
      "grades": {
       "lander": 61.5,
       "artemis": 64.3,
-      "night": 55.2,
+      "night": 55.3,
       "rover": 61,
       "dte": 92.9,
+      "relay": 85.8,
       "ice": 63.1
      }
     }
@@ -1586,10 +1687,1656 @@
    "best_month": {
     "lander": 12,
     "artemis": 12,
-    "night": 12,
+    "night": 0,
     "rover": 12,
     "dte": 0,
+    "relay": 1,
     "ice": 12
+   }
+  },
+  {
+   "id": "apollo-12",
+   "cells": [
+    {
+     "sun_pct": 50.2,
+     "longest_night_h": 354,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 445,
+     "grades": {
+      "lander": 61.2,
+      "artemis": 63.7,
+      "night": 54.2,
+      "rover": 60.1,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 62.6
+     }
+    },
+    {
+     "sun_pct": 50.1,
+     "longest_night_h": 354,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 448,
+     "grades": {
+      "lander": 61.2,
+      "artemis": 63.7,
+      "night": 54.2,
+      "rover": 60.1,
+      "dte": 92.9,
+      "relay": 85.7,
+      "ice": 62.6
+     }
+    },
+    {
+     "sun_pct": 50.1,
+     "longest_night_h": 354,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 449,
+     "grades": {
+      "lander": 61.2,
+      "artemis": 63.7,
+      "night": 54.2,
+      "rover": 60.1,
+      "dte": 92.9,
+      "relay": 85.7,
+      "ice": 62.6
+     }
+    },
+    {
+     "sun_pct": 50.1,
+     "longest_night_h": 354,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 448,
+     "grades": {
+      "lander": 61.2,
+      "artemis": 63.7,
+      "night": 54.2,
+      "rover": 60.1,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 62.6
+     }
+    },
+    {
+     "sun_pct": 50.1,
+     "longest_night_h": 354,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 443,
+     "grades": {
+      "lander": 61.2,
+      "artemis": 63.7,
+      "night": 54.1,
+      "rover": 60.1,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 62.6
+     }
+    },
+    {
+     "sun_pct": 50.1,
+     "longest_night_h": 354,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 436,
+     "grades": {
+      "lander": 61.2,
+      "artemis": 63.7,
+      "night": 54.1,
+      "rover": 60.1,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 62.6
+     }
+    },
+    {
+     "sun_pct": 50.3,
+     "longest_night_h": 352,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.4,
+     "mean_flux_wm2": 432,
+     "grades": {
+      "lander": 61.4,
+      "artemis": 63.9,
+      "night": 54.2,
+      "rover": 60.3,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 62.7
+     }
+    },
+    {
+     "sun_pct": 50.2,
+     "longest_night_h": 354,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 425,
+     "grades": {
+      "lander": 61.2,
+      "artemis": 63.7,
+      "night": 54,
+      "rover": 60.1,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 62.6
+     }
+    },
+    {
+     "sun_pct": 50.2,
+     "longest_night_h": 354,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 423,
+     "grades": {
+      "lander": 61.2,
+      "artemis": 63.7,
+      "night": 54,
+      "rover": 60.1,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 62.6
+     }
+    },
+    {
+     "sun_pct": 50.3,
+     "longest_night_h": 352,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.4,
+     "mean_flux_wm2": 425,
+     "grades": {
+      "lander": 61.4,
+      "artemis": 63.9,
+      "night": 54.1,
+      "rover": 60.2,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 62.7
+     }
+    },
+    {
+     "sun_pct": 50.4,
+     "longest_night_h": 352,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.4,
+     "mean_flux_wm2": 431,
+     "grades": {
+      "lander": 61.4,
+      "artemis": 63.9,
+      "night": 54.2,
+      "rover": 60.3,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 62.8
+     }
+    },
+    {
+     "sun_pct": 50.2,
+     "longest_night_h": 354,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 436,
+     "grades": {
+      "lander": 61.2,
+      "artemis": 63.7,
+      "night": 54.1,
+      "rover": 60.1,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 62.6
+     }
+    },
+    {
+     "sun_pct": 50.3,
+     "longest_night_h": 352,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.4,
+     "mean_flux_wm2": 443,
+     "grades": {
+      "lander": 61.4,
+      "artemis": 63.9,
+      "night": 54.3,
+      "rover": 60.2,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 62.7
+     }
+    }
+   ],
+   "best_month": {
+    "lander": 10,
+    "artemis": 10,
+    "night": 12,
+    "rover": 10,
+    "dte": 6,
+    "relay": 10,
+    "ice": 10
+   }
+  },
+  {
+   "id": "apollo-15",
+   "cells": [
+    {
+     "sun_pct": 49.7,
+     "longest_night_h": 358,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.6,
+     "mean_flux_wm2": 522,
+     "grades": {
+      "lander": 60.8,
+      "artemis": 63.3,
+      "night": 54.5,
+      "rover": 59.7,
+      "dte": 92.8,
+      "relay": 85.6,
+      "ice": 62.2
+     }
+    },
+    {
+     "sun_pct": 49.8,
+     "longest_night_h": 356,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 527,
+     "grades": {
+      "lander": 61,
+      "artemis": 63.5,
+      "night": 54.7,
+      "rover": 59.8,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 62.3
+     }
+    },
+    {
+     "sun_pct": 49.9,
+     "longest_night_h": 356,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 524,
+     "grades": {
+      "lander": 61,
+      "artemis": 63.5,
+      "night": 54.7,
+      "rover": 59.9,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 62.4
+     }
+    },
+    {
+     "sun_pct": 50,
+     "longest_night_h": 354,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 518,
+     "grades": {
+      "lander": 61.2,
+      "artemis": 63.7,
+      "night": 54.8,
+      "rover": 60,
+      "dte": 92.9,
+      "relay": 85.7,
+      "ice": 62.5
+     }
+    },
+    {
+     "sun_pct": 50.3,
+     "longest_night_h": 354,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 511,
+     "grades": {
+      "lander": 61.3,
+      "artemis": 63.8,
+      "night": 54.8,
+      "rover": 60.1,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 62.7
+     }
+    },
+    {
+     "sun_pct": 50.6,
+     "longest_night_h": 350,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.7,
+     "mean_flux_wm2": 504,
+     "grades": {
+      "lander": 61.6,
+      "artemis": 64.1,
+      "night": 55.1,
+      "rover": 60.5,
+      "dte": 93,
+      "relay": 85.9,
+      "ice": 62.9
+     }
+    },
+    {
+     "sun_pct": 50.7,
+     "longest_night_h": 350,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.7,
+     "mean_flux_wm2": 499,
+     "grades": {
+      "lander": 61.6,
+      "artemis": 64.1,
+      "night": 55.1,
+      "rover": 60.5,
+      "dte": 93,
+      "relay": 85.9,
+      "ice": 63
+     }
+    },
+    {
+     "sun_pct": 50.7,
+     "longest_night_h": 350,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.7,
+     "mean_flux_wm2": 496,
+     "grades": {
+      "lander": 61.6,
+      "artemis": 64.1,
+      "night": 55,
+      "rover": 60.5,
+      "dte": 93,
+      "relay": 85.9,
+      "ice": 63
+     }
+    },
+    {
+     "sun_pct": 50.5,
+     "longest_night_h": 352,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.4,
+     "mean_flux_wm2": 496,
+     "grades": {
+      "lander": 61.5,
+      "artemis": 63.9,
+      "night": 54.8,
+      "rover": 60.3,
+      "dte": 92.9,
+      "relay": 85.9,
+      "ice": 62.8
+     }
+    },
+    {
+     "sun_pct": 50.4,
+     "longest_night_h": 352,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.4,
+     "mean_flux_wm2": 501,
+     "grades": {
+      "lander": 61.4,
+      "artemis": 63.9,
+      "night": 54.9,
+      "rover": 60.3,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 62.8
+     }
+    },
+    {
+     "sun_pct": 50.1,
+     "longest_night_h": 354,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 508,
+     "grades": {
+      "lander": 61.2,
+      "artemis": 63.7,
+      "night": 54.7,
+      "rover": 60.1,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 62.6
+     }
+    },
+    {
+     "sun_pct": 49.9,
+     "longest_night_h": 356,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 514,
+     "grades": {
+      "lander": 61,
+      "artemis": 63.5,
+      "night": 54.6,
+      "rover": 59.9,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 62.4
+     }
+    },
+    {
+     "sun_pct": 49.7,
+     "longest_night_h": 356,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 521,
+     "grades": {
+      "lander": 61,
+      "artemis": 63.5,
+      "night": 54.6,
+      "rover": 59.8,
+      "dte": 92.8,
+      "relay": 85.6,
+      "ice": 62.3
+     }
+    }
+   ],
+   "best_month": {
+    "lander": 6,
+    "artemis": 6,
+    "night": 5,
+    "rover": 6,
+    "dte": 5,
+    "relay": 6,
+    "ice": 6
+   }
+  },
+  {
+   "id": "apollo-17",
+   "cells": [
+    {
+     "sun_pct": 49.8,
+     "longest_night_h": 326,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 500,
+     "grades": {
+      "lander": 61.4,
+      "artemis": 64.6,
+      "night": 56.5,
+      "rover": 61.5,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 63.4
+     }
+    },
+    {
+     "sun_pct": 50,
+     "longest_night_h": 326,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 505,
+     "grades": {
+      "lander": 61.6,
+      "artemis": 64.7,
+      "night": 56.6,
+      "rover": 61.6,
+      "dte": 92.9,
+      "relay": 85.7,
+      "ice": 63.5
+     }
+    },
+    {
+     "sun_pct": 50.1,
+     "longest_night_h": 328,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 504,
+     "grades": {
+      "lander": 61.6,
+      "artemis": 64.7,
+      "night": 56.5,
+      "rover": 61.5,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 63.5
+     }
+    },
+    {
+     "sun_pct": 50.1,
+     "longest_night_h": 330,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 496,
+     "grades": {
+      "lander": 61.6,
+      "artemis": 64.6,
+      "night": 56.3,
+      "rover": 61.4,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 63.4
+     }
+    },
+    {
+     "sun_pct": 50.3,
+     "longest_night_h": 330,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.4,
+     "mean_flux_wm2": 488,
+     "grades": {
+      "lander": 61.7,
+      "artemis": 64.7,
+      "night": 56.3,
+      "rover": 61.5,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 63.5
+     }
+    },
+    {
+     "sun_pct": 50.3,
+     "longest_night_h": 330,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.4,
+     "mean_flux_wm2": 478,
+     "grades": {
+      "lander": 61.7,
+      "artemis": 64.7,
+      "night": 56.2,
+      "rover": 61.5,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 63.5
+     }
+    },
+    {
+     "sun_pct": 50.2,
+     "longest_night_h": 330,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 470,
+     "grades": {
+      "lander": 61.6,
+      "artemis": 64.7,
+      "night": 56.1,
+      "rover": 61.5,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 63.5
+     }
+    },
+    {
+     "sun_pct": 50.1,
+     "longest_night_h": 328,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 466,
+     "grades": {
+      "lander": 61.6,
+      "artemis": 64.7,
+      "night": 56.2,
+      "rover": 61.5,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 63.5
+     }
+    },
+    {
+     "sun_pct": 50.1,
+     "longest_night_h": 326,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 468,
+     "grades": {
+      "lander": 61.6,
+      "artemis": 64.8,
+      "night": 56.3,
+      "rover": 61.6,
+      "dte": 92.9,
+      "relay": 85.7,
+      "ice": 63.6
+     }
+    },
+    {
+     "sun_pct": 49.9,
+     "longest_night_h": 326,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 472,
+     "grades": {
+      "lander": 61.5,
+      "artemis": 64.7,
+      "night": 56.3,
+      "rover": 61.6,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 63.4
+     }
+    },
+    {
+     "sun_pct": 49.8,
+     "longest_night_h": 324,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 480,
+     "grades": {
+      "lander": 61.5,
+      "artemis": 64.7,
+      "night": 56.5,
+      "rover": 61.6,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 63.5
+     }
+    },
+    {
+     "sun_pct": 49.9,
+     "longest_night_h": 324,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 490,
+     "grades": {
+      "lander": 61.5,
+      "artemis": 64.7,
+      "night": 56.6,
+      "rover": 61.7,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 63.5
+     }
+    },
+    {
+     "sun_pct": 49.8,
+     "longest_night_h": 326,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.6,
+     "mean_flux_wm2": 497,
+     "grades": {
+      "lander": 61.3,
+      "artemis": 64.6,
+      "night": 56.5,
+      "rover": 61.5,
+      "dte": 92.8,
+      "relay": 85.6,
+      "ice": 63.4
+     }
+    }
+   ],
+   "best_month": {
+    "lander": 5,
+    "artemis": 8,
+    "night": 1,
+    "rover": 11,
+    "dte": 4,
+    "relay": 5,
+    "ice": 8
+   }
+  },
+  {
+   "id": "change-4",
+   "cells": [
+    {
+     "sun_pct": 50.9,
+     "longest_night_h": 316,
+     "earth_pct": 0,
+     "longest_no_earth_h": 710,
+     "both_pct": 0,
+     "mean_flux_wm2": 605,
+     "grades": {
+      "lander": 23.1,
+      "artemis": 29,
+      "night": 46,
+      "rover": 42.5,
+      "dte": 0,
+      "relay": 14.5,
+      "ice": 39.3
+     }
+    },
+    {
+     "sun_pct": 50.8,
+     "longest_night_h": 316,
+     "earth_pct": 0,
+     "longest_no_earth_h": 710,
+     "both_pct": 0,
+     "mean_flux_wm2": 611,
+     "grades": {
+      "lander": 23.1,
+      "artemis": 29,
+      "night": 46,
+      "rover": 42.5,
+      "dte": 0,
+      "relay": 14.5,
+      "ice": 39.2
+     }
+    },
+    {
+     "sun_pct": 50.6,
+     "longest_night_h": 314,
+     "earth_pct": 0,
+     "longest_no_earth_h": 710,
+     "both_pct": 0,
+     "mean_flux_wm2": 613,
+     "grades": {
+      "lander": 23,
+      "artemis": 29,
+      "night": 46.1,
+      "rover": 42.5,
+      "dte": 0,
+      "relay": 14.4,
+      "ice": 39.2
+     }
+    },
+    {
+     "sun_pct": 50,
+     "longest_night_h": 314,
+     "earth_pct": 0,
+     "longest_no_earth_h": 710,
+     "both_pct": 0,
+     "mean_flux_wm2": 606,
+     "grades": {
+      "lander": 22.9,
+      "artemis": 28.8,
+      "night": 45.9,
+      "rover": 42.3,
+      "dte": 0,
+      "relay": 14.3,
+      "ice": 38.9
+     }
+    },
+    {
+     "sun_pct": 49.5,
+     "longest_night_h": 316,
+     "earth_pct": 0,
+     "longest_no_earth_h": 710,
+     "both_pct": 0,
+     "mean_flux_wm2": 595,
+     "grades": {
+      "lander": 22.7,
+      "artemis": 28.6,
+      "night": 45.6,
+      "rover": 42,
+      "dte": 0,
+      "relay": 14.2,
+      "ice": 38.6
+     }
+    },
+    {
+     "sun_pct": 49.2,
+     "longest_night_h": 316,
+     "earth_pct": 0,
+     "longest_no_earth_h": 710,
+     "both_pct": 0,
+     "mean_flux_wm2": 583,
+     "grades": {
+      "lander": 22.6,
+      "artemis": 28.5,
+      "night": 45.4,
+      "rover": 41.8,
+      "dte": 0,
+      "relay": 14.1,
+      "ice": 38.4
+     }
+    },
+    {
+     "sun_pct": 49,
+     "longest_night_h": 318,
+     "earth_pct": 0,
+     "longest_no_earth_h": 710,
+     "both_pct": 0,
+     "mean_flux_wm2": 572,
+     "grades": {
+      "lander": 22.4,
+      "artemis": 28.4,
+      "night": 45.1,
+      "rover": 41.6,
+      "dte": 0,
+      "relay": 14,
+      "ice": 38.3
+     }
+    },
+    {
+     "sun_pct": 49,
+     "longest_night_h": 318,
+     "earth_pct": 0,
+     "longest_no_earth_h": 710,
+     "both_pct": 0,
+     "mean_flux_wm2": 565,
+     "grades": {
+      "lander": 22.5,
+      "artemis": 28.4,
+      "night": 45,
+      "rover": 41.7,
+      "dte": 0,
+      "relay": 14,
+      "ice": 38.3
+     }
+    },
+    {
+     "sun_pct": 49.3,
+     "longest_night_h": 318,
+     "earth_pct": 0,
+     "longest_no_earth_h": 710,
+     "both_pct": 0,
+     "mean_flux_wm2": 565,
+     "grades": {
+      "lander": 22.6,
+      "artemis": 28.5,
+      "night": 45.1,
+      "rover": 41.8,
+      "dte": 0,
+      "relay": 14.1,
+      "ice": 38.4
+     }
+    },
+    {
+     "sun_pct": 49.7,
+     "longest_night_h": 318,
+     "earth_pct": 0,
+     "longest_no_earth_h": 710,
+     "both_pct": 0,
+     "mean_flux_wm2": 569,
+     "grades": {
+      "lander": 22.7,
+      "artemis": 28.6,
+      "night": 45.2,
+      "rover": 42,
+      "dte": 0,
+      "relay": 14.2,
+      "ice": 38.7
+     }
+    },
+    {
+     "sun_pct": 50.3,
+     "longest_night_h": 318,
+     "earth_pct": 0,
+     "longest_no_earth_h": 710,
+     "both_pct": 0,
+     "mean_flux_wm2": 578,
+     "grades": {
+      "lander": 22.9,
+      "artemis": 28.7,
+      "night": 45.4,
+      "rover": 42.2,
+      "dte": 0,
+      "relay": 14.4,
+      "ice": 38.9
+     }
+    },
+    {
+     "sun_pct": 50.6,
+     "longest_night_h": 318,
+     "earth_pct": 0,
+     "longest_no_earth_h": 710,
+     "both_pct": 0,
+     "mean_flux_wm2": 589,
+     "grades": {
+      "lander": 23,
+      "artemis": 28.8,
+      "night": 45.6,
+      "rover": 42.3,
+      "dte": 0,
+      "relay": 14.5,
+      "ice": 39.1
+     }
+    },
+    {
+     "sun_pct": 50.8,
+     "longest_night_h": 318,
+     "earth_pct": 0,
+     "longest_no_earth_h": 710,
+     "both_pct": 0,
+     "mean_flux_wm2": 601,
+     "grades": {
+      "lander": 23.1,
+      "artemis": 28.9,
+      "night": 45.8,
+      "rover": 42.4,
+      "dte": 0,
+      "relay": 14.5,
+      "ice": 39.2
+     }
+    }
+   ],
+   "best_month": {
+    "lander": 0,
+    "artemis": 0,
+    "night": 2,
+    "rover": 0,
+    "dte": 0,
+    "relay": 0,
+    "ice": 0
+   }
+  },
+  {
+   "id": "change-5",
+   "cells": [
+    {
+     "sun_pct": 49.3,
+     "longest_night_h": 360,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.3,
+     "mean_flux_wm2": 588,
+     "grades": {
+      "lander": 60.6,
+      "artemis": 63.1,
+      "night": 54.8,
+      "rover": 59.4,
+      "dte": 92.8,
+      "relay": 85.5,
+      "ice": 62
+     }
+    },
+    {
+     "sun_pct": 49.3,
+     "longest_night_h": 360,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.3,
+     "mean_flux_wm2": 592,
+     "grades": {
+      "lander": 60.6,
+      "artemis": 63.1,
+      "night": 54.9,
+      "rover": 59.4,
+      "dte": 92.8,
+      "relay": 85.5,
+      "ice": 62
+     }
+    },
+    {
+     "sun_pct": 49.7,
+     "longest_night_h": 358,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.6,
+     "mean_flux_wm2": 594,
+     "grades": {
+      "lander": 60.8,
+      "artemis": 63.3,
+      "night": 55.1,
+      "rover": 59.7,
+      "dte": 92.8,
+      "relay": 85.6,
+      "ice": 62.2
+     }
+    },
+    {
+     "sun_pct": 50.1,
+     "longest_night_h": 354,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 592,
+     "grades": {
+      "lander": 61.2,
+      "artemis": 63.7,
+      "night": 55.5,
+      "rover": 60.1,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 62.6
+     }
+    },
+    {
+     "sun_pct": 50.5,
+     "longest_night_h": 352,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.4,
+     "mean_flux_wm2": 586,
+     "grades": {
+      "lander": 61.5,
+      "artemis": 64,
+      "night": 55.7,
+      "rover": 60.3,
+      "dte": 92.9,
+      "relay": 85.9,
+      "ice": 62.9
+     }
+    },
+    {
+     "sun_pct": 50.9,
+     "longest_night_h": 348,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 51,
+     "mean_flux_wm2": 578,
+     "grades": {
+      "lander": 61.8,
+      "artemis": 64.3,
+      "night": 56,
+      "rover": 60.7,
+      "dte": 93,
+      "relay": 86,
+      "ice": 63.2
+     }
+    },
+    {
+     "sun_pct": 51,
+     "longest_night_h": 348,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 51,
+     "mean_flux_wm2": 571,
+     "grades": {
+      "lander": 61.9,
+      "artemis": 64.3,
+      "night": 56,
+      "rover": 60.8,
+      "dte": 93,
+      "relay": 86,
+      "ice": 63.2
+     }
+    },
+    {
+     "sun_pct": 51,
+     "longest_night_h": 348,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 51,
+     "mean_flux_wm2": 565,
+     "grades": {
+      "lander": 61.9,
+      "artemis": 64.3,
+      "night": 55.9,
+      "rover": 60.8,
+      "dte": 93,
+      "relay": 86,
+      "ice": 63.2
+     }
+    },
+    {
+     "sun_pct": 50.7,
+     "longest_night_h": 350,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.7,
+     "mean_flux_wm2": 563,
+     "grades": {
+      "lander": 61.6,
+      "artemis": 64.1,
+      "night": 55.7,
+      "rover": 60.5,
+      "dte": 93,
+      "relay": 85.9,
+      "ice": 63
+     }
+    },
+    {
+     "sun_pct": 50.3,
+     "longest_night_h": 352,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.4,
+     "mean_flux_wm2": 565,
+     "grades": {
+      "lander": 61.4,
+      "artemis": 63.9,
+      "night": 55.4,
+      "rover": 60.3,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 62.7
+     }
+    },
+    {
+     "sun_pct": 49.8,
+     "longest_night_h": 356,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 569,
+     "grades": {
+      "lander": 61,
+      "artemis": 63.5,
+      "night": 55.1,
+      "rover": 59.8,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 62.4
+     }
+    },
+    {
+     "sun_pct": 49.5,
+     "longest_night_h": 360,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.3,
+     "mean_flux_wm2": 576,
+     "grades": {
+      "lander": 60.6,
+      "artemis": 63.1,
+      "night": 54.8,
+      "rover": 59.5,
+      "dte": 92.8,
+      "relay": 85.6,
+      "ice": 62
+     }
+    },
+    {
+     "sun_pct": 49.3,
+     "longest_night_h": 360,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.3,
+     "mean_flux_wm2": 584,
+     "grades": {
+      "lander": 60.6,
+      "artemis": 63.1,
+      "night": 54.8,
+      "rover": 59.4,
+      "dte": 92.8,
+      "relay": 85.5,
+      "ice": 61.9
+     }
+    }
+   ],
+   "best_month": {
+    "lander": 6,
+    "artemis": 6,
+    "night": 5,
+    "rover": 6,
+    "dte": 5,
+    "relay": 6,
+    "ice": 6
+   }
+  },
+  {
+   "id": "slim",
+   "cells": [
+    {
+     "sun_pct": 50.4,
+     "longest_night_h": 334,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.4,
+     "mean_flux_wm2": 471,
+     "grades": {
+      "lander": 61.7,
+      "artemis": 64.6,
+      "night": 55.9,
+      "rover": 61.3,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 63.4
+     }
+    },
+    {
+     "sun_pct": 50.4,
+     "longest_night_h": 336,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.4,
+     "mean_flux_wm2": 475,
+     "grades": {
+      "lander": 61.7,
+      "artemis": 64.5,
+      "night": 55.8,
+      "rover": 61.2,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 63.4
+     }
+    },
+    {
+     "sun_pct": 50.3,
+     "longest_night_h": 338,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.4,
+     "mean_flux_wm2": 476,
+     "grades": {
+      "lander": 61.6,
+      "artemis": 64.4,
+      "night": 55.6,
+      "rover": 61,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 63.2
+     }
+    },
+    {
+     "sun_pct": 50.1,
+     "longest_night_h": 340,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 473,
+     "grades": {
+      "lander": 61.4,
+      "artemis": 64.3,
+      "night": 55.4,
+      "rover": 60.9,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 63.1
+     }
+    },
+    {
+     "sun_pct": 49.9,
+     "longest_night_h": 342,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 465,
+     "grades": {
+      "lander": 61.2,
+      "artemis": 64,
+      "night": 55.1,
+      "rover": 60.6,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 62.9
+     }
+    },
+    {
+     "sun_pct": 49.9,
+     "longest_night_h": 342,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 459,
+     "grades": {
+      "lander": 61.2,
+      "artemis": 64,
+      "night": 55.1,
+      "rover": 60.6,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 62.9
+     }
+    },
+    {
+     "sun_pct": 49.7,
+     "longest_night_h": 342,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 451,
+     "grades": {
+      "lander": 61.2,
+      "artemis": 64,
+      "night": 54.9,
+      "rover": 60.6,
+      "dte": 92.8,
+      "relay": 85.6,
+      "ice": 62.8
+     }
+    },
+    {
+     "sun_pct": 49.9,
+     "longest_night_h": 340,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 448,
+     "grades": {
+      "lander": 61.2,
+      "artemis": 64.1,
+      "night": 55.1,
+      "rover": 60.8,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 62.9
+     }
+    },
+    {
+     "sun_pct": 49.9,
+     "longest_night_h": 338,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 445,
+     "grades": {
+      "lander": 61.3,
+      "artemis": 64.2,
+      "night": 55.2,
+      "rover": 60.9,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 63
+     }
+    },
+    {
+     "sun_pct": 50,
+     "longest_night_h": 336,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 447,
+     "grades": {
+      "lander": 61.3,
+      "artemis": 64.3,
+      "night": 55.4,
+      "rover": 61,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 63.1
+     }
+    },
+    {
+     "sun_pct": 50.1,
+     "longest_night_h": 334,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 452,
+     "grades": {
+      "lander": 61.5,
+      "artemis": 64.5,
+      "night": 55.6,
+      "rover": 61.2,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 63.3
+     }
+    },
+    {
+     "sun_pct": 50.1,
+     "longest_night_h": 334,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 458,
+     "grades": {
+      "lander": 61.5,
+      "artemis": 64.5,
+      "night": 55.7,
+      "rover": 61.2,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 63.3
+     }
+    },
+    {
+     "sun_pct": 50.4,
+     "longest_night_h": 334,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.4,
+     "mean_flux_wm2": 468,
+     "grades": {
+      "lander": 61.7,
+      "artemis": 64.6,
+      "night": 55.8,
+      "rover": 61.3,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 63.4
+     }
+    }
+   ],
+   "best_month": {
+    "lander": 0,
+    "artemis": 0,
+    "night": 0,
+    "rover": 0,
+    "dte": 0,
+    "relay": 0,
+    "ice": 0
+   }
+  },
+  {
+   "id": "blue-ghost-1",
+   "cells": [
+    {
+     "sun_pct": 49.9,
+     "longest_night_h": 264,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 495,
+     "grades": {
+      "lander": 62.4,
+      "artemis": 67,
+      "night": 60.9,
+      "rover": 65,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 65.6
+     }
+    },
+    {
+     "sun_pct": 49.9,
+     "longest_night_h": 266,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 498,
+     "grades": {
+      "lander": 62.4,
+      "artemis": 67,
+      "night": 60.8,
+      "rover": 64.9,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 65.5
+     }
+    },
+    {
+     "sun_pct": 49.9,
+     "longest_night_h": 268,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 496,
+     "grades": {
+      "lander": 62.4,
+      "artemis": 66.9,
+      "night": 60.6,
+      "rover": 64.9,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 65.5
+     }
+    },
+    {
+     "sun_pct": 50.1,
+     "longest_night_h": 268,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 491,
+     "grades": {
+      "lander": 62.6,
+      "artemis": 67,
+      "night": 60.6,
+      "rover": 64.9,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 65.6
+     }
+    },
+    {
+     "sun_pct": 50.3,
+     "longest_night_h": 270,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 483,
+     "grades": {
+      "lander": 62.6,
+      "artemis": 67,
+      "night": 60.4,
+      "rover": 64.9,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 65.6
+     }
+    },
+    {
+     "sun_pct": 50.3,
+     "longest_night_h": 270,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 473,
+     "grades": {
+      "lander": 62.6,
+      "artemis": 67,
+      "night": 60.4,
+      "rover": 64.9,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 65.6
+     }
+    },
+    {
+     "sun_pct": 50.2,
+     "longest_night_h": 268,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 50.1,
+     "mean_flux_wm2": 465,
+     "grades": {
+      "lander": 62.6,
+      "artemis": 67,
+      "night": 60.4,
+      "rover": 65,
+      "dte": 92.9,
+      "relay": 85.8,
+      "ice": 65.7
+     }
+    },
+    {
+     "sun_pct": 50.1,
+     "longest_night_h": 268,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 460,
+     "grades": {
+      "lander": 62.4,
+      "artemis": 67,
+      "night": 60.3,
+      "rover": 64.9,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 65.6
+     }
+    },
+    {
+     "sun_pct": 49.9,
+     "longest_night_h": 266,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 460,
+     "grades": {
+      "lander": 62.4,
+      "artemis": 67,
+      "night": 60.4,
+      "rover": 64.9,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 65.6
+     }
+    },
+    {
+     "sun_pct": 49.9,
+     "longest_night_h": 264,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 465,
+     "grades": {
+      "lander": 62.4,
+      "artemis": 67,
+      "night": 60.6,
+      "rover": 65,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 65.6
+     }
+    },
+    {
+     "sun_pct": 49.7,
+     "longest_night_h": 264,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.6,
+     "mean_flux_wm2": 472,
+     "grades": {
+      "lander": 62.3,
+      "artemis": 67,
+      "night": 60.6,
+      "rover": 65,
+      "dte": 92.8,
+      "relay": 85.6,
+      "ice": 65.5
+     }
+    },
+    {
+     "sun_pct": 49.6,
+     "longest_night_h": 264,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.6,
+     "mean_flux_wm2": 481,
+     "grades": {
+      "lander": 62.3,
+      "artemis": 66.9,
+      "night": 60.7,
+      "rover": 65,
+      "dte": 92.8,
+      "relay": 85.6,
+      "ice": 65.5
+     }
+    },
+    {
+     "sun_pct": 49.8,
+     "longest_night_h": 264,
+     "earth_pct": 100,
+     "longest_no_earth_h": 0,
+     "both_pct": 49.9,
+     "mean_flux_wm2": 492,
+     "grades": {
+      "lander": 62.4,
+      "artemis": 67,
+      "night": 60.8,
+      "rover": 65,
+      "dte": 92.8,
+      "relay": 85.7,
+      "ice": 65.6
+     }
+    }
+   ],
+   "best_month": {
+    "lander": 6,
+    "artemis": 0,
+    "night": 0,
+    "rover": 0,
+    "dte": 3,
+    "relay": 5,
+    "ice": 6
    }
   }
  ]

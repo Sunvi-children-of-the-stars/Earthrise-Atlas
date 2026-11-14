@@ -343,3 +343,53 @@ machine (`npm run validate-ephemeris`, `npm run mission-report`).
 - Mentions « membre 1 » retirées du code et du pied de page.
 - **Vérifié dans le navigateur :** badge « JPL Horizons (DE440) », panneaux « Bilan » et
   « Choisir la date », relais LRO inchangé (53 %), aucune erreur dans la console.
+
+## T1 et T2 (faits par nous, à la place d'Elge)
+
+### T2. Nouveaux sites de référence ✅
+
+7 sites ajoutés dans `scripts/build_sites.py`, soit **14 sites** au total. Ce sont tous des
+atterrissages réussis. Les coordonnées ont été vérifiées sur les fiches des missions, elles-mêmes
+sourcées par la NASA, la CNSA, la JAXA et Firefly :
+
+| Site | Mission | Coordonnées | Intérêt |
+|---|---|---|---|
+| Apollo 12 | NASA, 1969 | 3,012°S, 23,422°O | Équateur, face visible |
+| Apollo 15 | NASA, 1971 | 26,132°N, 3,634°E | Premier rover |
+| Apollo 17 | NASA, 1972 | 20,191°N, 30,772°E | Dernier alunissage habité |
+| Chang'e-4 | CNSA, 2019 | 45,444°S, 177,599°E | Face cachée : jamais la Terre, relais Queqiao obligatoire |
+| Chang'e-5 | CNSA, 2020 | 43,058°N, 51,916°O | Site le plus au nord |
+| SLIM | JAXA, 2024 | 13,316°S, 25,251°E | Atterrissage de précision |
+| Blue Ghost M1 | Firefly (CLPS), 2025 | 18,56°N, 61,81°E | Premier succès commercial complet |
+
+Hors des régions polaires (au nord de 75°S), l'outil n'a pas de relief et calcule un horizon
+lisse. Les fiches le disent : aucune ne prétend que le relief masque le ciel. Le calendrier a
+été régénéré (14 sites × 13 mois, en 0,9 s).
+
+### T1. Tests automatiques ✅
+
+- **Vitest 3.2.4** (version publiée il y a plus de 2 semaines, compatible avec Vite 5).
+  Commande : **`npm test`**, dans `app/`.
+- **50 tests en 1,5 s**, dans 11 fichiers placés à côté du code (`*.test.ts`). Ils sont exclus
+  du typage de l'application et du build. Les tests lisent les **vraies données** du projet
+  (`src/test/data.ts`) ou des régions synthétiques construites à la main
+  (`src/test/region.ts`).
+
+| Fichier | Ce qui est vérifié |
+|---|---|
+| `astro/ephemeris.test.ts` | Période de la table Horizons (époques en TDB) ; écart séries/table dans les limites validées ; distances Terre et Soleil ; déclinaison du Soleil ≤ 1,6° ; librations de la Terre ; Terre haute à Apollo 11, rasante au pôle |
+| `astro/analysis.test.ts` | Fenêtres, pourcentages, plus longue nuit, temps avant changement, flux en 1/d², verdict de fiabilité ; **non-régression** sur les 3 sites candidats ; Soleil environ 50 % à l'équateur |
+| `astro/budget.test.ts` | **Bilan de liaison calculé à la main** (gain 30,3 dBi, perte 222,7 dB, C/N0 82,2 dBHz, marge) ; débit en 1/d² ; puissance des panneaux ; batterie nécessaire pour une nuit ; volume de données |
+| `astro/relay.test.ts` | Non-régression LRO (12,3 passages par jour, coupure < 2 h au lieu de 13 jours) ; hors période ; orbite dans le repère lunaire ; couverture du modèle Gateway |
+| `astro/landing.test.ts` | Plus d'ex aequo ; dates infaisables jamais classées ; une date par demi-mois ; balayage réel à Malapert |
+| `astro/calendar.test.ts` | Note par profil ; 13 mois ; Chang'e-6 ne voit jamais la Terre |
+| `optim/score.test.ts` | Tous les profils complets ; moyenne pondérée ; contraintes ; critères « courts » ; relais sans orbite ; critères Diviner ; extraction des zones |
+| `optim/neighborhood.test.ts`, `delay.test.ts`, `rover.test.ts` | Voisinage et transect ; verdict et alternatives après un retard ; saisons de Mons Mouton ; contournement d'un mur, absence de route, ombres évitées, cible « nuit courte » |
+| `share.test.ts` | Lien partageable |
+
+- **Les tests attrapent les bugs** : j'ai remis volontairement deux bugs (l'ancienne échelle
+  de tolérance au retard, et l'oubli du repère lunaire pour les relais). Chaque fois, un test
+  a échoué.
+- En écrivant les tests, trois de mes calculs « à la main » se sont révélés faux, pas le code
+  testé : époque TDB de la table, marge radio de 16,7 dB, volume de 5,4 Go. Les tests portent
+  les valeurs corrigées, avec le calcul détaillé en commentaire.

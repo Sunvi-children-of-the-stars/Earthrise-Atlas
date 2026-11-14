@@ -14,7 +14,8 @@
     "calendar": "esbuild scripts/build-calendar.ts --bundle --platform=node --format=esm --log-level=warning --outfile=node_modules/.cache/build-calendar.mjs && node node_modules/.cache/build-calendar.mjs",
     "validate-ephemeris": "esbuild scripts/validate-ephemeris.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/validate-ephemeris.mjs --log-level=warning && node node_modules/.cache/validate-ephemeris.mjs",
     "mission-report": "esbuild scripts/mission-report.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/mission-report.mjs --log-level=warning && node node_modules/.cache/mission-report.mjs",
-    "validate-lola": "esbuild scripts/validate-lola.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/validate-lola.mjs --log-level=warning && node node_modules/.cache/validate-lola.mjs"
+    "validate-lola": "esbuild scripts/validate-lola.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/validate-lola.mjs --log-level=warning && node node_modules/.cache/validate-lola.mjs",
+    "test": "vitest run"
   },
   "dependencies": {
     "react": "18.3.1",
@@ -25,6 +26,7 @@
     "@types/react-dom": "18.3.1",
     "@vitejs/plugin-react": "4.3.4",
     "typescript": "5.6.3",
-    "vite": "5.4.11"
+    "vite": "5.4.11",
+    "vitest": "3.2.4"
   }
 }

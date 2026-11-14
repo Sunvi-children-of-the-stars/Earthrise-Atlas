@@ -116,6 +116,85 @@ SITES = [
         "lat": 0.67408, "lon": 23.47297,
         "refs": ["https://www.lpi.usra.edu/lunar/missions/apollo/apollo_11/landing_site/"],
     },
+    # Sites de référence ajoutés le 14/11/2026 (coordonnées vérifiées sur les fiches des missions,
+    # elles-mêmes sourcées par la NASA, la CNSA, la JAXA et Firefly).
+    {
+        "id": "apollo-12",
+        "name": "Océan des Tempêtes – Apollo 12",
+        "short": "Apollo 12",
+        "category": "reference",
+        "region": "Équateur, face visible",
+        "context": "Deuxième alunissage habité (19 novembre 1969), à 180 m de la sonde Surveyor 3. "
+                   "Proche de l'équateur : jours et nuits d'environ 14,8 jours.",
+        "lat": -3.01239, "lon": -23.42157,
+        "refs": ["https://en.wikipedia.org/wiki/Apollo_12", "https://www.lpi.usra.edu/lunar/missions/apollo/apollo_12/landing_site/"],
+    },
+    {
+        "id": "apollo-15",
+        "name": "Hadley-Apennin – Apollo 15",
+        "short": "Apollo 15",
+        "category": "reference",
+        "region": "Latitudes moyennes nord, face visible",
+        "context": "Premier rover lunaire (30 juillet 1971), au pied des Apennins. Hors des "
+                   "régions polaires, l'outil calcule un horizon lisse, sans relief.",
+        "lat": 26.1322, "lon": 3.6339,
+        "refs": ["https://en.wikipedia.org/wiki/Apollo_15", "https://www.lpi.usra.edu/lunar/missions/apollo/apollo_15/landing_site/"],
+    },
+    {
+        "id": "apollo-17",
+        "name": "Taurus-Littrow – Apollo 17",
+        "short": "Apollo 17",
+        "category": "reference",
+        "region": "Latitudes moyennes nord, face visible",
+        "context": "Dernier alunissage habité à ce jour (11 décembre 1972), dans la vallée de "
+                   "Taurus-Littrow. Horizon lisse : le relief n'est modélisé qu'au sud de 75°S.",
+        "lat": 20.1908, "lon": 30.7717,
+        "refs": ["https://en.wikipedia.org/wiki/Apollo_17", "https://www.lpi.usra.edu/lunar/missions/apollo/apollo_17/landing_site/"],
+    },
+    {
+        "id": "change-4",
+        "name": "Cratère Von Kármán – Chang'e-4",
+        "short": "Chang'e-4",
+        "category": "reference",
+        "region": "Face cachée, bassin Pôle Sud-Aitken",
+        "context": "Premier atterrissage sur la face cachée (3 janvier 2019, CNSA). La Terre n'y est "
+                   "jamais visible : toutes les communications passent par le relais Queqiao.",
+        "lat": -45.444, "lon": 177.599,
+        "refs": ["https://en.wikipedia.org/wiki/Chang%27e_4"],
+    },
+    {
+        "id": "change-5",
+        "name": "Mons Rümker – Chang'e-5",
+        "short": "Chang'e-5",
+        "category": "reference",
+        "region": "Océan des Tempêtes, face visible",
+        "context": "Retour d'échantillons de la CNSA (1er décembre 2020), le plus au nord des "
+                   "sites étudiés ici.",
+        "lat": 43.0576, "lon": -51.9161,
+        "refs": ["https://en.wikipedia.org/wiki/Chang%27e_5"],
+    },
+    {
+        "id": "slim",
+        "name": "Près du cratère Shioli – SLIM",
+        "short": "SLIM",
+        "category": "reference",
+        "region": "Mer du Nectar, face visible",
+        "context": "Atterrissage de précision de la JAXA (19 janvier 2024), à moins de 100 m de la "
+                   "cible. Posée sur le flanc, la sonde a survécu à plusieurs nuits lunaires.",
+        "lat": -13.3160, "lon": 25.2510,
+        "refs": ["https://en.wikipedia.org/wiki/Smart_Lander_for_Investigating_Moon"],
+    },
+    {
+        "id": "blue-ghost-1",
+        "name": "Mare Crisium – Blue Ghost M1",
+        "short": "Blue Ghost 1",
+        "category": "reference",
+        "region": "Mer des Crises, face visible",
+        "context": "Atterrisseur CLPS de Firefly (2 mars 2025), premier atterrissage commercial "
+                   "entièrement réussi. Mission d'un jour lunaire, terminée à la tombée de la nuit.",
+        "lat": 18.56, "lon": 61.81,
+        "refs": ["https://en.wikipedia.org/wiki/Blue_Ghost_Mission_1"],
+    },
 ]
 
 
