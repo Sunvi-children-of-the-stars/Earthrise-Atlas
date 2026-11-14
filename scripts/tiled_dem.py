@@ -17,6 +17,10 @@ RASTERS = {  # résolution -> (fichier, côté en pixels, offset de projection)
     20: ("ldem_85s_20m.img", 15168, 7583.5),
     120: ("ldem_75s_120m.img", 7624, 3811.5),
 }
+# Relief 20 m étendu jusqu'à 80°S (LDEM_80S_20M, 1,85 Go) : utilisé à la place de LDEM_85S_20M
+# s'il a été téléchargé (mêmes données LOLA, même grille, emprise 4 fois plus grande).
+if (DEM_DIR / "ldem_80s_20m.img").exists():
+    RASTERS[20] = ("ldem_80s_20m.img", 30400, 15199.5)
 
 
 class Raster:

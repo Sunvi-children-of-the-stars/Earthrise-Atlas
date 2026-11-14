@@ -4,7 +4,11 @@ import { xyToLatLon } from "../astro/horizon";
 export interface RegionMeta {
   id: string; name: string; pixel_m: number; width: number; height: number;
   x_min_m: number; y_max_m: number; n_az: number; az_step_deg: number; observer_height_m: number;
-  files: { horizon: string; elevation: string; slope_mean: string; slope_max: string; psr?: string; sunmax?: string };
+  files: {
+    horizon: string; elevation: string; slope_mean: string; slope_max: string; psr?: string; sunmax?: string;
+    /** Diviner (scripts/build_diviner.py): tenths of K, tenths of K, cm (−1 = no stable ice within 2.87 m). */
+    tavg?: string; tmax?: string; icedepth?: string;
+  };
 }
 
 export interface RegionData {
@@ -15,6 +19,11 @@ export interface RegionData {
   slopeMax: Int16Array;
   psr: Uint8Array;         // 1 = permanently shadowed (empty if not computed)
   psrDistKm: Float32Array; // distance to the nearest permanently shadowed pixel (km; Infinity if none)
+  /** Diviner (empty if not computed): annual mean temperature at 2 cm and annual max (tenths of K),
+   *  depth of stable water ice (cm; −1 = unstable down to 2.87 m). */
+  tAvg: Int16Array;
+  tMax: Int16Array;
+  iceDepth: Int16Array;
 }
 
 export interface RegionIndexEntry { id: string; name: string; file: string }
@@ -60,14 +69,16 @@ export async function loadRegion(baseUrl: string, file: string, withHorizon = tr
   if (!metaResp.ok) throw new Error(`région ${file} introuvable`);
   const meta: RegionMeta = await metaResp.json();
   const get = async (f: string) => new Int16Array(await (await fetch(`${baseUrl}${f}`)).arrayBuffer());
-  const [hz, elev, slopeMean, slopeMax, psrBuf] = await Promise.all([
+  const opt = (f?: string) => (f ? get(f).catch(() => new Int16Array(0)) : Promise.resolve(new Int16Array(0)));
+  const [hz, elev, slopeMean, slopeMax, psrBuf, tAvg, tMax, iceDepth] = await Promise.all([
     withHorizon ? get(meta.files.horizon) : Promise.resolve(new Int16Array(0)),
     get(meta.files.elevation), get(meta.files.slope_mean), get(meta.files.slope_max),
     meta.files.psr ? fetch(`${baseUrl}${meta.files.psr}`).then((r) => r.arrayBuffer()) : Promise.resolve(new ArrayBuffer(0)),
+    opt(meta.files.tavg), opt(meta.files.tmax), opt(meta.files.icedepth),
   ]);
   const psr = new Uint8Array(psrBuf);
   const psrDistKm = withHorizon ? new Float32Array(0) : distanceTransform(psr, meta.width, meta.height, meta.pixel_m / 1000);
-  return { meta, hz, elev, slopeMean, slopeMax, psr, psrDistKm };
+  return { meta, hz, elev, slopeMean, slopeMax, psr, psrDistKm, tAvg, tMax, iceDepth };
 }
 
 /** Pixel center (col, row) → stereographic x, y (m). */

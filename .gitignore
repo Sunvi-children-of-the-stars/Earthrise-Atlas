@@ -7,3 +7,6 @@ dist/
 app/public/data/
 data/dem/tiles/
 data/horizon_maps/
+.playwright-mcp/
+data/dem/*.part
+data/diviner/

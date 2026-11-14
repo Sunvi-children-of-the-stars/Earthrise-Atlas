@@ -312,7 +312,7 @@ export default function App() {
 
         <footer>
           Relief : NASA LRO / LOLA (LDEM_75S_120M). Éphémérides : séries de l'Astronomical Almanac et
-          modèle d'orientation IAU, en attendant les fichiers JPL Horizons du membre 1. Le Soleil est
+          modèle d'orientation IAU, validés contre JPL Horizons (écart ≤ 0,2°). Le Soleil est
           compté visible quand plus de la moitié de son disque dépasse l'horizon ; la Terre, quand son
           centre le dépasse. Toutes les heures sont en UTC.
         </footer>

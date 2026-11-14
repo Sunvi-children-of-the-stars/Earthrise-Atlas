@@ -10,8 +10,32 @@
       "psr_pct": 1.4
     },
     "mons-mouton": {
-      "psr_area_km2": 61.5,
+      "psr_area_km2": 62.4,
       "psr_pct": 2.5
+    },
+    "nobile-amundsen": {
+      "psr_area_km2": 370.0,
+      "psr_pct": 10.3
+    },
+    "nobile-1": {
+      "psr_area_km2": 13.2,
+      "psr_pct": 1.5
+    },
+    "haworth": {
+      "psr_area_km2": 20.6,
+      "psr_pct": 1.3
+    },
+    "faustini": {
+      "psr_area_km2": 141.8,
+      "psr_pct": 15.8
+    },
+    "de-gerlache-2": {
+      "psr_area_km2": 25.6,
+      "psr_pct": 2.8
+    },
+    "gerlache-kocher": {
+      "psr_area_km2": 14.0,
+      "psr_pct": 1.6
     }
   },
   "sites": {

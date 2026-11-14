@@ -6,7 +6,8 @@ Pour chaque site :
   * obstacles principaux (secteurs où le relief masque le ciel) ;
   * pré-indicateurs d'éclairement / visibilité Terre calculés avec un modèle orbital
     SIMPLIFIÉ, destinés uniquement à valider les masques. Les valeurs de référence
-    viendront des éphémérides JPL Horizons (membre 1) et de l'analyse du membre 4.
+    sont celles de l'application (éphémérides intégrées, validées contre JPL Horizons :
+    voir docs/decision_ephemerides.md).
 
 Usage :  .venv/Scripts/python scripts/build_sites.py
 """
@@ -18,9 +19,11 @@ from pathlib import Path
 import numpy as np
 
 import lunar_dem as ld
-from tiled_dem import Raster
+from tiled_dem import RASTERS, Raster
 
 ROOT = Path(__file__).resolve().parent.parent
+SRC20 = RASTERS[20][0].split(".")[0].upper()          # LDEM_80S_20M si installé, sinon LDEM_85S_20M
+SRC20_LIMIT = 80 if SRC20 == "LDEM_80S_20M" else 85
 OUT_SITES = ROOT / "data" / "sites"
 OUT_HZ = ROOT / "data" / "horizons"
 OUT_PREVIEW = ROOT / "data" / "dem" / "preview"
@@ -377,7 +380,7 @@ def pre_indicators(h_site, hz, tr):
     earth_vis = e_alt > _hz_interp(hz, e_az)
     return {
         "_note": "Modèle orbital simplifié (Soleil et Terre ponctuels, librations sinusoïdales). "
-                 "Sert à valider les masques d'horizon ; à remplacer par JPL Horizons (membre 1).",
+                 "Sert à valider les masques d'horizon ; les valeurs de référence sont celles de l'application (éphémérides intégrées).",
         "sun_elev_max_deg": round(float(s_alt.max()), 2),
         "sun_illumination_pct_terrain": round(100 * float(sun_vis.mean()), 1),
         "sun_illumination_pct_no_terrain": round(100 * float((s_alt > dip).mean()), 1),
@@ -437,7 +440,7 @@ def main():
             site["elevation_res_m"] = R.res
             site["terrain"] = terrain_stats(rasters, lat, lon)
             hz = horizon_mask(rasters, lat, lon, h)
-            site["horizon_source"] = ("LOLA LDEM_85S_20M (< 25 km) + LDEM_75S_120M (au-delà)"
+            site["horizon_source"] = (f"LOLA {SRC20} (< 25 km) + LDEM_75S_120M (au-delà)"
                                       if R.res == 20 else "LOLA LDEM_75S_120M")
         else:
             h = 0.0
@@ -486,7 +489,7 @@ def main():
 
     out = {
         "generated": date.today().isoformat(),
-        "dem": {"products": ["LOLA LDEM_85S_20M (relief proche < 25 km, sites au sud de ~85°S)",
+        "dem": {"products": [f"LOLA {SRC20} (relief proche < 25 km, sites au sud de ~{SRC20_LIMIT}°S)",
                              "LOLA LDEM_75S_120M (relief lointain et sites jusqu'à 75°S)"],
                 "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/polar/img/",
                 "height_reference": "rayon - 1 737 400 m"},

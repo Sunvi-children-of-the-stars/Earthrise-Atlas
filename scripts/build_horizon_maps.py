@@ -29,7 +29,7 @@ from pathlib import Path
 import numpy as np
 
 import lunar_dem as ld
-from tiled_dem import Raster
+from tiled_dem import RASTERS, Raster
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "horizon_maps"
@@ -53,6 +53,21 @@ REGIONS = [
      "center_latlon": (-85.98795, 2.05767), "half_m": 25_000.0},
     {"id": "mons-mouton", "name": "Mons Mouton (IM-2)",
      "center_latlon": (-84.7906, 29.1957), "half_m": 25_000.0},
+    # Régions candidates Artemis III (liste NASA 2022) absentes des régions ci-dessus. Centres :
+    # centroïdes des contours de data/sites/artemis3_regions_2022.geojson ; marge de ~5 km autour
+    # des contours de 20 × 20 km. Entre 84 et 85°S, il faut LDEM_80S_20M pour le relief à 20 m.
+    {"id": "nobile-amundsen", "name": "Nobile Rim 2 et Amundsen Rim (Artemis III)",
+     "center_xy": (158_500.0, 80_000.0), "half_m": 30_000.0},
+    {"id": "nobile-1", "name": "Nobile Rim 1 (Artemis III)",
+     "center_xy": (82_000.0, 112_000.0), "half_m": 15_000.0},
+    {"id": "haworth", "name": "Haworth (Artemis III)",
+     "center_xy": (-41_000.0, 93_600.0), "half_m": 20_000.0},
+    {"id": "faustini", "name": "Faustini Rim A (Artemis III)",
+     "center_xy": (62_000.0, 2_000.0), "half_m": 15_000.0},
+    {"id": "de-gerlache-2", "name": "de Gerlache Rim 2 (Artemis III)",
+     "center_xy": (-50_600.0, 25_000.0), "half_m": 15_000.0},
+    {"id": "gerlache-kocher", "name": "Massif de Gerlache-Kocher (Artemis III)",
+     "center_xy": (-115_400.0, -54_200.0), "half_m": 15_000.0},
 ]
 
 
@@ -213,7 +228,7 @@ def build(region, rasters):
                   "slope_mean": f"{rid}.slope_mean.i16", "slope_max": f"{rid}.slope_max.i16"},
         "encoding": {"horizon": "int16, centièmes de degré, [ligne][colonne][azimut]",
                      "elevation": "int16, m", "slope": "int16, dixièmes de degré"},
-        "relief": "LOLA LDEM_85S_20M (proche, pentes) + LDEM_75S_120M (lointain)",
+        "relief": f"LOLA {RASTERS[20][0].split('.')[0].upper()} (proche, pentes) + LDEM_75S_120M (lointain)",
         "seconds": round(time.time() - t0),
     }
     (OUT / f"{rid}.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False), encoding="utf-8")
@@ -221,7 +236,20 @@ def build(region, rasters):
     return meta
 
 
+def write_index():
+    """index.json : régions déjà calculées, dans l'ordre de REGIONS."""
+    index = [json.loads((OUT / f"{r['id']}.json").read_text(encoding="utf-8"))
+             for r in REGIONS if (OUT / f"{r['id']}.json").exists()]
+    (OUT / "index.json").write_text(json.dumps(
+        [{"id": m["id"], "name": m["name"], "file": f"{m['id']}.json"} for m in index],
+        indent=2, ensure_ascii=False), encoding="utf-8")
+    return index
+
+
 def main():
+    if sys.argv[1:] == ["--index"]:  # après un calcul distant (scripts/modal_horizon_maps.py)
+        print([m["id"] for m in write_index()])
+        return
     wanted = set(sys.argv[1:])
     rasters = {20: Raster(20), 120: Raster(120)}
     index = []

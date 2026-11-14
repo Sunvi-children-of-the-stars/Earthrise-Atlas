@@ -1,0 +1,13 @@
+# Netlify / Cloudflare Pages : en-têtes des données binaires (relief, horizons, relais)
+/data/*.json
+  Cache-Control: no-cache
+/data/*
+  Cache-Control: public, max-age=86400
+/data/horizon_maps/*.i16
+  Content-Type: application/octet-stream
+/data/horizon_maps/*.u8
+  Content-Type: application/octet-stream
+/data/dem/*.i16
+  Content-Type: application/octet-stream
+/data/relays/*.f32
+  Content-Type: application/octet-stream

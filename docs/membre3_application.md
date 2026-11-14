@@ -146,15 +146,16 @@ avant toute décision.
 | Écart entre les deux | — | RMS ≤ 0,005° aux 3 sites candidats |
 
 Les repères géographiques suivent cette logique :
-- un site **entre 75°S et 85°S** est calculé à 120 m près du site, faute de relief à 20 m ;
+- un site **entre 75°S et 80°S** est calculé à 120 m près du site, faute de relief à 20 m (entre 80°S et 85°S, le relief à 20 m vient de LDEM_80S_20M quand il est installé) ;
 - un site **au nord de 75°S** reçoit un horizon de sol lisse ;
 - si les tuiles sont indisponibles (version déployée sans la pyramide), l'application se
   rabat sur le MNT réduit à 1,2 km, et la fiche du site le signale.
 
 ## Éphémérides
 
-En attendant les fichiers du membre 1, l'application calcule elle-même les positions du
-Soleil et de la Terre (`app/src/astro/ephemeris.ts`) :
+L'application calcule elle-même les positions du Soleil et de la Terre
+(`app/src/astro/ephemeris.ts`). **C'est la source officielle du projet** : voir
+[decision_ephemerides.md](decision_ephemerides.md).
 
 - Soleil et Lune géocentriques : séries basse précision de l'*Astronomical Almanac* ;
 - orientation de la Lune : modèle IAU (Archinal et al. 2011) ;
@@ -173,16 +174,9 @@ Ces écarts sont bien inférieurs au diamètre apparent du Soleil (0,53°) et de
 (1,9°). Cette précision suffit pour comparer des sites et des dates. Pour des horaires
 définitifs à la minute près, il faut utiliser Horizons.
 
-### Brancher les données du membre 1 (à faire)
-Format proposé, un fichier par site, `data/ephemeris/<site_id>.json` :
-```json
-{ "site_id": "malapert-massif", "step_min": 60,
-  "t_utc": ["2026-11-13T00:00Z", "..."],
-  "sun":   { "az_deg": [ ], "elev_deg": [ ] },
-  "earth": { "az_deg": [ ], "elev_deg": [ ] } }
-```
-`sync-data` copie déjà ce dossier. Il reste à faire lire ces fichiers par `simulate()`
-(`app/src/astro/analysis.ts`) lorsqu'ils existent pour le site et la période demandés.
+### Fichiers JPL Horizons
+Ils ne servent qu'à la validation (`data/ephemeris/reference/`), et l'application ne les
+lit pas. Voir [decision_ephemerides.md](decision_ephemerides.md).
 
 ## Règles de visibilité
 - Soleil : visible si plus de la moitié de son disque dépasse l'horizon à son azimut.

@@ -87,6 +87,7 @@ def main():
     }
     (OUT / f"{rid}.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False), encoding="utf-8")
     index = sorted(p.name for p in OUT.glob("*.json") if p.name != "index.json")
+    index.sort(key=lambda n: (not n.startswith("lro"), n))  # éphéméride réelle LRO en premier, modèles ensuite
     (OUT / "index.json").write_text(json.dumps(index, indent=2), encoding="utf-8")
     print(f"{rid} : {len(data)} points, altitude {meta['altitude_km']['min']}–{meta['altitude_km']['max']} km")
 

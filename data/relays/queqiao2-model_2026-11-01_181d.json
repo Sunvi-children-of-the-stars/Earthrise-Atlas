@@ -1,0 +1,19 @@
+{
+  "id": "queqiao2-model_2026-11-01_181d",
+  "satellite": "Queqiao-2 (modèle, orbite de 12 h)",
+  "kind": "model",
+  "frame_kind": "icrf",
+  "frame": "ICRF (équateur moyen J2000), centre de la Lune",
+  "units": "km",
+  "start_jd_tdb": 2461345.500800926,
+  "step_seconds": 120,
+  "count": 130321,
+  "file": "queqiao2-model_2026-11-01_181d.f32",
+  "layout": "float32 little-endian, x y z par point",
+  "altitude_km": {
+    "min": 300.0,
+    "max": 8600.0
+  },
+  "generated": "2026-11-14",
+  "note": "MODÈLE : orbite képlérienne 300 × 8 600 km, inclinaison 54,8°, apolune au sud, période 12.1 h. Nœud ascendant non publié (pris à 0) : la phase des passages est arbitraire."
+}

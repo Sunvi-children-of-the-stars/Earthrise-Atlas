@@ -7,7 +7,8 @@
  *   the frame LOLA uses).
  *
  * Accuracy measured against JPL Horizons: see docs/membre3_application.md.
- * These are fallback values until member 1 delivers the Horizons files.
+ * This is the project's official ephemeris source (docs/decision_ephemerides.md);
+ * JPL Horizons is used only as a validation reference.
  */
 
 export type Vec3 = [number, number, number];

@@ -1,0 +1,19 @@
+{
+  "id": "gateway-model_2026-11-01_181d",
+  "satellite": "Gateway (modèle NRHO 9:2)",
+  "kind": "model",
+  "frame_kind": "body-fixed",
+  "frame": "repère lunaire fixe (mean Earth), centre de la Lune",
+  "units": "km",
+  "start_jd_tdb": 2461345.500800926,
+  "step_seconds": 120,
+  "count": 130321,
+  "file": "gateway-model_2026-11-01_181d.f32",
+  "layout": "float32 little-endian, x y z par point",
+  "altitude_km": {
+    "min": 1600.0,
+    "max": 70000.0
+  },
+  "generated": "2026-11-14",
+  "note": "MODÈLE : ellipse de périlune 1 600 km et apolune 70 000 km, période 6,56 j, apolune au-dessus du pôle Sud. Géométrie de couverture représentative, pas une éphéméride."
+}

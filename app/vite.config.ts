@@ -32,22 +32,24 @@ function tilesMiddleware(): Connect.NextHandleFunction {
   };
 }
 
-function demTiles(): Plugin {
+function demTiles(noTiles: boolean): Plugin {
   return {
     name: "dem-tiles",
     configureServer(server) { server.middlewares.use(tilesMiddleware()); },
     configurePreviewServer(server) { server.middlewares.use(tilesMiddleware()); },
     closeBundle() {
-      // Build : copie la pyramide à côté de l'application (désactivable avec NO_TILES=1)
+      // Build : copie la pyramide à côté de l'application (désactivable avec NO_TILES=1 ou --mode web)
       if (existsSync(MAPS_DIR)) cpSync(MAPS_DIR, resolve(here, "dist", "data", "horizon_maps"), { recursive: true });
-      if (process.env.NO_TILES || !existsSync(TILES_DIR)) return;
+      if (noTiles || !existsSync(TILES_DIR)) return;
       cpSync(TILES_DIR, resolve(here, "dist", "data", "tiles"), { recursive: true });
     },
   };
 }
 
-export default defineConfig({
-  plugins: [react(), demTiles()],
+// Mode "web" (npm run build:web) : version à héberger, sans la pyramide de 750 Mo ;
+// l'application se rabat alors sur le MNT réduit à 1,2 km pour les sites personnalisés.
+export default defineConfig(({ mode }) => ({
+  plugins: [react(), demTiles(Boolean(process.env.NO_TILES) || mode === "web")],
   base: "./",
   server: { port: 5173 },
-});
+}));

@@ -37,22 +37,42 @@
 | Coupure courte | 1 − plus longue coupure / durée de la période | coupure courte |
 | Soleil + Terre | % du temps avec les deux à la fois | élevé |
 | Proximité glace | 1 − distance à l'ombre permanente la plus proche / 10 km | proche |
+| **Température douce** *(Diviner)* | (température moyenne annuelle − 50 K) / (200 − 50 K) | chaud |
+| **Glace peu profonde** *(Diviner)* | 1 − profondeur de stabilité de la glace / 100 cm ; 0 si instable | glace en surface |
 
 **Contraintes :** pente moyenne de la cellule ≤ X°, plus longue nuit ≤ X h, Terre visible
 ≥ X %, Soleil ≥ X %.
 
 ## Profils prédéfinis
 
-| Profil | Poids | Contraintes |
-|---|---|---|
-| Atterrisseur solaire | Soleil 3, Soleil + Terre 2, Terre 1, nuit courte 1 | pente ≤ 8° |
-| Survie à la nuit | nuit courte 4, Soleil 2, flux 1 | pente ≤ 15° |
-| Liaison directe Terre | Terre 3, coupure courte 2, Soleil + Terre 1 | pente ≤ 10°, Terre ≥ 60 % |
-| Science : glace d'eau | proximité glace 3, Soleil 2, Terre 1, nuit courte 1 | pente ≤ 10°, Soleil ≥ 30 %, ombre permanente ≤ 5 km |
-| Personnalisé | tous les réglages sont libres | |
+Réglés le 14/11/2026 et vérifiés sur les 3 régions, sur 6,5 jours puis sur un jour lunaire.
+**Principe :** les contraintes ne servent qu'aux limites physiques ou de sécurité (pente,
+durée de nuit tenable). Les préférences passent par les poids. Ainsi, un profil ne se
+retrouve jamais sans aucune zone quand un compromis raisonnable existe.
 
-Les poids et les profils sont définis dans `app/src/optim/score.ts`. Ce fichier est fait pour
-que le **membre 5** (aide à la décision) ajuste les critères sans toucher au reste.
+| Profil | Poids | Contraintes | Justification |
+|---|---|---|---|
+| Atterrisseur solaire (CLPS) | Soleil 3, Soleil + Terre 3, Terre 2, nuit courte 1 | pente ≤ 8°, Soleil ≥ 50 % | Mission d'un jour lunaire au plus, liaison directe sans relais |
+| **Équipage (Artemis III)** *(nouveau)* | Soleil 3, nuit courte 3, Soleil + Terre 2, Terre 2, coupure courte 1 | pente ≤ 8°, nuit ≤ 6 h | Critères NASA 2022 : lumière continue sur 6,5 jours, liaison directe, atterrissage sûr |
+| Survie à la nuit (station) | nuit courte 4, Soleil 2, flux 1, **Terre 1** | pente ≤ 8° | Sans le poids « Terre », le profil retenait à Malapert une zone sans aucune liaison |
+| **Rover prospecteur (type VIPER)** *(nouveau)* | proximité glace 3, Soleil 2, nuit courte 2, Terre 1 | pente ≤ 15°, nuit ≤ 96 h, Soleil ≥ 30 %, ombre permanente ≤ 5 km | Pentes et mission de VIPER. Nuit de 96 h : hypothèse à affiner avec le bilan énergétique |
+| Liaison directe Terre | Terre 3, coupure courte 3, Soleil + Terre 1 | pente ≤ 8° | Contrainte « Terre ≥ 60 % » **retirée** : impossible près du pôle, elle ne donnait aucune zone sur un jour lunaire |
+| Science : glace d'eau (atterrisseur) | proximité glace 3, Soleil 2, Terre 1, nuit courte 1 | pente ≤ **8°** (avant 10°), Soleil ≥ 30 %, ombre permanente ≤ 5 km | Même limite de pente que les autres atterrisseurs |
+| Personnalisé | tous les réglages sont libres | | |
+
+Pentes limites (constantes `LANDER_SLOPE` et `ROVER_SLOPE`) :
+- **8° pour les atterrisseurs** : valeur usuelle des études de sites Artemis et CLPS. IM-1
+  s'est renversé sur une pente d'environ 12°.
+- **15° pour un rover** : pente de conception de VIPER.
+
+Chaque profil porte un champ `basis` (justification) et, pour Artemis, `periodH = 156`
+(6,5 jours), que l'interface pourra proposer comme durée.
+
+**Vérification (14/11/2026, jour lunaire) :** tous les profils trouvent des zones dans les
+3 régions. Exemples :
+- pôle, profil Artemis : 19 pixels faisables, meilleure zone à 88,68°S, 68,1°O (Soleil
+  100 %, nuit 0 h, Terre 50 %) ;
+- Malapert, profil « Liaison directe » : zone à 85,97°S avec Terre 100 % et Soleil 100 %.
 
 ## Régions précalculées
 
@@ -61,6 +81,33 @@ que le **membre 5** (aide à la décision) ajuste les critères sans toucher au 
 | Massif de Malapert | 50 × 50 km autour du sommet | 250 × 250 | 9 Mo |
 | Mons Mouton (IM-2) | 50 × 50 km autour du site | 250 × 250 | 9 Mo |
 | Pôle Sud (Shackleton, crête, de Gerlache) | 80 × 80 km centrés sur le pôle | 400 × 400 | 23 Mo |
+| **Nobile Rim 2 et Amundsen Rim** | 60 × 60 km | 300 × 300 | 13 Mo |
+| **Nobile Rim 1** | 30 × 30 km | 150 × 150 | 3 Mo |
+| **Haworth** | 40 × 40 km | 200 × 200 | 6 Mo |
+| **Faustini Rim A** | 30 × 30 km | 150 × 150 | 3 Mo |
+| **de Gerlache Rim 2** | 30 × 30 km | 150 × 150 | 3 Mo |
+| **Massif de Gerlache-Kocher** | 30 × 30 km | 150 × 150 | 3 Mo |
+
+Les 6 régions en gras ont été ajoutées le 14/11/2026. Avec elles, **les 13 régions candidates
+Artemis III de la liste NASA 2022 sont toutes couvertes**. Leurs centres sont les centroïdes
+des contours de `data/sites/artemis3_regions_2022.geojson`. Elles sont calculées avec le relief
+20 m jusqu'à 80°S (`LDEM_80S_20M`), et Mons Mouton a été recalculé avec ce même relief : ses
+pentes sont désormais à 20 m partout.
+
+Chaque région porte aussi, depuis `scripts/build_diviner.py`, la température moyenne et
+maximale annuelle et la profondeur de stabilité de la glace (Diviner, fichiers `.tavg`,
+`.tmax`, `.icedepth`).
+
+**Calcul sur Modal :** `modal run scripts/modal_horizon_maps.py [--regions a,b]` lance une
+région par conteneur, en parallèle, avec le même code. Les 7 régions (6 nouvelles et Mons
+Mouton) ont été calculées en **2 min 12 s**, contre environ 40 min en local. Il faut
+ensuite lancer, en local :
+
+```bash
+.venv/Scripts/python scripts/build_horizon_maps.py --index
+.venv/Scripts/python scripts/build_psr.py
+.venv/Scripts/python scripts/build_diviner.py
+```
 
 Les fichiers sont dans `data/horizon_maps/` (non versionnés) et sont servis directement par
 le serveur de l'application. Pour regénérer (~5 min par région de 250 × 250 pixels) :

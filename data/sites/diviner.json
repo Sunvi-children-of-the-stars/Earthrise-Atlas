@@ -1,0 +1,25 @@
+{
+  "source": "Diviner PRP pôle Sud (LRO-L-DLRE-5-PRP-V2.0), grille 400 m",
+  "sites": {
+    "connecting-ridge": {
+      "temp_avg_k": 123.3,
+      "temp_max_k": 220.4,
+      "ice_depth_cm": null
+    },
+    "malapert-massif": {
+      "temp_avg_k": 121.3,
+      "temp_max_k": 209.3,
+      "ice_depth_cm": null
+    },
+    "mons-mouton": {
+      "temp_avg_k": 119.1,
+      "temp_max_k": 218.1,
+      "ice_depth_cm": null
+    },
+    "im1-malapert-a": {
+      "temp_avg_k": 157.7,
+      "temp_max_k": 269.6,
+      "ice_depth_cm": null
+    }
+  }
+}

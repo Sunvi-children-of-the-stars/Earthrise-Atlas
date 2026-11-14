@@ -1,8 +1,8 @@
 ﻿id;nom;categorie;lat;lon;dist_pole_km;altitude_m;pente_locale_deg;pente_moy_1km_deg;relief_std_5km_m;horizon_max_deg;horizon_max_az_deg;horizon_moyen_deg;obstacle_principal;soleil_max_deg;eclairement_pct_relief;eclairement_pct_sol_lisse;terre_az_min_deg;terre_az_max_deg;terre_visible_pct_relief;terre_visible_pct_sol_lisse
 connecting-ridge;Crête de liaison Shackleton – de Gerlache;candidat;-89.43903;-137.14402;17.0;1959;1.9;8.1;252;-0.59;180.0;-1.83;;2.06;88.1;53.9;129.3;145.0;52.1;46.3
 malapert-massif;Massif de Malapert (sommet);candidat;-85.98795;2.05767;121.7;5173;0.4;6.0;279;-0.07;90.5;-1.92;;5.55;66.3;49.6;349.9;5.8;80.3;68.8
-mons-mouton;Mons Mouton – site d'Athena (IM-2);candidat;-84.7906;29.1957;158.0;5322;2.9;3.1;78;4.07;117.5;1.17;4.07° az 117.5° à 16.5 km;6.75;43.9;49.4;322.4;338.8;80.8;73.4
-im1-malapert-a;Près de Malapert A – site d'Odysseus (IM-1);reference;-80.13;1.44;299.3;2592;12.4;9.3;120;11.11;145.0;4.73;11.11° az 145.0° à 0.4 km;11.4;38.7;49.2;350.3;6.5;100.0;100.0
+mons-mouton;Mons Mouton – site d'Athena (IM-2);candidat;-84.7906;29.1957;158.0;5322;2.9;3.1;78;4.07;117.5;1.17;4.07° az 117.5° à 16.5 km;6.75;43.9;49.4;322.4;338.8;80.7;73.4
+im1-malapert-a;Près de Malapert A – site d'Odysseus (IM-1);reference;-80.13;1.44;299.3;2594;12.4;9.3;120;10.93;155.5;4.71;10.93° az 155.5° à 0.4 km;11.4;38.2;49.2;350.3;6.5;100.0;100.0
 chandrayaan-3;Statio Shiv Shakti – Chandrayaan-3;reference;-69.373;32.319;625.5;;;;;-0.09;0.0;-0.09;;22.17;49.0;49.0;316.2;335.1;100.0;100.0
 change-6;Bassin Apollo – Chang'e-6;reference;-41.6385;-153.9852;1466.5;;;;;-0.09;0.0;-0.09;;49.87;51.2;51.2;136.4;152.2;0.0;0.0
 apollo-11;Mer de la Tranquillité – Apollo 11;reference;0.67408;23.47297;2749.5;;;;;-0.09;0.0;-0.09;;89.76;48.9;48.9;254.5;291.4;100.0;100.0

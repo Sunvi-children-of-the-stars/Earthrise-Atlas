@@ -1,0 +1,15 @@
+{
+  "file": "south_pole_wac_400m.jpg",
+  "rows": 2286,
+  "cols": 2286,
+  "pixel_m": 400.0,
+  "x_m_of_col": "(col + 0.5) * 400.0 - 457380.0",
+  "y_m_of_row": "457380.0 - (row + 0.5) * 400.0",
+  "projection": "stéréographique polaire sud, sphère R=1737400 m, lon 0° vers le haut (comme le MNT réduit)",
+  "encoding": "JPEG niveaux de gris ; 0 = pas de donnée ; étirement 1–99,5 % et gamma 1/1,6",
+  "reflectance_range": [
+    9.590364565241422e-05,
+    0.18423219567025176
+  ],
+  "source": "LROC WAC_GLOBAL_P900S0000_100M (NASA/GSFC/Arizona State University), moyenne de 16 échantillons par pixel"
+}

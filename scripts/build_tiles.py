@@ -31,11 +31,15 @@ TILE = 256
 NODATA = -32768
 
 SOURCES = {
+    "ldem_80s_20m": {"res": 20, "n": 30400, "offset": 15199.5, "max_lat": -80},
     "ldem_85s_20m": {"res": 20, "n": 15168, "offset": 7583.5, "max_lat": -85},
     "ldem_75s_120m": {"res": 120, "n": 7624, "offset": 3811.5, "max_lat": -75},
 }
+# Relief 20 m : LDEM_80S_20M (jusqu'à 80°S, 1,85 Go) s'il est présent, sinon LDEM_85S_20M (460 Mo).
+# Pour forcer la version étendue : le télécharger dans data/dem/ avant de lancer ce script.
+SRC20 = "ldem_80s_20m" if (DEM_DIR / "ldem_80s_20m.img").exists() else "ldem_85s_20m"
 # niveau -> (source, facteur de réduction)
-LEVELS = {20: ("ldem_85s_20m", 1), 40: ("ldem_85s_20m", 2), 80: ("ldem_85s_20m", 4),
+LEVELS = {20: (SRC20, 1), 40: (SRC20, 2), 80: (SRC20, 4),
           120: ("ldem_75s_120m", 1), 240: ("ldem_75s_120m", 2),
           480: ("ldem_75s_120m", 4), 960: ("ldem_75s_120m", 8)}
 
@@ -67,13 +71,17 @@ def pad_to_tiles(arr, i0):
 def reduce2(mos, t0):
     """Moyenne 2×2 en ignorant les pixels sans donnée ; renvoie une mosaïque re-alignée."""
     n = mos.shape[0] // 2
-    valid = (mos != NODATA)
-    v = np.where(valid, mos, 0).astype(np.int32).reshape(n, 2, n, 2)
-    cnt = valid.reshape(n, 2, n, 2).sum(axis=(1, 3))
-    s = v.sum(axis=(1, 3))
     red = np.full((n, n), NODATA, dtype=np.int16)
-    ok = cnt > 0
-    red[ok] = np.round(s[ok] / cnt[ok]).astype(np.int16)
+    for r0 in range(0, n, 1024):  # par bandes : mémoire bornée même pour la mosaïque 80°S (30 720² px)
+        r1 = min(n, r0 + 1024)
+        blk = mos[2 * r0:2 * r1]
+        valid = (blk != NODATA)
+        v = np.where(valid, blk, 0).astype(np.int32).reshape(r1 - r0, 2, n, 2)
+        cnt = valid.reshape(r1 - r0, 2, n, 2).sum(axis=(1, 3))
+        s = v.sum(axis=(1, 3))
+        ok = cnt > 0
+        out = red[r0:r1]
+        out[ok] = np.round(s[ok] / cnt[ok]).astype(np.int16)
     return pad_to_tiles(red, t0 * TILE // 2)
 
 

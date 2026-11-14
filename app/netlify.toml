@@ -1,0 +1,4 @@
+# Déploiement : les données (cartes d'horizon) ne sont pas versionnées, donc on construit en local
+# puis on publie le dossier dist :   npm run build:web  &&  npx netlify-cli deploy --dir=dist --prod
+[build]
+  publish = "dist"

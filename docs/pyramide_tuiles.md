@@ -8,6 +8,7 @@ Base commune aux deux méthodes de calcul d'horizon :
 
 | Fichier | Zone couverte | Résolution | Taille |
 |---|---|---|---|
+| `LDEM_80S_20M` | de 80°S au pôle (carré de ~608 km) | 20 m | 1,85 Go |
 | `LDEM_85S_20M` | de 85°S au pôle (carré de ~303 km) | 20 m | 460 Mo |
 | `LDEM_75S_120M` | de 75°S au pôle (carré de ~915 km) | 120 m | 116 Mo |
 
@@ -15,22 +16,27 @@ Les deux fichiers utilisent le même format : entiers 16 bits en unités de 0,5 
 mesurée par rapport à une sphère de 1 737,4 km. Ils ne sont pas versionnés.
 `scripts/build_tiles.py` les télécharge s'ils manquent.
 
-Une source supplémentaire est possible : `LDEM_80S_20M` (1,85 Go) étendrait le niveau 20 m
-jusqu'à 80°S. Elle n'est pas téléchargée.
+**Depuis le 14/11/2026, le niveau 20 m vient de `LDEM_80S_20M`** quand ce fichier est présent
+dans `data/dem/` (sinon `LDEM_85S_20M`, comme avant). Sur leur zone commune, les deux fichiers
+sont identiques : écart RMS de 0,05 m, maximum 0,5 m (une unité de quantification), mesuré
+sur 2 000 points. Le relief à 20 m couvre donc maintenant IM-1 (80,1°S), Mons Mouton, Nobile
+et Amundsen. `build_tiles.py`, `tiled_dem.py` (classe `Raster`), `build_sites.py` et
+`build_horizon_maps.py` choisissent automatiquement le fichier le plus étendu.
 
 ## Niveaux
 
 | Niveau | Source | Tuiles | Taille |
 |---|---|---|---|
-| 20 m | 85S_20M | 3 600 | 451 Mo |
-| 40 m | 85S_20M, moyenne 2×2 | 900 | 113 Mo |
-| 80 m | 85S_20M, moyenne 4×4 | 256 | 33 Mo |
+| 20 m | 80S_20M | 14 400 | 1,8 Go |
+| 40 m | 80S_20M, moyenne 2×2 | 3 600 | 450 Mo |
+| 80 m | 80S_20M, moyenne 4×4 | 900 | 113 Mo |
 | 120 m | 75S_120M | 900 | 113 Mo |
 | 240 m | 75S_120M, moyenne 2×2 | 256 | 33 Mo |
 | 480 m | 75S_120M, moyenne 4×4 | 64 | 8 Mo |
 | 960 m | 75S_120M, moyenne 8×8 | 16 | 2 Mo |
 
-La pyramide totalise environ 750 Mo dans `data/dem/tiles/` (non versionné). Pour la regénérer :
+La pyramide totalise environ 2,5 Go dans `data/dem/tiles/` (non versionné ; ~750 Mo avec
+LDEM_85S_20M seul). La moyenne 2×2 est calculée par bandes de lignes, ce qui borne la mémoire. Pour la regénérer :
 
 ```bash
 .venv/Scripts/python scripts/build_tiles.py

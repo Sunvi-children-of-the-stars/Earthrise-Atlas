@@ -9,7 +9,9 @@
     "dev": "vite",
     "prebuild": "npm run sync-data",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "build:web": "npm run build -- --mode web",
+    "preview": "vite preview",
+    "calendar": "esbuild scripts/build-calendar.ts --bundle --platform=node --format=esm --log-level=warning --outfile=node_modules/.cache/build-calendar.mjs && node node_modules/.cache/build-calendar.mjs"
   },
   "dependencies": {
     "react": "18.3.1",
