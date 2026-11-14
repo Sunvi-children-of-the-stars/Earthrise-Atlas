@@ -3,6 +3,7 @@ import { DataProvider } from "./data/store";
 import { I18nProvider, useI18n, type MessageKey } from "./i18n";
 import { useRoute, type Page } from "./router";
 import { Method } from "./method/Method";
+import { Play } from "./play/Play";
 import { Nav } from "./ui/Nav";
 
 const TITLE: Record<Page, MessageKey> = {
@@ -28,7 +29,7 @@ function Shell() {
   return (
     <>
       <Nav page={page} onNavigate={(p) => navigate(p)} />
-      <main id="main">{page === "method" ? <Method /> : <Placeholder page={page} />}</main>
+      <main id="main">{page === "method" ? <Method /> : page === "play" ? <Play /> : <Placeholder page={page} />}</main>
       <footer className="footer">
         <div className="container"><span>{t("footer.challenge")}</span><span>{t("footer.data")}</span></div>
       </footer>
