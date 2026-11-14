@@ -1,0 +1,461 @@
+{
+ "type": "FeatureCollection",
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "EPSG:4326"
+  }
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "id": 0,
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       65.09523119,
+       -84.40517285
+      ],
+      [
+       71.50926173,
+       -84.64884385
+      ],
+      [
+       73.51245734,
+       -84.02121673
+      ],
+      [
+       67.66128158,
+       -83.80232774
+      ],
+      [
+       65.09523119,
+       -84.40517285
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "name": "Amundsen Rim"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 1,
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       54.46232221,
+       -84.04794193
+      ],
+      [
+       59.96215525,
+       -84.4046158
+      ],
+      [
+       63.02472352,
+       -83.82634302
+      ],
+      [
+       57.84067901,
+       -83.50154912
+      ],
+      [
+       54.46232221,
+       -84.04794193
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "name": "Nobile Rim 2"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 2,
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -26.65196166,
+       -86.11239815
+      ],
+      [
+       -34.98184604,
+       -86.95784228
+      ],
+      [
+       -16.99082329,
+       -87.39353361
+      ],
+      [
+       -12.36178188,
+       -86.44277414
+      ],
+      [
+       -26.65196166,
+       -86.11239815
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "name": "Haworth"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 3,
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       79.50852299,
+       -88.18906723
+      ],
+      [
+       100.49147701,
+       -88.18906723
+      ],
+      [
+       97.69605172,
+       -87.53783384
+      ],
+      [
+       82.30394828,
+       -87.53783384
+      ],
+      [
+       79.50852299,
+       -88.18906723
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "name": "Faustini Rim A"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 4,
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -60.5725436,
+       -87.78528838
+      ],
+      [
+       -77.47119229,
+       -88.02392883
+      ],
+      [
+       -71.34211153,
+       -88.6599857
+      ],
+      [
+       -49.39870535,
+       -88.3278927
+      ],
+      [
+       -60.5725436,
+       -87.78528838
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "name": "de Gerlache Rim 2"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 5,
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -84.24543467,
+       -88.71734521
+      ],
+      [
+       -112.5883202,
+       -88.61778604
+      ],
+      [
+       -130.72721923,
+       -89.18625468
+      ],
+      [
+       -78.21947622,
+       -89.37005103
+      ],
+      [
+       -84.24543467,
+       -88.71734521
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "name": "Connecting Ridge Extension"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 6,
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -101.88865804,
+       -89.35969194
+      ],
+      [
+       -136.46880071,
+       -89.09028361
+      ],
+      [
+       -171.46923439,
+       -89.33307106
+      ],
+      [
+       -143.13010235,
+       -89.83511068
+      ],
+      [
+       -101.88865804,
+       -89.35969194
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "name": "Connecting Ridge"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 7,
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       31.6607511,
+       -85.35325142
+      ],
+      [
+       36.50144112,
+       -85.89921757
+      ],
+      [
+       43.22853026,
+       -85.47632419
+      ],
+      [
+       38.07278187,
+       -84.97628329
+      ],
+      [
+       31.6607511,
+       -85.35325142
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "name": "Nobile Rim 1"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 8,
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       118.61045967,
+       -89.17359087
+      ],
+      [
+       141.84277341,
+       -88.82573196
+      ],
+      [
+       126.38435182,
+       -88.44348361
+      ],
+      [
+       107.52556837,
+       -88.68589815
+      ],
+      [
+       118.61045967,
+       -89.17359087
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "name": "Peak Near Shackleton"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 9,
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -62.92791976,
+       -88.33351026
+      ],
+      [
+       -81.15818544,
+       -88.4982338
+      ],
+      [
+       -76.42956561,
+       -89.01619925
+      ],
+      [
+       -51.58194466,
+       -88.77941881
+      ],
+      [
+       -62.92791976,
+       -88.33351026
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "name": "de Gerlache Rim"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 10,
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       27.28798795,
+       -85.3270534
+      ],
+      [
+       30.57922687,
+       -85.78833524
+      ],
+      [
+       36.36658017,
+       -85.49736561
+      ],
+      [
+       32.73522627,
+       -85.06330364
+      ],
+      [
+       27.28798795,
+       -85.3270534
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "name": "Leibnitz Beta Plateau"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 11,
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -4.76364169,
+       -85.63394425
+      ],
+      [
+       -5.65948184,
+       -86.32278684
+      ],
+      [
+       5.14788482,
+       -86.32588928
+      ],
+      [
+       4.33231398,
+       -85.63655542
+      ],
+      [
+       -4.76364169,
+       -85.63394425
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "name": "Malapert Massif"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 12,
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -110.48477552,
+       -85.65790523
+      ],
+      [
+       -118.17601311,
+       -85.38597152
+      ],
+      [
+       -122.58935728,
+       -85.95455847
+      ],
+      [
+       -114.0292912,
+       -86.26785495
+      ],
+      [
+       -110.48477552,
+       -85.65790523
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "name": "de Gerlache-Kocher Massif"
+   }
+  }
+ ],
+ "source": {
+  "producer": "NASA Moon Trek (JPL)",
+  "layer": "Artemis III Candidate Landing Regions",
+  "uuid": "82d31599-9957-4d79-b30a-720c918d1515",
+  "service": "https://trek.nasa.gov/moon/trekarcgis2/rest/services/A3_Named_regions/MapServer/0",
+  "retrieved": "2026-11-14"
+ },
+ "note": "Liste NASA d'août 2022 (13 régions). En octobre 2024, la NASA a réduit la liste à 9 régions (dont Mons Mouton, Mons Mouton Plateau, Peak near Cabeus B, Slater Plain) ; leurs contours ne sont pas publiés dans Moon Trek."
+}

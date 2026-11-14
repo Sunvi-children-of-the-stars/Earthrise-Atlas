@@ -1,0 +1,1237 @@
+{
+  "generated": "2026-11-14",
+  "dem": {
+    "products": [
+      "LOLA LDEM_85S_20M (relief proche < 25 km, sites au sud de ~85°S)",
+      "LOLA LDEM_75S_120M (relief lointain et sites jusqu'à 75°S)"
+    ],
+    "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/polar/img/",
+    "height_reference": "rayon - 1 737 400 m"
+  },
+  "conventions": {
+    "lat": "degrés, négatif = sud",
+    "lon": "degrés Est, [-180, 180]",
+    "azimuth": "degrés depuis le nord local, sens horaire",
+    "observer_height_m": 2.0
+  },
+  "sites": [
+    {
+      "id": "connecting-ridge",
+      "name": "Crête de liaison Shackleton – de Gerlache",
+      "short": "Connecting Ridge",
+      "category": "candidat",
+      "region": "Pôle Sud (< 15 km du pôle)",
+      "context": "Région candidate Artemis III (liste NASA 2022). Crête étroite reliant les remparts des cratères Shackleton et de Gerlache, réputée parmi les mieux éclairées du pôle Sud ; voisine de régions en ombre permanente (glace d'eau).",
+      "refs": [
+        "https://www.nasa.gov/news-release/nasa-identifies-candidate-regions-for-landing-next-americans-on-moon/"
+      ],
+      "lat": -89.43903,
+      "lon": -137.14402,
+      "coord_method": "Point le plus haut du MNT LOLA à 20 m dans un rayon de 4.0 km autour de (-89.45, -137.3)",
+      "previous_point_120m": {
+        "lat": -89.43978,
+        "lon": -137.57657
+      },
+      "in_dem": true,
+      "dist_to_pole_km": 17.0,
+      "elevation_m": 1959,
+      "elevation_res_m": 20,
+      "terrain": {
+        "slope_deg_local_240m": 1.9,
+        "slope_deg_mean_1km": 8.1,
+        "slope_deg_max_1km": 17.8,
+        "relief_1km": {
+          "min_m": 1785,
+          "max_m": 1956,
+          "std_m": 38
+        },
+        "relief_5km": {
+          "min_m": 927,
+          "max_m": 1956,
+          "std_m": 252
+        },
+        "relief_20km": {
+          "min_m": -2796,
+          "max_m": 1956,
+          "std_m": 1028
+        },
+        "hires": {
+          "res_m": 20,
+          "slope_deg_local_40m": 1.0,
+          "slope_deg_mean_100m": 3.0,
+          "slope_deg_max_100m": 6.7,
+          "pct_area_slope_gt_10deg_100m": 0.0,
+          "slope_deg_mean_500m": 5.5,
+          "slope_deg_max_500m": 18.8,
+          "pct_area_slope_gt_10deg_500m": 8.7,
+          "relief_1km": {
+            "min_m": 1780,
+            "max_m": 1959,
+            "std_m": 39
+          }
+        }
+      },
+      "horizon_source": "LOLA LDEM_85S_20M (< 25 km) + LDEM_75S_120M (au-delà)",
+      "horizon": {
+        "file": "horizons/connecting-ridge.json",
+        "max_elev_deg": -0.59,
+        "max_elev_az_deg": 180.0,
+        "mean_elev_deg": -1.83,
+        "pct_azimuths_above_1deg": 0.0,
+        "dem_coverage_pct": 100.0,
+        "flat_ground_horizon_deg": -0.087
+      },
+      "obstacles": [],
+      "horizon_sectors": [
+        {
+          "az_from_deg": 0,
+          "az_to_deg": 30,
+          "horizon_max_deg": -1.41,
+          "horizon_mean_deg": -2.2,
+          "dominant_obstacle_dist_km": 115.0,
+          "dominant_obstacle_lat": -85.686,
+          "dominant_obstacle_lon": -116.612,
+          "dominant_obstacle_elev_m": 2944,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 0.0,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 30,
+          "az_to_deg": 60,
+          "horizon_max_deg": -1.96,
+          "horizon_mean_deg": -2.68,
+          "dominant_obstacle_dist_km": 109.8,
+          "dominant_obstacle_lat": -85.885,
+          "dominant_obstacle_lon": -111.047,
+          "dominant_obstacle_elev_m": 1680,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 0.0,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 60,
+          "az_to_deg": 90,
+          "horizon_max_deg": -1.31,
+          "horizon_mean_deg": -1.87,
+          "dominant_obstacle_dist_km": 45.3,
+          "dominant_obstacle_lat": -88.396,
+          "dominant_obstacle_lon": -68.603,
+          "dominant_obstacle_elev_m": 1512,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 0.1,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 90,
+          "az_to_deg": 120,
+          "horizon_max_deg": -0.85,
+          "horizon_mean_deg": -1.93,
+          "dominant_obstacle_dist_km": 37.8,
+          "dominant_obstacle_lat": -88.663,
+          "dominant_obstacle_lon": -68.407,
+          "dominant_obstacle_elev_m": 1808,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 0.6,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 120,
+          "az_to_deg": 150,
+          "horizon_max_deg": -0.87,
+          "horizon_mean_deg": -1.53,
+          "dominant_obstacle_dist_km": 134.7,
+          "dominant_obstacle_lat": -85.997,
+          "dominant_obstacle_lon": 2.14,
+          "dominant_obstacle_elev_m": 5157,
+          "sun_in_sector_pct_time": 8.2,
+          "sun_hidden_in_sector_pct_time": 1.8,
+          "earth_in_sector_pct_time": 100.0,
+          "earth_hidden_in_sector_pct_time": 47.9
+        },
+        {
+          "az_from_deg": 150,
+          "az_to_deg": 180,
+          "horizon_max_deg": -0.59,
+          "horizon_mean_deg": -1.3,
+          "dominant_obstacle_dist_km": 0.4,
+          "dominant_obstacle_lat": -89.453,
+          "dominant_obstacle_lon": -137.131,
+          "dominant_obstacle_elev_m": 1957,
+          "sun_in_sector_pct_time": 7.8,
+          "sun_hidden_in_sector_pct_time": 2.5,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 180,
+          "az_to_deg": 210,
+          "horizon_max_deg": -0.59,
+          "horizon_mean_deg": -1.03,
+          "dominant_obstacle_dist_km": 0.4,
+          "dominant_obstacle_lat": -89.453,
+          "dominant_obstacle_lon": -137.144,
+          "dominant_obstacle_elev_m": 1957,
+          "sun_in_sector_pct_time": 7.8,
+          "sun_hidden_in_sector_pct_time": 3.2,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 210,
+          "az_to_deg": 240,
+          "horizon_max_deg": -1.12,
+          "horizon_mean_deg": -1.39,
+          "dominant_obstacle_dist_km": 42.4,
+          "dominant_obstacle_lat": -88.805,
+          "dominant_obstacle_lon": 123.684,
+          "dominant_obstacle_elev_m": 1647,
+          "sun_in_sector_pct_time": 8.0,
+          "sun_hidden_in_sector_pct_time": 2.4,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 240,
+          "az_to_deg": 270,
+          "horizon_max_deg": -1.34,
+          "horizon_mean_deg": -1.51,
+          "dominant_obstacle_dist_km": 40.4,
+          "dominant_obstacle_lat": -88.843,
+          "dominant_obstacle_lon": 127.671,
+          "dominant_obstacle_elev_m": 1484,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 1.2,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 270,
+          "az_to_deg": 300,
+          "horizon_max_deg": -1.43,
+          "horizon_mean_deg": -1.61,
+          "dominant_obstacle_dist_km": 0.1,
+          "dominant_obstacle_lat": -89.439,
+          "dominant_obstacle_lon": -137.615,
+          "dominant_obstacle_elev_m": 1958,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 0.1,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 300,
+          "az_to_deg": 330,
+          "horizon_max_deg": -1.62,
+          "horizon_mean_deg": -1.99,
+          "dominant_obstacle_dist_km": 47.0,
+          "dominant_obstacle_lat": -87.987,
+          "dominant_obstacle_lon": -166.439,
+          "dominant_obstacle_elev_m": 1270,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 0.0,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 330,
+          "az_to_deg": 360,
+          "horizon_max_deg": -2.27,
+          "horizon_mean_deg": -2.88,
+          "dominant_obstacle_dist_km": 51.4,
+          "dominant_obstacle_lat": -87.8,
+          "dominant_obstacle_lon": -159.822,
+          "dominant_obstacle_elev_m": 683,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 0.0,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        }
+      ],
+      "pre_indicators": {
+        "_note": "Modèle orbital simplifié (Soleil et Terre ponctuels, librations sinusoïdales). Sert à valider les masques d'horizon ; à remplacer par JPL Horizons (membre 1).",
+        "sun_elev_max_deg": 2.06,
+        "sun_illumination_pct_terrain": 88.1,
+        "sun_illumination_pct_no_terrain": 53.9,
+        "earth_elev_min_deg": -7.4,
+        "earth_elev_max_deg": 6.07,
+        "earth_az_range_deg": [
+          129.3,
+          145.0
+        ],
+        "earth_visibility_pct_terrain": 52.1,
+        "earth_visibility_pct_no_terrain": 46.3
+      }
+    },
+    {
+      "id": "malapert-massif",
+      "name": "Massif de Malapert (sommet)",
+      "short": "Malapert Massif",
+      "category": "candidat",
+      "region": "Pôle Sud (~120 km du pôle)",
+      "context": "Région candidate Artemis III (liste NASA 2024). Massif de ~5 km de haut tourné vers la face visible : excellente visibilité de la Terre et éclairement prolongé.",
+      "refs": [
+        "https://www.nasa.gov/missions/artemis/artemis-3/nasa-provides-update-on-artemis-iii-moon-landing-regions/"
+      ],
+      "lat": -85.98795,
+      "lon": 2.05767,
+      "coord_method": "Point le plus haut du MNT LOLA à 20 m dans un rayon de 15.0 km autour de (-86.0, 0.0)",
+      "previous_point_120m": {
+        "lat": -85.98827,
+        "lon": 2.06255
+      },
+      "in_dem": true,
+      "dist_to_pole_km": 121.7,
+      "elevation_m": 5173,
+      "elevation_res_m": 20,
+      "terrain": {
+        "slope_deg_local_240m": 0.4,
+        "slope_deg_mean_1km": 6.0,
+        "slope_deg_max_1km": 20.5,
+        "relief_1km": {
+          "min_m": 5038,
+          "max_m": 5172,
+          "std_m": 27
+        },
+        "relief_5km": {
+          "min_m": 3928,
+          "max_m": 5172,
+          "std_m": 279
+        },
+        "relief_20km": {
+          "min_m": -734,
+          "max_m": 5172,
+          "std_m": 1443
+        },
+        "hires": {
+          "res_m": 20,
+          "slope_deg_local_40m": 1.6,
+          "slope_deg_mean_100m": 2.4,
+          "slope_deg_max_100m": 5.2,
+          "pct_area_slope_gt_10deg_100m": 0.0,
+          "slope_deg_mean_500m": 4.8,
+          "slope_deg_max_500m": 29.4,
+          "pct_area_slope_gt_10deg_500m": 6.2,
+          "relief_1km": {
+            "min_m": 5031,
+            "max_m": 5174,
+            "std_m": 28
+          }
+        }
+      },
+      "horizon_source": "LOLA LDEM_85S_20M (< 25 km) + LDEM_75S_120M (au-delà)",
+      "horizon": {
+        "file": "horizons/malapert-massif.json",
+        "max_elev_deg": -0.07,
+        "max_elev_az_deg": 90.5,
+        "mean_elev_deg": -1.92,
+        "pct_azimuths_above_1deg": 0.0,
+        "dem_coverage_pct": 100.0,
+        "flat_ground_horizon_deg": -0.087
+      },
+      "obstacles": [],
+      "horizon_sectors": [
+        {
+          "az_from_deg": 0,
+          "az_to_deg": 30,
+          "horizon_max_deg": -1.39,
+          "horizon_mean_deg": -1.58,
+          "dominant_obstacle_dist_km": 0.4,
+          "dominant_obstacle_lat": -85.976,
+          "dominant_obstacle_lon": 2.126,
+          "dominant_obstacle_elev_m": 5166,
+          "sun_in_sector_pct_time": 7.8,
+          "sun_hidden_in_sector_pct_time": 0.0,
+          "earth_in_sector_pct_time": 43.0,
+          "earth_hidden_in_sector_pct_time": 19.3
+        },
+        {
+          "az_from_deg": 30,
+          "az_to_deg": 60,
+          "horizon_max_deg": -1.34,
+          "horizon_mean_deg": -1.64,
+          "dominant_obstacle_dist_km": 61.0,
+          "dominant_obstacle_lat": -84.631,
+          "dominant_obstacle_lon": 20.517,
+          "dominant_obstacle_elev_m": 4814,
+          "sun_in_sector_pct_time": 7.8,
+          "sun_hidden_in_sector_pct_time": 0.0,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 60,
+          "az_to_deg": 90,
+          "horizon_max_deg": -0.16,
+          "horizon_mean_deg": -0.94,
+          "dominant_obstacle_dist_km": 63.0,
+          "dominant_obstacle_lat": -85.467,
+          "dominant_obstacle_lon": 29.343,
+          "dominant_obstacle_elev_m": 6148,
+          "sun_in_sector_pct_time": 7.8,
+          "sun_hidden_in_sector_pct_time": 0.8,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 90,
+          "az_to_deg": 120,
+          "horizon_max_deg": -0.07,
+          "horizon_mean_deg": -0.89,
+          "dominant_obstacle_dist_km": 68.7,
+          "dominant_obstacle_lat": -85.41,
+          "dominant_obstacle_lon": 31.671,
+          "dominant_obstacle_elev_m": 6451,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 4.4,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 120,
+          "az_to_deg": 150,
+          "horizon_max_deg": -1.59,
+          "horizon_mean_deg": -2.04,
+          "dominant_obstacle_dist_km": 2.0,
+          "dominant_obstacle_lat": -86.021,
+          "dominant_obstacle_lon": 2.881,
+          "dominant_obstacle_elev_m": 5121,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 5.8,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 150,
+          "az_to_deg": 180,
+          "horizon_max_deg": -1.99,
+          "horizon_mean_deg": -2.24,
+          "dominant_obstacle_dist_km": 0.1,
+          "dominant_obstacle_lat": -85.991,
+          "dominant_obstacle_lon": 2.086,
+          "dominant_obstacle_elev_m": 5171,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 8.4,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 180,
+          "az_to_deg": 210,
+          "horizon_max_deg": -2.29,
+          "horizon_mean_deg": -2.41,
+          "dominant_obstacle_dist_km": 0.2,
+          "dominant_obstacle_lat": -85.995,
+          "dominant_obstacle_lon": 2.051,
+          "dominant_obstacle_elev_m": 5167,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 7.7,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 210,
+          "az_to_deg": 240,
+          "horizon_max_deg": -2.06,
+          "horizon_mean_deg": -2.22,
+          "dominant_obstacle_dist_km": 0.2,
+          "dominant_obstacle_lat": -85.991,
+          "dominant_obstacle_lon": 2.001,
+          "dominant_obstacle_elev_m": 5170,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 5.4,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 240,
+          "az_to_deg": 270,
+          "horizon_max_deg": -1.54,
+          "horizon_mean_deg": -2.47,
+          "dominant_obstacle_dist_km": 10.3,
+          "dominant_obstacle_lat": -85.977,
+          "dominant_obstacle_lon": -2.789,
+          "dominant_obstacle_elev_m": 4928,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 1.0,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 270,
+          "az_to_deg": 300,
+          "horizon_max_deg": -1.24,
+          "horizon_mean_deg": -2.09,
+          "dominant_obstacle_dist_km": 11.7,
+          "dominant_obstacle_lat": -85.953,
+          "dominant_obstacle_lon": -3.394,
+          "dominant_obstacle_elev_m": 4962,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 0.1,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 300,
+          "az_to_deg": 330,
+          "horizon_max_deg": -2.01,
+          "horizon_mean_deg": -2.31,
+          "dominant_obstacle_dist_km": 0.3,
+          "dominant_obstacle_lat": -85.982,
+          "dominant_obstacle_lon": 1.942,
+          "dominant_obstacle_elev_m": 5165,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 0.0,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 330,
+          "az_to_deg": 360,
+          "horizon_max_deg": -1.9,
+          "horizon_mean_deg": -2.24,
+          "dominant_obstacle_dist_km": 0.5,
+          "dominant_obstacle_lat": -85.97,
+          "dominant_obstacle_lon": 2.055,
+          "dominant_obstacle_elev_m": 5158,
+          "sun_in_sector_pct_time": 8.4,
+          "sun_hidden_in_sector_pct_time": 0.0,
+          "earth_in_sector_pct_time": 57.0,
+          "earth_hidden_in_sector_pct_time": 0.5
+        }
+      ],
+      "pre_indicators": {
+        "_note": "Modèle orbital simplifié (Soleil et Terre ponctuels, librations sinusoïdales). Sert à valider les masques d'horizon ; à remplacer par JPL Horizons (membre 1).",
+        "sun_elev_max_deg": 5.55,
+        "sun_illumination_pct_terrain": 66.3,
+        "sun_illumination_pct_no_terrain": 49.6,
+        "earth_elev_min_deg": -2.95,
+        "earth_elev_max_deg": 10.41,
+        "earth_az_range_deg": [
+          349.9,
+          5.8
+        ],
+        "earth_visibility_pct_terrain": 80.3,
+        "earth_visibility_pct_no_terrain": 68.8
+      }
+    },
+    {
+      "id": "mons-mouton",
+      "name": "Mons Mouton – site d'Athena (IM-2)",
+      "short": "Mons Mouton",
+      "category": "candidat",
+      "region": "Pôle Sud (~160 km du pôle)",
+      "context": "Plateau sommital d'une montagne de ~6 km ; site d'atterrissage de la mission CLPS IM-2 d'Intuitive Machines (6 mars 2025) et région candidate Artemis III.",
+      "lat": -84.7906,
+      "lon": 29.1957,
+      "refs": [
+        "https://www.lroc.asu.edu/images/1401",
+        "https://en.wikipedia.org/wiki/IM-2"
+      ],
+      "coord_method": "Coordonnées publiées (voir refs)",
+      "in_dem": true,
+      "dist_to_pole_km": 158.0,
+      "elevation_m": 5322,
+      "elevation_res_m": 20,
+      "terrain": {
+        "slope_deg_local_240m": 2.9,
+        "slope_deg_mean_1km": 3.1,
+        "slope_deg_max_1km": 7.8,
+        "relief_1km": {
+          "min_m": 5284,
+          "max_m": 5357,
+          "std_m": 19
+        },
+        "relief_5km": {
+          "min_m": 4943,
+          "max_m": 5357,
+          "std_m": 78
+        },
+        "relief_20km": {
+          "min_m": 3775,
+          "max_m": 6678,
+          "std_m": 484
+        },
+        "hires": {
+          "res_m": 20,
+          "slope_deg_local_40m": 2.3,
+          "slope_deg_mean_100m": 2.8,
+          "slope_deg_max_100m": 5.8,
+          "pct_area_slope_gt_10deg_100m": 0.0,
+          "slope_deg_mean_500m": 3.2,
+          "slope_deg_max_500m": 15.0,
+          "pct_area_slope_gt_10deg_500m": 0.3,
+          "relief_1km": {
+            "min_m": 5264,
+            "max_m": 5358,
+            "std_m": 20
+          }
+        }
+      },
+      "horizon_source": "LOLA LDEM_85S_20M (< 25 km) + LDEM_75S_120M (au-delà)",
+      "horizon": {
+        "file": "horizons/mons-mouton.json",
+        "max_elev_deg": 4.07,
+        "max_elev_az_deg": 117.5,
+        "mean_elev_deg": 1.17,
+        "pct_azimuths_above_1deg": 45.0,
+        "dem_coverage_pct": 100.0,
+        "flat_ground_horizon_deg": -0.087
+      },
+      "obstacles": [
+        {
+          "sun_blocked_pct_time": 5.3,
+          "earth_blocked_pct_time": 0.0,
+          "az_from_deg": 63.0,
+          "az_to_deg": 239.5,
+          "width_deg": 177.0,
+          "peak_az_deg": 117.5,
+          "peak_elev_deg": 4.07,
+          "peak_dist_km": 16.5,
+          "peak_lat": -85.018,
+          "peak_lon": 34.756,
+          "peak_terrain_elev_m": 6578,
+          "peak_dem_res_m": 20
+        },
+        {
+          "sun_blocked_pct_time": 0.8,
+          "earth_blocked_pct_time": 0.0,
+          "az_from_deg": 285.5,
+          "az_to_deg": 300.5,
+          "width_deg": 15.5,
+          "peak_az_deg": 296.0,
+          "peak_elev_deg": 0.94,
+          "peak_dist_km": 8.5,
+          "peak_lat": -84.661,
+          "peak_lon": 26.48,
+          "peak_terrain_elev_m": 5484,
+          "peak_dem_res_m": 20
+        },
+        {
+          "sun_blocked_pct_time": 0.0,
+          "earth_blocked_pct_time": 0.0,
+          "az_from_deg": 16.5,
+          "az_to_deg": 41.0,
+          "width_deg": 25.0,
+          "peak_az_deg": 33.5,
+          "peak_elev_deg": 0.84,
+          "peak_dist_km": 14.8,
+          "peak_lat": -84.376,
+          "peak_lon": 31.953,
+          "peak_terrain_elev_m": 5605,
+          "peak_dem_res_m": 20
+        },
+        {
+          "sun_blocked_pct_time": 0.0,
+          "earth_blocked_pct_time": 0.0,
+          "az_from_deg": 48.5,
+          "az_to_deg": 50.0,
+          "width_deg": 2.0,
+          "peak_az_deg": 49.5,
+          "peak_elev_deg": 0.55,
+          "peak_dist_km": 15.6,
+          "peak_lat": -84.444,
+          "peak_lon": 33.229,
+          "peak_terrain_elev_m": 5544,
+          "peak_dem_res_m": 20
+        },
+        {
+          "sun_blocked_pct_time": 0.0,
+          "earth_blocked_pct_time": 0.0,
+          "az_from_deg": 45.5,
+          "az_to_deg": 46.5,
+          "width_deg": 1.5,
+          "peak_az_deg": 46.5,
+          "peak_elev_deg": 0.52,
+          "peak_dist_km": 25.6,
+          "peak_lat": -84.177,
+          "peak_lon": 35.243,
+          "peak_terrain_elev_m": 5745,
+          "peak_dem_res_m": 120
+        }
+      ],
+      "horizon_sectors": [
+        {
+          "az_from_deg": 0,
+          "az_to_deg": 30,
+          "horizon_max_deg": 0.74,
+          "horizon_mean_deg": 0.17,
+          "dominant_obstacle_dist_km": 12.9,
+          "dominant_obstacle_lat": -84.398,
+          "dominant_obstacle_lon": 30.934,
+          "dominant_obstacle_elev_m": 5538,
+          "sun_in_sector_pct_time": 7.8,
+          "sun_hidden_in_sector_pct_time": 0.0,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 30,
+          "az_to_deg": 60,
+          "horizon_max_deg": 0.84,
+          "horizon_mean_deg": 0.54,
+          "dominant_obstacle_dist_km": 14.8,
+          "dominant_obstacle_lat": -84.376,
+          "dominant_obstacle_lon": 31.953,
+          "dominant_obstacle_elev_m": 5605,
+          "sun_in_sector_pct_time": 7.8,
+          "sun_hidden_in_sector_pct_time": 0.0,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 60,
+          "az_to_deg": 90,
+          "horizon_max_deg": 2.94,
+          "horizon_mean_deg": 1.74,
+          "dominant_obstacle_dist_km": 28.4,
+          "dominant_obstacle_lat": -84.676,
+          "dominant_obstacle_lon": 39.32,
+          "dominant_obstacle_elev_m": 7017,
+          "sun_in_sector_pct_time": 8.4,
+          "sun_hidden_in_sector_pct_time": 5.0,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 90,
+          "az_to_deg": 120,
+          "horizon_max_deg": 4.07,
+          "horizon_mean_deg": 3.56,
+          "dominant_obstacle_dist_km": 16.5,
+          "dominant_obstacle_lat": -85.018,
+          "dominant_obstacle_lon": 34.756,
+          "dominant_obstacle_elev_m": 6578,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 8.5,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 120,
+          "az_to_deg": 150,
+          "horizon_max_deg": 3.94,
+          "horizon_mean_deg": 2.73,
+          "dominant_obstacle_dist_km": 16.1,
+          "dominant_obstacle_lat": -85.035,
+          "dominant_obstacle_lon": 34.523,
+          "dominant_obstacle_elev_m": 6513,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 8.5,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 150,
+          "az_to_deg": 180,
+          "horizon_max_deg": 3.14,
+          "horizon_mean_deg": 2.9,
+          "dominant_obstacle_dist_km": 16.6,
+          "dominant_obstacle_lat": -85.278,
+          "dominant_obstacle_lon": 32.053,
+          "dominant_obstacle_elev_m": 6315,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 8.5,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 180,
+          "az_to_deg": 210,
+          "horizon_max_deg": 3.0,
+          "horizon_mean_deg": 2.64,
+          "dominant_obstacle_dist_km": 0.6,
+          "dominant_obstacle_lat": -84.811,
+          "dominant_obstacle_lon": 29.196,
+          "dominant_obstacle_elev_m": 5357,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 8.5,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 210,
+          "az_to_deg": 240,
+          "horizon_max_deg": 2.04,
+          "horizon_mean_deg": 1.3,
+          "dominant_obstacle_dist_km": 0.6,
+          "dominant_obstacle_lat": -84.808,
+          "dominant_obstacle_lon": 29.083,
+          "dominant_obstacle_elev_m": 5346,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 8.5,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 240,
+          "az_to_deg": 270,
+          "horizon_max_deg": 0.5,
+          "horizon_mean_deg": -0.06,
+          "dominant_obstacle_dist_km": 0.4,
+          "dominant_obstacle_lat": -84.798,
+          "dominant_obstacle_lon": 29.063,
+          "dominant_obstacle_elev_m": 5328,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 6.7,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 270,
+          "az_to_deg": 300,
+          "horizon_max_deg": 0.94,
+          "horizon_mean_deg": 0.18,
+          "dominant_obstacle_dist_km": 8.5,
+          "dominant_obstacle_lat": -84.661,
+          "dominant_obstacle_lon": 26.48,
+          "dominant_obstacle_elev_m": 5484,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 1.9,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 300,
+          "az_to_deg": 330,
+          "horizon_max_deg": 0.63,
+          "horizon_mean_deg": -0.68,
+          "dominant_obstacle_dist_km": 8.3,
+          "dominant_obstacle_lat": -84.648,
+          "dominant_obstacle_lon": 26.641,
+          "dominant_obstacle_elev_m": 5436,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 0.0,
+          "earth_in_sector_pct_time": 45.6,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 330,
+          "az_to_deg": 360,
+          "horizon_max_deg": -0.51,
+          "horizon_mean_deg": -1.01,
+          "dominant_obstacle_dist_km": 16.2,
+          "dominant_obstacle_lat": -84.256,
+          "dominant_obstacle_lon": 29.149,
+          "dominant_obstacle_elev_m": 5256,
+          "sun_in_sector_pct_time": 7.8,
+          "sun_hidden_in_sector_pct_time": 0.0,
+          "earth_in_sector_pct_time": 54.4,
+          "earth_hidden_in_sector_pct_time": 19.2
+        }
+      ],
+      "pre_indicators": {
+        "_note": "Modèle orbital simplifié (Soleil et Terre ponctuels, librations sinusoïdales). Sert à valider les masques d'horizon ; à remplacer par JPL Horizons (membre 1).",
+        "sun_elev_max_deg": 6.75,
+        "sun_illumination_pct_terrain": 43.9,
+        "sun_illumination_pct_no_terrain": 49.4,
+        "earth_elev_min_deg": -2.21,
+        "earth_elev_max_deg": 10.76,
+        "earth_az_range_deg": [
+          322.4,
+          338.8
+        ],
+        "earth_visibility_pct_terrain": 80.8,
+        "earth_visibility_pct_no_terrain": 73.4
+      }
+    },
+    {
+      "id": "im1-malapert-a",
+      "name": "Près de Malapert A – site d'Odysseus (IM-1)",
+      "short": "IM-1 Odysseus",
+      "category": "reference",
+      "region": "Région polaire sud (~300 km du pôle)",
+      "context": "Premier atterrisseur CLPS (22 février 2024), Intuitive Machines.",
+      "lat": -80.13,
+      "lon": 1.44,
+      "refs": [
+        "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+      ],
+      "coord_method": "Coordonnées publiées (voir refs)",
+      "in_dem": true,
+      "dist_to_pole_km": 299.3,
+      "elevation_m": 2592,
+      "elevation_res_m": 120,
+      "terrain": {
+        "slope_deg_local_240m": 12.4,
+        "slope_deg_mean_1km": 9.3,
+        "slope_deg_max_1km": 17.7,
+        "relief_1km": {
+          "min_m": 2480,
+          "max_m": 2740,
+          "std_m": 75
+        },
+        "relief_5km": {
+          "min_m": 2016,
+          "max_m": 2795,
+          "std_m": 120
+        },
+        "relief_20km": {
+          "min_m": 1185,
+          "max_m": 2962,
+          "std_m": 333
+        }
+      },
+      "horizon_source": "LOLA LDEM_75S_120M",
+      "horizon": {
+        "file": "horizons/im1-malapert-a.json",
+        "max_elev_deg": 11.11,
+        "max_elev_az_deg": 145.0,
+        "mean_elev_deg": 4.73,
+        "pct_azimuths_above_1deg": 74.7,
+        "dem_coverage_pct": 90.1,
+        "flat_ground_horizon_deg": -0.087
+      },
+      "obstacles": [
+        {
+          "sun_blocked_pct_time": 10.5,
+          "earth_blocked_pct_time": 0.0,
+          "az_from_deg": 24.5,
+          "az_to_deg": 312.5,
+          "width_deg": 288.5,
+          "peak_az_deg": 145.0,
+          "peak_elev_deg": 11.11,
+          "peak_dist_km": 0.4,
+          "peak_lat": -80.14,
+          "peak_lon": 1.48,
+          "peak_terrain_elev_m": 2665,
+          "peak_dem_res_m": 120
+        },
+        {
+          "sun_blocked_pct_time": 0.0,
+          "earth_blocked_pct_time": 0.0,
+          "az_from_deg": 317.5,
+          "az_to_deg": 348.0,
+          "width_deg": 31.0,
+          "peak_az_deg": 340.0,
+          "peak_elev_deg": 0.99,
+          "peak_dist_km": 2.8,
+          "peak_lat": -80.044,
+          "peak_lon": 1.26,
+          "peak_terrain_elev_m": 2644,
+          "peak_dem_res_m": 120
+        }
+      ],
+      "horizon_sectors": [
+        {
+          "az_from_deg": 0,
+          "az_to_deg": 30,
+          "horizon_max_deg": 0.68,
+          "horizon_mean_deg": 0.13,
+          "dominant_obstacle_dist_km": 35.7,
+          "dominant_obstacle_lat": -79.091,
+          "dominant_obstacle_lon": 4.503,
+          "dominant_obstacle_elev_m": 3384,
+          "sun_in_sector_pct_time": 7.7,
+          "sun_hidden_in_sector_pct_time": 0.0,
+          "earth_in_sector_pct_time": 45.6,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 30,
+          "az_to_deg": 60,
+          "horizon_max_deg": 4.68,
+          "horizon_mean_deg": 2.19,
+          "dominant_obstacle_dist_km": 0.5,
+          "dominant_obstacle_lat": -80.122,
+          "dominant_obstacle_lon": 1.52,
+          "dominant_obstacle_elev_m": 2633,
+          "sun_in_sector_pct_time": 7.8,
+          "sun_hidden_in_sector_pct_time": 0.3,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 60,
+          "az_to_deg": 90,
+          "horizon_max_deg": 8.56,
+          "horizon_mean_deg": 6.92,
+          "dominant_obstacle_dist_km": 0.4,
+          "dominant_obstacle_lat": -80.13,
+          "dominant_obstacle_lon": 1.509,
+          "dominant_obstacle_elev_m": 2648,
+          "sun_in_sector_pct_time": 7.9,
+          "sun_hidden_in_sector_pct_time": 7.4,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 90,
+          "az_to_deg": 120,
+          "horizon_max_deg": 10.09,
+          "horizon_mean_deg": 9.44,
+          "dominant_obstacle_dist_km": 0.4,
+          "dominant_obstacle_lat": -80.136,
+          "dominant_obstacle_lon": 1.5,
+          "dominant_obstacle_elev_m": 2658,
+          "sun_in_sector_pct_time": 8.6,
+          "sun_hidden_in_sector_pct_time": 8.6,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 120,
+          "az_to_deg": 150,
+          "horizon_max_deg": 11.11,
+          "horizon_mean_deg": 10.68,
+          "dominant_obstacle_dist_km": 0.4,
+          "dominant_obstacle_lat": -80.14,
+          "dominant_obstacle_lon": 1.48,
+          "dominant_obstacle_elev_m": 2665,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 8.5,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 150,
+          "az_to_deg": 180,
+          "horizon_max_deg": 11.03,
+          "horizon_mean_deg": 10.57,
+          "dominant_obstacle_dist_km": 0.4,
+          "dominant_obstacle_lat": -80.14,
+          "dominant_obstacle_lon": 1.475,
+          "dominant_obstacle_elev_m": 2664,
+          "sun_in_sector_pct_time": 8.4,
+          "sun_hidden_in_sector_pct_time": 8.4,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 180,
+          "az_to_deg": 210,
+          "horizon_max_deg": 9.49,
+          "horizon_mean_deg": 7.79,
+          "dominant_obstacle_dist_km": 0.6,
+          "dominant_obstacle_lat": -80.15,
+          "dominant_obstacle_lon": 1.44,
+          "dominant_obstacle_elev_m": 2694,
+          "sun_in_sector_pct_time": 8.4,
+          "sun_hidden_in_sector_pct_time": 8.4,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 210,
+          "az_to_deg": 240,
+          "horizon_max_deg": 6.02,
+          "horizon_mean_deg": 4.13,
+          "dominant_obstacle_dist_km": 1.1,
+          "dominant_obstacle_lat": -80.161,
+          "dominant_obstacle_lon": 1.336,
+          "dominant_obstacle_elev_m": 2708,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 8.5,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 240,
+          "az_to_deg": 270,
+          "horizon_max_deg": 2.86,
+          "horizon_mean_deg": 2.13,
+          "dominant_obstacle_dist_km": 2.2,
+          "dominant_obstacle_lat": -80.165,
+          "dominant_obstacle_lon": 1.079,
+          "dominant_obstacle_elev_m": 2703,
+          "sun_in_sector_pct_time": 8.6,
+          "sun_hidden_in_sector_pct_time": 8.6,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 270,
+          "az_to_deg": 300,
+          "horizon_max_deg": 1.69,
+          "horizon_mean_deg": 1.37,
+          "dominant_obstacle_dist_km": 4.4,
+          "dominant_obstacle_lat": -80.109,
+          "dominant_obstacle_lon": 0.596,
+          "dominant_obstacle_elev_m": 2731,
+          "sun_in_sector_pct_time": 8.6,
+          "sun_hidden_in_sector_pct_time": 2.5,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 300,
+          "az_to_deg": 330,
+          "horizon_max_deg": 1.23,
+          "horizon_mean_deg": 0.82,
+          "dominant_obstacle_dist_km": 4.3,
+          "dominant_obstacle_lat": -80.049,
+          "dominant_obstacle_lon": 0.761,
+          "dominant_obstacle_elev_m": 2692,
+          "sun_in_sector_pct_time": 8.5,
+          "sun_hidden_in_sector_pct_time": 0.0,
+          "earth_in_sector_pct_time": 0.0,
+          "earth_hidden_in_sector_pct_time": 0.0
+        },
+        {
+          "az_from_deg": 330,
+          "az_to_deg": 360,
+          "horizon_max_deg": 0.99,
+          "horizon_mean_deg": 0.56,
+          "dominant_obstacle_dist_km": 2.8,
+          "dominant_obstacle_lat": -80.044,
+          "dominant_obstacle_lon": 1.26,
+          "dominant_obstacle_elev_m": 2644,
+          "sun_in_sector_pct_time": 8.4,
+          "sun_hidden_in_sector_pct_time": 0.0,
+          "earth_in_sector_pct_time": 54.4,
+          "earth_hidden_in_sector_pct_time": 0.0
+        }
+      ],
+      "pre_indicators": {
+        "_note": "Modèle orbital simplifié (Soleil et Terre ponctuels, librations sinusoïdales). Sert à valider les masques d'horizon ; à remplacer par JPL Horizons (membre 1).",
+        "sun_elev_max_deg": 11.4,
+        "sun_illumination_pct_terrain": 38.7,
+        "sun_illumination_pct_no_terrain": 49.2,
+        "earth_elev_min_deg": 2.87,
+        "earth_elev_max_deg": 16.24,
+        "earth_az_range_deg": [
+          350.3,
+          6.5
+        ],
+        "earth_visibility_pct_terrain": 100.0,
+        "earth_visibility_pct_no_terrain": 100.0
+      }
+    },
+    {
+      "id": "chandrayaan-3",
+      "name": "Statio Shiv Shakti – Chandrayaan-3",
+      "short": "Chandrayaan-3",
+      "category": "reference",
+      "region": "Hautes latitudes sud (~600 km du pôle)",
+      "context": "Atterrisseur Vikram de l'ISRO (23 août 2023).",
+      "lat": -69.373,
+      "lon": 32.319,
+      "refs": [
+        "https://planetarynames.wr.usgs.gov/Feature/16272"
+      ],
+      "coord_method": "Coordonnées publiées (voir refs)",
+      "in_dem": false,
+      "dist_to_pole_km": 625.5,
+      "elevation_m": null,
+      "terrain": null,
+      "horizon_source": "sphère lisse (site hors de l'emprise du MNT polaire)",
+      "horizon": {
+        "file": "horizons/chandrayaan-3.json",
+        "max_elev_deg": -0.09,
+        "max_elev_az_deg": 0.0,
+        "mean_elev_deg": -0.09,
+        "pct_azimuths_above_1deg": 0.0,
+        "dem_coverage_pct": 0.0,
+        "flat_ground_horizon_deg": -0.087
+      },
+      "obstacles": [],
+      "horizon_sectors": [],
+      "pre_indicators": {
+        "_note": "Modèle orbital simplifié (Soleil et Terre ponctuels, librations sinusoïdales). Sert à valider les masques d'horizon ; à remplacer par JPL Horizons (membre 1).",
+        "sun_elev_max_deg": 22.17,
+        "sun_illumination_pct_terrain": 49.0,
+        "sun_illumination_pct_no_terrain": 49.0,
+        "earth_elev_min_deg": 11.23,
+        "earth_elev_max_deg": 22.88,
+        "earth_az_range_deg": [
+          316.2,
+          335.1
+        ],
+        "earth_visibility_pct_terrain": 100.0,
+        "earth_visibility_pct_no_terrain": 100.0
+      }
+    },
+    {
+      "id": "change-6",
+      "name": "Bassin Apollo – Chang'e-6",
+      "short": "Chang'e-6",
+      "category": "reference",
+      "region": "Face cachée",
+      "context": "Retour d'échantillons de la CNSA (juin 2024). Face cachée : la Terre n'y est jamais visible, un satellite relais (Queqiao-2) est indispensable.",
+      "lat": -41.6385,
+      "lon": -153.9852,
+      "refs": [
+        "https://lroc.im-ldi.com/images/1374"
+      ],
+      "coord_method": "Coordonnées publiées (voir refs)",
+      "in_dem": false,
+      "dist_to_pole_km": 1466.5,
+      "elevation_m": null,
+      "terrain": null,
+      "horizon_source": "sphère lisse (site hors de l'emprise du MNT polaire)",
+      "horizon": {
+        "file": "horizons/change-6.json",
+        "max_elev_deg": -0.09,
+        "max_elev_az_deg": 0.0,
+        "mean_elev_deg": -0.09,
+        "pct_azimuths_above_1deg": 0.0,
+        "dem_coverage_pct": 0.0,
+        "flat_ground_horizon_deg": -0.087
+      },
+      "obstacles": [],
+      "horizon_sectors": [],
+      "pre_indicators": {
+        "_note": "Modèle orbital simplifié (Soleil et Terre ponctuels, librations sinusoïdales). Sert à valider les masques d'horizon ; à remplacer par JPL Horizons (membre 1).",
+        "sun_elev_max_deg": 49.87,
+        "sun_illumination_pct_terrain": 51.2,
+        "sun_illumination_pct_no_terrain": 51.2,
+        "earth_elev_min_deg": -51.68,
+        "earth_elev_max_deg": -32.82,
+        "earth_az_range_deg": [
+          136.4,
+          152.2
+        ],
+        "earth_visibility_pct_terrain": 0.0,
+        "earth_visibility_pct_no_terrain": 0.0
+      }
+    },
+    {
+      "id": "apollo-11",
+      "name": "Mer de la Tranquillité – Apollo 11",
+      "short": "Apollo 11",
+      "category": "reference",
+      "region": "Équateur, face visible",
+      "context": "Premier alunissage habité (20 juillet 1969). Contraste équatorial : Soleil haut, jours/nuits de ~14,8 jours, Terre quasi au zénith.",
+      "lat": 0.67408,
+      "lon": 23.47297,
+      "refs": [
+        "https://www.lpi.usra.edu/lunar/missions/apollo/apollo_11/landing_site/"
+      ],
+      "coord_method": "Coordonnées publiées (voir refs)",
+      "in_dem": false,
+      "dist_to_pole_km": 2749.5,
+      "elevation_m": null,
+      "terrain": null,
+      "horizon_source": "sphère lisse (site hors de l'emprise du MNT polaire)",
+      "horizon": {
+        "file": "horizons/apollo-11.json",
+        "max_elev_deg": -0.09,
+        "max_elev_az_deg": 0.0,
+        "mean_elev_deg": -0.09,
+        "pct_azimuths_above_1deg": 0.0,
+        "dem_coverage_pct": 0.0,
+        "flat_ground_horizon_deg": -0.087
+      },
+      "obstacles": [],
+      "horizon_sectors": [],
+      "pre_indicators": {
+        "_note": "Modèle orbital simplifié (Soleil et Terre ponctuels, librations sinusoïdales). Sert à valider les masques d'horizon ; à remplacer par JPL Horizons (membre 1).",
+        "sun_elev_max_deg": 89.76,
+        "sun_illumination_pct_terrain": 48.9,
+        "sun_illumination_pct_no_terrain": 48.9,
+        "earth_elev_min_deg": 57.7,
+        "earth_elev_max_deg": 74.12,
+        "earth_az_range_deg": [
+          254.5,
+          291.4
+        ],
+        "earth_visibility_pct_terrain": 100.0,
+        "earth_visibility_pct_no_terrain": 100.0
+      }
+    }
+  ]
+}

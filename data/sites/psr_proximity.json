@@ -1,0 +1,37 @@
+{
+  "definition": "Un point est en ombre permanente si le Soleil ne dépasse JAMAIS son horizon, quelle que soit la date. Vu de la Lune, la déclinaison du Soleil ne dépasse pas ±1,543° (inclinaison de l'axe lunaire sur l'écliptique). Pour un site de l'hémisphère sud, l'élévation solaire est maximale quand la latitude subsolaire vaut −1,543°. On balaie donc la longitude subsolaire sur 360° à cette latitude, et le point est en ombre permanente si, dans toutes les directions, le bord supérieur du disque solaire (+0,267°) reste sous l'horizon.",
+  "regions": {
+    "pole": {
+      "psr_area_km2": 1121.2,
+      "psr_pct": 17.5
+    },
+    "malapert": {
+      "psr_area_km2": 34.6,
+      "psr_pct": 1.4
+    },
+    "mons-mouton": {
+      "psr_area_km2": 61.5,
+      "psr_pct": 2.5
+    }
+  },
+  "sites": {
+    "connecting-ridge": {
+      "region": "pole",
+      "nearest_psr_km": 1.43,
+      "nearest_psr_lat": -89.4051,
+      "nearest_psr_lon": -140.3977
+    },
+    "malapert-massif": {
+      "region": "malapert",
+      "nearest_psr_km": 0.73,
+      "nearest_psr_lat": -86.0121,
+      "nearest_psr_lon": 2.037
+    },
+    "mons-mouton": {
+      "region": "mons-mouton",
+      "nearest_psr_km": 2.23,
+      "nearest_psr_lat": -84.8168,
+      "nearest_psr_lon": 28.4389
+    }
+  }
+}

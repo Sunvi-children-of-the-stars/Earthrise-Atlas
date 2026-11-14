@@ -1,0 +1,18 @@
+{
+  "id": "lro_2026-11-01_181d",
+  "satellite": "LRO (Lunar Reconnaissance Orbiter)",
+  "horizons_command": "-85",
+  "frame": "ICRF (équateur moyen J2000), centre de la Lune (500@301)",
+  "units": "km",
+  "start_jd_tdb": 2461345.5,
+  "step_seconds": 60,
+  "count": 260641,
+  "file": "lro_2026-11-01_181d.f32",
+  "layout": "float32 little-endian, x y z par point",
+  "altitude_km": {
+    "min": 63.1,
+    "max": 117.7
+  },
+  "retrieved": "2026-11-14",
+  "note": "Éphéméride de prévision (Horizons) : la précision du minutage diminue loin dans le futur."
+}

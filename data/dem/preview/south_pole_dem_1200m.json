@@ -1,0 +1,15 @@
+{
+  "file": "south_pole_dem_1200m.i16",
+  "dtype": "int16 little-endian",
+  "unit": "m",
+  "rows": 762,
+  "cols": 762,
+  "pixel_m": 1200.0,
+  "projection": "stéréographique polaire sud, sphère R=1737400 m, lon 0° vers le haut",
+  "x_m_of_col": "(col + 0.5) * 1200.0 - 457380.0",
+  "y_m_of_row": "457380.0 - (row + 0.5) * 1200.0",
+  "lat_lon_from_xy": "rho=hypot(x,y); lat=2*atan(rho/(2R))-90°; lon=atan2(x,y)",
+  "min_m": -7690,
+  "max_m": 6974,
+  "source": "LOLA LDEM_75S_120M (PDS), moyenne par blocs 10x10"
+}

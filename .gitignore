@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+data/dem/*.img
+data/dem/*.lbl
+node_modules/
+dist/
+app/public/data/
+data/dem/tiles/
+data/horizon_maps/
