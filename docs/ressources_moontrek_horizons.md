@@ -78,6 +78,13 @@ Sur les 1 256 produits, **171 couvrent le pôle Sud**. Voici les plus utiles pou
 | 5 | **Critère thermique** Diviner (pièges froids, nuit) | Moon Trek | moyen | profil Science plus solide |
 | 6 | **Fond d'image LROC NAC** | Moon Trek WMTS | moyen | rendu visuel de la présentation |
 
+**Priorité 3 faite (14/11/2026)** : nos ombres permanentes et notre ensoleillement moyen
+concordent avec les cartes officielles LOLA. Nous avons pris les fichiers sources du PGDA plutôt
+que les tuiles Moon Trek. Voir [validation_lola.md](validation_lola.md).
+
+**Priorité 4 faite en partie (14/11/2026)** : le flux solaire suit la distance réelle Lune–Soleil
+(table Horizons du membre 1). Les diamètres apparents restent fixes.
+
 **Priorité 2 faite (14/11/2026)** : les fenêtres de relais LRO sont calculées dans
 l'application, et validées à ≤ 0,05° près contre Horizons. Voir `docs/membre3_application.md`.
 

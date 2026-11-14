@@ -5,7 +5,7 @@
 import type { RegionMetrics } from "./evaluate";
 import { pixelLatLon, type RegionData } from "./region";
 
-export type Criterion = "sun" | "night" | "earth" | "outage" | "both" | "flux" | "ice" | "warm" | "subice";
+export type Criterion = "sun" | "night" | "earth" | "outage" | "both" | "flux" | "ice" | "warm" | "subice" | "link" | "nolink";
 
 /** Beyond this distance (km) to a permanent shadow, the "ice proximity" criterion is 0. */
 export const ICE_RANGE_KM = 10;
@@ -22,6 +22,8 @@ export const CRITERIA: { id: Criterion; label: string; hint: string }[] = [
   { id: "earth", label: "Terre visible", hint: "Part du temps avec liaison directe possible" },
   { id: "outage", label: "Coupure courte", hint: "Plus longue période sans Terre : plus c'est court, mieux c'est" },
   { id: "both", label: "Soleil + Terre", hint: "Énergie et liaison directe en même temps" },
+  { id: "link", label: "Terre ou relais", hint: "Part du temps avec la Terre ou le relais LRO (> 5°) : liaison directe ou relayée. Sans orbite du relais pour la période, vaut « Terre visible »" },
+  { id: "nolink", label: "Coupure totale courte", hint: "Plus longue période sans Terre ni relais : plus c'est court, mieux c'est. Sans orbite du relais, vaut « Coupure courte »" },
   { id: "ice", label: "Proximité glace", hint: `Proche d'une zone d'ombre permanente (pièges froids où la glace d'eau peut subsister) : 1 sur place, 0 à ${ICE_RANGE_KM} km ou plus` },
   { id: "warm", label: "Température douce", hint: `Température moyenne annuelle mesurée par Diviner (LRO) : plus c'est chaud, plus la survie à la nuit est facile (0 à ${TEMP_RANGE_K[0]} K, 1 à ${TEMP_RANGE_K[1]} K)` },
   { id: "subice", label: "Glace peu profonde", hint: `Profondeur où la glace d'eau est stable (Diviner) : 1 si stable en surface, 0 au-delà de ${ICE_DEPTH_MAX_CM} cm ou si instable` },
@@ -45,7 +47,7 @@ export interface Profile {
   basis?: string;
 }
 
-const W0: Record<Criterion, number> = { sun: 0, night: 0, flux: 0, earth: 0, outage: 0, both: 0, ice: 0, warm: 0, subice: 0 };
+const W0: Record<Criterion, number> = { sun: 0, night: 0, flux: 0, earth: 0, outage: 0, both: 0, ice: 0, warm: 0, subice: 0, link: 0, nolink: 0 };
 export const NO_PSR_LIMIT = 50;
 /** Slope limits (mean slope of the 200 m cell, °). Landers: 8° (usual value in Artemis / CLPS
  *  site studies; IM-1 tipped over on a ~12° slope). Rovers: 15° (VIPER design slope). */
@@ -95,6 +97,13 @@ export const PROFILES: Profile[] = [
     basis: "Ancienne contrainte « Terre ≥ 60 % » retirée : près du pôle, la Terre n'est visible qu'environ 50 % du temps au mieux (libration), et le profil ne donnait aucune zone.",
   },
   {
+    id: "relay", label: "Liaison avec relais",
+    description: "La Terre peut se cacher si un relais en orbite basse (orbite de LRO) prend le relais : on vise les coupures totales les plus courtes.",
+    weights: { ...W0, nolink: 3, link: 2, sun: 2 },
+    constraints: { slopeMax: LANDER_SLOPE, nightMaxH: NO_NIGHT_LIMIT, earthMinPct: 0, sunMinPct: 0, psrMaxKm: NO_PSR_LIMIT },
+    basis: "Avec le relais LRO (un passage toutes les ~2 h), la plus longue coupure totale tombe de plusieurs jours à moins de 2 h : c'est elle qu'on minimise. Pente d'atterrisseur (8°).",
+  },
+  {
     id: "ice", label: "Science : glace d'eau (atterrisseur)",
     description: "Se poser au Soleil, à courte distance d'une zone d'ombre permanente où la glace d'eau a pu se piéger.",
     weights: { ...W0, ice: 3, sun: 2, earth: 1, night: 1, subice: 2 },
@@ -118,6 +127,8 @@ function norm(region: RegionData, m: RegionMetrics, c: Criterion, p: number): nu
     case "flux": return m.flux[p] / 1361;
     case "night": return 1 - Math.min(1, m.nightH[p] / m.hours);
     case "outage": return 1 - Math.min(1, m.outageH[p] / m.hours);
+    case "link": return (m.linkPct.length ? m.linkPct[p] : m.earthPct[p]) / 100;
+    case "nolink": return 1 - Math.min(1, (m.noLinkH.length ? m.noLinkH[p] : m.outageH[p]) / m.hours);
     case "ice": return region.psrDistKm.length ? 1 - Math.min(1, region.psrDistKm[p] / ICE_RANGE_KM) : 0;
     case "warm": {
       if (!region.tAvg?.length) return 0;
@@ -164,6 +175,7 @@ export interface Zone {
   bothPct: number; slope: number; elevation: number; psrKm: number;
   /** Diviner (NaN if unavailable): annual mean temperature (K), depth of stable ice (cm; −1 = unstable). */
   tAvgK: number; iceDepthCm: number;
+  linkPct: number; noLinkH: number; // NaN without relay orbit for the period
   artemis: string | null; // official Artemis III region containing the best point
 }
 
@@ -205,6 +217,7 @@ export function extractZones(region: RegionData, m: RegionMetrics, s: Scored, to
       psrKm: region.psrDistKm.length ? region.psrDistKm[bp] : NaN,
       tAvgK: region.tAvg?.length ? region.tAvg[bp] / 10 : NaN,
       iceDepthCm: region.iceDepth?.length ? region.iceDepth[bp] : NaN,
+      linkPct: m.linkPct.length ? m.linkPct[bp] : NaN, noLinkH: m.noLinkH.length ? m.noLinkH[bp] : NaN,
       artemis: artemis && artemis.mask[bp] ? artemis.names[artemis.mask[bp] - 1] : null,
     });
   }

@@ -1,10 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { fragility, metrics, seasonal, simulate } from "./astro/analysis";
 import { computeMask, demElevation, flatMask, loadDem, loadMask, type Dem, type HorizonMask } from "./astro/horizon";
+import { ephemerisSourceAt, loadEphemerisTable, setEphemerisTable, type EphemerisTable } from "./astro/ephemeris";
 import { requestTiledHorizon } from "./astro/onDemand";
 import { loadArtemisRegions, type ArtemisRegionSet } from "./astro/regions";
 import { loadRelay, relayAnalysis, type RelayData } from "./astro/relay";
+import { VEHICLES, type Vehicle } from "./astro/budget";
+import { BudgetPanel } from "./components/BudgetPanel";
 import { Comparison, type Row, type Scenario } from "./components/Comparison";
+import { LandingPlanner } from "./components/LandingPlanner";
 import { Optimizer } from "./components/Optimizer";
 import { MetricCards } from "./components/MetricCards";
 import { PoleMap } from "./components/PoleMap";
@@ -13,7 +17,7 @@ import { SiteDetails } from "./components/SiteDetails";
 import { SkyPanorama } from "./components/SkyPanorama";
 import { Timeline } from "./components/Timeline";
 import { DURATIONS, loadSites, type SiteRecord } from "./data";
-import { fmtDate, fromInput, toInput } from "./format";
+import { fmtDate, fmtNum, fromInput, toInput } from "./format";
 
 const R_KM = 1737.4;
 const siteKey = (s: SiteRecord) => (s.category === "custom" ? `custom:${s.lat.toFixed(4)},${s.lon.toFixed(4)}` : s.id);
@@ -36,6 +40,14 @@ function makeCustom(lat: number, lon: number, dem: Dem | null): SiteRecord {
   };
 }
 
+function loadVehicle(): Vehicle {
+  try {
+    const v = JSON.parse(localStorage.getItem("lspp.vehicle") ?? "null");
+    if (v && typeof v.panelM2 === "number" && typeof v.band === "string") return { ...VEHICLES.lander, ...v };
+  } catch { /* storage unavailable */ }
+  return VEHICLES.lander;
+}
+
 function loadScenarios(): Scenario[] {
   try { return JSON.parse(localStorage.getItem("lspp.scenarios") ?? "[]"); } catch { return []; }
 }
@@ -55,17 +67,24 @@ export default function App() {
   const inflight = useRef(new Set<string>());
   const [artemis, setArtemis] = useState<ArtemisRegionSet | null>(null);
   const [relay, setRelay] = useState<RelayData | null>(null);
+  // Horizons table: undefined while loading, null if absent (built-in series then)
+  const [eph, setEph] = useState<EphemerisTable | null | undefined>(undefined);
 
   useEffect(() => {
     loadSites().then((s) => { setSites(s); setSite(s[0]); }).catch(() => setError("Impossible de charger data/sites/sites.json"));
     loadDem().then(setDem).catch(() => setError("Impossible de charger le MNT réduit"));
     loadArtemisRegions().then(setArtemis).catch(() => { /* optionnel */ });
+    loadEphemerisTable().then((t) => { setEphemerisTable(t); setEph(t); });
     loadRelay().then(setRelay).catch(() => { /* optionnel : scripts/fetch_relay_ephemeris.py */ });
   }, []);
 
   useEffect(() => {
     try { localStorage.setItem("lspp.scenarios", JSON.stringify(scenarios)); } catch { /* storage unavailable */ }
   }, [scenarios]);
+  const [vehicle, setVehicle] = useState<Vehicle>(loadVehicle);
+  useEffect(() => {
+    try { localStorage.setItem("lspp.vehicle", JSON.stringify(vehicle)); } catch { /* storage unavailable */ }
+  }, [vehicle]);
 
   // Load / compute the horizon masks we need
   useEffect(() => {
@@ -157,7 +176,9 @@ export default function App() {
   };
 
   if (error) return <div className="fatal">{error}. Lancez <code>npm run sync-data</code>.</div>;
-  if (!site) return <div className="fatal">Chargement…</div>;
+  if (!site || eph === undefined) return <div className="fatal">Chargement…</div>;
+
+  const ephHorizons = ephemerisSourceAt(start) === "horizons" && ephemerisSourceAt(start + hours * 3_600_000) === "horizons";
 
   const mapSites = site.category === "custom" ? [...sites, site] : sites;
   const groups: [string, SiteRecord[]][] = [
@@ -172,9 +193,13 @@ export default function App() {
           <h1>Lunar South Pole Planner</h1>
           <p className="sub">Soleil et Terre au-dessus de l'horizon : énergie et communication directe, site par site, date par date.</p>
         </div>
-        <span className="badge" title="Modèle intégré validé contre JPL Horizons sur 2026 : écart max 0,005° (Soleil) et 0,18° (Terre) aux sites polaires">
-          Éphémérides : modèle intégré · validé vs JPL Horizons
-        </span>
+        {ephHorizons
+          ? <span className="badge" title="Table JPL Horizons (DE440) du Soleil et de la Terre vus du centre de la Lune, au pas d'une heure. Écart avec Horizons en mode observateur : ≤ 0,003° sur 2026–2028.">
+              Éphémérides : JPL Horizons (DE440)
+            </span>
+          : <span className="badge warn" title={`Hors de la table Horizons${eph ? ` (${fmtDate(eph.startUtcMs, false)} – ${fmtDate(eph.endUtcMs, false)})` : ""} : séries intégrées, écart max 0,005° (Soleil) et 0,19° (Terre), heures de lever/coucher de Terre décalées de 1 h en moyenne, 2,5 h au plus.`}>
+              Éphémérides : modèle intégré (hors table Horizons)
+            </span>}
       </header>
 
       <aside>
@@ -228,6 +253,7 @@ export default function App() {
             <label>Période analysée
               <select value={hours} onChange={(e) => setHours(Number(e.target.value))}>
                 {DURATIONS.map((d) => <option key={d.hours} value={d.hours}>{d.label}</option>)}
+                {!DURATIONS.some((d) => d.hours === hours) && <option value={hours}>{fmtNum(hours / 24, 1)} jours</option>}
               </select>
             </label>
             <div className="btns">
@@ -255,6 +281,10 @@ export default function App() {
         {m && frag && mask ? (
           <>
             <MetricCards m={m} f={frag} relay={relayRes} relayName={relay?.meta.satellite} />
+            <section className="panel">
+              <h3>Bilan énergie et télécom <span className="muted">— un véhicule de référence sur ce site et cette période : batterie, panneaux, débit vers la Terre</span></h3>
+              <BudgetPanel samples={samples} vehicle={vehicle} onVehicle={setVehicle} />
+            </section>
             <section className="panel">
               <h3>Vue du ciel depuis le site <span className="muted">— horizon réel (gris), trajectoires sur la période</span></h3>
               <SkyPanorama samples={samples} cursor={cursor} mask={mask} />
@@ -295,8 +325,14 @@ export default function App() {
         )}
 
         <section className="panel">
+          <h3>Choisir la date d'atterrissage <span className="muted">— aide à la décision : chaque date possible notée sur les sites candidats</span></h3>
+          <LandingPlanner sites={sites} vehicle={vehicle} defaultFrom={start}
+            onAnalyze={(s, t, h) => { setSite(s); setStart(t); setHours(h); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
+        </section>
+
+        <section className="panel">
           <h3>Recherche de zones optimales <span className="muted">— sur la période choisie, selon le profil de mission</span></h3>
-          <Optimizer start={start} hours={hours} sites={sites} artemis={artemis}
+          <Optimizer start={start} hours={hours} sites={sites} artemis={artemis} relay={relay}
             onAnalyze={(lat, lon) => { pickCustom(lat, lon); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
         </section>
 
@@ -311,8 +347,9 @@ export default function App() {
         </section>
 
         <footer>
-          Relief : NASA LRO / LOLA (LDEM_75S_120M). Éphémérides : séries de l'Astronomical Almanac et
-          modèle d'orientation IAU, validés contre JPL Horizons (écart ≤ 0,2°). Le Soleil est
+          Relief : NASA LRO / LOLA (LDEM_80S_20M, LDEM_75S_120M). Éphémérides : table JPL Horizons
+          (DE440, 2026 à 2030) et modèle d'orientation IAU ; séries de l'Astronomical Almanac en
+          dehors de cette période. Le Soleil est
           compté visible quand plus de la moitié de son disque dépasse l'horizon ; la Terre, quand son
           centre le dépasse. Toutes les heures sont en UTC.
         </footer>

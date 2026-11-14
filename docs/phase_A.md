@@ -12,7 +12,7 @@ console.
 
 | Tâche | État |
 |---|---|
-| A1. Décision éphémérides | ✅ |
+| A1. Décision éphémérides | ✅ révisée : table JPL Horizons d'Elge |
 | A2. Préparation mise en ligne | ✅ (publication : compte d'hébergement requis) |
 | A3. Profils de l'optimiseur | ✅ (critère relais LRO : quand T7 sera livrée) |
 | A5. Mission retardée | ✅ (logique) |
@@ -305,3 +305,41 @@ marqués « modèle ».
     ([img_pole_lroc_psr.png](img_pole_lroc_psr.png)).
 - **Limite :** la mosaïque NASA a des raccords visibles entre quadrants (éclairages
   différents). C'est inhérent au produit.
+
+## A4. Intégration du travail d'Elge ✅ (branche `feat/horizons-energy-decision`)
+
+**Relecture :** la branche compile, se construit, et ses résultats se reproduisent sur notre
+machine (`npm run validate-ephemeris`, `npm run mission-report`).
+
+| Tâche | Livré | Contrôle |
+|---|---|---|
+| T3. Flux selon la distance au Soleil | ✅ | Intégré aux sites et à l'optimiseur |
+| T4. Bilan énergie et radio (`astro/budget.ts`) | ✅ | Bilan de liaison refait à la main (bande X, 20 W, antenne de 0,5 m, station de 12 m) : environ 47 Mbit/s possibles, plafonnés à 2 Mbit/s par la radio. Cohérent |
+| T5. Table JPL Horizons 2026 à 2030 | ✅ | Écart **≤ 0,003°**, contre 0,19° pour les séries ; levers et couchers de Terre corrigés d'environ 1 h (2,5 h au maximum) |
+| T6. Comparaison aux cartes officielles LOLA | ✅ | Ombres permanentes : recouvrement 0,80 à 0,93 ; ensoleillement : RMS 2,1 à 2,5 points |
+| T7. Relais LRO dans l'optimiseur | ✅ | Recoupé avec le calcul par site : 83,2 % contre 83,4 % à Malapert, même coupure maximale (1,8 h) |
+| T8. Crête au 24/11 | ✅ | Tranché en faveur du calcul avec courbure |
+| En plus : choix de la date d'atterrissage (`astro/landing.ts`) | ✅ | |
+| T1. Tests automatiques | ❌ | À faire |
+| T2. Nouveaux sites de référence | ❌ | À faire |
+
+**Fusion et corrections :**
+- **Éphémérides :** la table Horizons d'Elge devient la **source officielle**, et les séries
+  servent de secours hors de 2026 à 2030 ([decision_ephemerides.md](decision_ephemerides.md),
+  réécrite).
+- **Profils :** mes corrections de la phase A sont gardées. Les critères « Terre ou relais »
+  et « Coupure totale courte » d'Elge sont ajoutés, ainsi que son profil « Liaison avec
+  relais », aligné sur la pente des atterrisseurs (8°). Le calendrier traite les critères de
+  relais comme la Terre seule, comme l'optimiseur quand il n'a pas d'orbite.
+- **Dépendances :** `tifffile` et `imagecodecs` étaient épinglés sur des versions publiées 2 à
+  3 jours plus tôt. Elles sont remplacées par `2026.10.15` et `2026.10.10`, publiées il y a
+  un mois et compatibles avec Python 3.13.
+- **Choix de la date :** la tolérance au retard était pleine dès 5 jours, et plusieurs
+  fenêtres finissaient ex aequo à 100. Elle est maintenant pleine à 15 jours. Seule Malapert
+  (05/10/2027) atteint 100 ; la crête obtient 98,5 à 99. La recommandation ne change pas.
+- **Relais dans l'optimiseur :** il accepte maintenant les orbites décrites dans le repère
+  lunaire (`bodyFixed`), ce qui permet d'y utiliser le modèle de Gateway. Vérifié : 100 %
+  dans l'optimiseur comme dans le calcul par site.
+- Mentions « membre 1 » retirées du code et du pied de page.
+- **Vérifié dans le navigateur :** badge « JPL Horizons (DE440) », panneaux « Bilan » et
+  « Choisir la date », relais LRO inchangé (53 %), aucune erreur dans la console.

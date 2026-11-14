@@ -1,4 +1,4 @@
-import { altAz, bodiesFixed, type Site } from "./ephemeris";
+import { altAz, AU, bodiesFixed, type Site } from "./ephemeris";
 import { horizonAt, obstacleDistAt, type HorizonMask } from "./horizon";
 
 export const SOLAR_CONSTANT = 1361; // W/m²
@@ -13,7 +13,13 @@ export interface Sample {
   earthFrac: number;
   sDist: number;    // distance (km) of the obstacle in the Sun's direction (NaN if unknown)
   eDist: number;
+  sunAu: number;    // Moon–Sun distance (AU): the solar flux scales as 1/sunAu²
+  earthKm: number;  // site–Earth distance (km), for the radio link budget
 }
+
+const R_SITE_KM = 1737.4;
+/** Solar flux (W/m²) at the Moon–Sun distance of a sample. */
+export const solarFlux = (s: Sample) => SOLAR_CONSTANT / (s.sunAu * s.sunAu);
 
 const frac = (alt: number, hz: number, diam: number) =>
   Math.min(1, Math.max(0, (alt - hz) / diam + 0.5));
@@ -33,6 +39,7 @@ export function simulate(site: Site, mask: HorizonMask, start: number, hours: nu
       t, sAlt: s.alt, sAz: s.az, sHz, eAlt: e.alt, eAz: e.az, eHz,
       sunFrac: frac(s.alt, sHz, SUN_DIAM), earthFrac: frac(e.alt, eHz, EARTH_DIAM),
       sDist: obstacleDistAt(mask, s.az), eDist: obstacleDistAt(mask, e.az),
+      sunAu: Math.hypot(...b.sun) / AU, earthKm: Math.hypot(...b.earth) - R_SITE_KM * Math.sin(e.alt * Math.PI / 180),
     });
   }
   return out;
@@ -113,8 +120,8 @@ export function metrics(samples: Sample[], cursor = 0): Metrics {
     longestNightH: longestGap(samples, sunUp),
     longestNoEarthH: longestGap(samples, earthUp),
     sunMaxAlt: Math.max(...samples.map((s) => s.sAlt)),
-    meanPowerVertical: SOLAR_CONSTANT * mean((s) => s.sunFrac * Math.max(0, Math.cos(s.sAlt * Math.PI / 180))),
-    meanPowerHorizontal: SOLAR_CONSTANT * mean((s) => s.sunFrac * Math.max(0, Math.sin(s.sAlt * Math.PI / 180))),
+    meanPowerVertical: mean((s) => solarFlux(s) * s.sunFrac * Math.max(0, Math.cos(s.sAlt * Math.PI / 180))),
+    meanPowerHorizontal: mean((s) => solarFlux(s) * s.sunFrac * Math.max(0, Math.sin(s.sAlt * Math.PI / 180))),
     now: samples[i],
     sunIsUp: sunUp(samples[i]),
     earthIsUp: earthUp(samples[i]),

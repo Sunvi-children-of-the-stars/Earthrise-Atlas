@@ -67,6 +67,8 @@ export function cellGrade(c: CalendarCell, weights: Record<Criterion, number>): 
     outage: 1 - Math.min(1, c.longestNoEarthH / c.hours),
     both: c.bothPct / 100,
     ice: 0, warm: 0, subice: 0, // site-specific (terrain) criteria: not part of the calendar
+    // no relay in the calendar: same fallback as optim/score.ts (Earth only)
+    link: c.earthPct / 100, nolink: 1 - Math.min(1, c.longestNoEarthH / c.hours),
   };
   let s = 0, w = 0;
   for (const k of Object.keys(v) as Criterion[]) {

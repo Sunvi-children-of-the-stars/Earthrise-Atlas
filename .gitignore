@@ -10,3 +10,8 @@ data/horizon_maps/
 .playwright-mcp/
 data/dem/*.part
 data/diviner/
+
+# Validation contre les cartes officielles LOLA (téléchargées / régénérables)
+data/validation_lola/*.TIF
+data/validation_lola/*.f32
+data/validation_lola/sun_vectors.json

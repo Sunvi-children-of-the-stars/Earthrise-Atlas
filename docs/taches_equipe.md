@@ -27,8 +27,8 @@ Légende : ⭐ prioritaire · 🔗 dépend d'une tâche d'Elge · 💤 optionnel
 - 🔗 Quand T7 sera intégrée : régler le poids du critère « coupure totale, Terre ou LRO », livré à 0.
 
 ### A4. Intégration des livrables d'Elge ⭐
-- [ ] Relire et fusionner les PR dans l'ordre T1, T4, T5, puis les autres.
-- [ ] Après T4 : vérifier le verdict `budget()` sur les 3 sites candidats ; il doit être cohérent avec les chiffres de l'outil.
+- [x] Relire et fusionner le travail d'Elge (branche `feat/horizons-energy-decision` : T3 à T8 ; T1 et T2 restent à faire).
+- [x] Après T4 : vérifier le verdict `budget()` sur les 3 sites candidats ; il doit être cohérent avec les chiffres de l'outil.
 - [ ] Après T1 : lancer `npm test` avant chaque fusion.
 
 ### A5. Logique « mission retardée » 💤 (pour le bonus « Mission retardée »)

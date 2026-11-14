@@ -36,6 +36,8 @@ graphiques sont dessinés en SVG à la main, et la carte utilise un canvas.
 | Saisons | **Mois lunaires** : % Soleil et % Terre sur 13 mois ; un clic sur un mois l'analyse |
 | Comparaison | **Tableau comparatif** des scénarios (site × date × période), meilleure valeur en vert, enregistré dans le navigateur |
 | Terrain | Fiche **Terrain du site** : altitude, pentes, relief, principaux obstacles (données du membre 2) |
+| Énergie et télécom d'un véhicule | **Bilan énergie et télécom** : batterie, panneaux, débit, données (membre 4) |
+| Quand se poser | **Choisir la date d'atterrissage** : chaque date notée, meilleures fenêtres justifiées (membre 5) |
 | Trouver où se poser | **Recherche de zones optimales** : carte de chaleur d'une région sur la période choisie, profils de mission, poids et contraintes réglables, meilleures zones avec « Analyser ». Voir [optimisation_zones.md](optimisation_zones.md) |
 
 ## Relais de communication LRO
@@ -88,11 +90,12 @@ sites très proches du pôle, où la Terre passe sous l'horizon pendant des jour
 - l'orbite est une **prévision** Horizons ; la précision du minutage diminue loin dans le
   futur. Hors de la période téléchargée, la carte l'indique et invite à choisir une autre
   période ;
-- LRO est une sonde scientifique : un service de relais réel demanderait un accord
-  d'exploitation et un émetteur compatible. Le calcul montre la **géométrie** possible, pas
-  un service garanti ;
+- LRO est une sonde scientifique, sans radio de relais pour des atterrisseurs. Il sert
+  d'**exemple d'orbite de relais basse et polaire**, comme celle d'un futur relais (Lunar
+  Pathfinder, Moonlight). Le calcul montre la **géométrie** possible, pas un service garanti ;
 - la station Gateway et le relais Queqiao-2 ne sont pas disponibles dans Horizons ;
-- le relais n'est pas encore pris en compte dans l'optimiseur de zones.
+- l'optimiseur de zones en tient compte (profil « Liaison avec relais ») : voir
+  [optimisation_zones.md](optimisation_zones.md).
 
 ## Signalement des cas fragiles
 
@@ -153,37 +156,45 @@ Les repères géographiques suivent cette logique :
 
 ## Éphémérides
 
-L'application calcule elle-même les positions du Soleil et de la Terre
-(`app/src/astro/ephemeris.ts`). **C'est la source officielle du projet** : voir
-[decision_ephemerides.md](decision_ephemerides.md).
+Les positions du Soleil et de la Terre viennent de la **table JPL Horizons** (source officielle, voir
+[decision_ephemerides.md](decision_ephemerides.md))
+(2026–2030, une heure de pas, directions apparentes vues du centre de la Lune). L'application
+les tourne dans le repère lunaire (modèle IAU, Archinal et al. 2011) et ajoute la parallaxe du
+site, qui vaut jusqu'à 0,26° pour la Terre. Écart avec Horizons en mode observateur :
+**≤ 0,003°**. En dehors de 2026–2030, l'application revient aux séries de l'*Astronomical
+Almanac* : jusqu'à 0,19° d'écart sur la Terre, soit 1 h à 2,5 h sur ses levers et couchers.
+Le badge en haut à droite indique la source utilisée.
 
-- Soleil et Lune géocentriques : séries basse précision de l'*Astronomical Almanac* ;
-- orientation de la Lune : modèle IAU (Archinal et al. 2011) ;
-- parallaxe topocentrique prise en compte (elle compte pour la Terre : jusqu'à 0,26°).
+Détails, validation et effet sur les résultats : [membre1_ephemerides.md](membre1_ephemerides.md).
 
-**Validation contre JPL Horizons** (année 2026, un point par jour, `APPARENT='AIRLESS'`) :
+## Bilan énergie et télécom (membre 4)
 
-| Site | Soleil : écart max d'élévation | Terre : écart RMS d'élévation | Terre : écart max |
-|---|---|---|---|
-| Crête de liaison | 0,005° | 0,057° | 0,18° |
-| Malapert | 0,005° | 0,056° | 0,18° |
-| Mons Mouton | 0,005° | 0,056° | 0,17° |
-| Apollo 11 | 0,012° | 0,093° | 0,35° |
+Panneau sous les cartes d'indicateurs. Pour un véhicule de référence (petit atterrisseur,
+rover, station longue durée, ou réglages personnalisés), il donne :
+- la courbe de charge de la batterie ;
+- le verdict « Tient la période » ou « Panne d'énergie » ;
+- la batterie et les panneaux nécessaires ;
+- le débit vers la Terre et le volume de données sur la période.
 
-Ces écarts sont bien inférieurs au diamètre apparent du Soleil (0,53°) et de la Terre
-(1,9°). Cette précision suffit pour comparer des sites et des dates. Pour des horaires
-définitifs à la minute près, il faut utiliser Horizons.
+Le choix du véhicule est mémorisé dans le navigateur et sert aussi à la recherche de dates.
+Modèle et hypothèses : [membre4_energie_telecom.md](membre4_energie_telecom.md).
 
-### Fichiers JPL Horizons
-Ils ne servent qu'à la validation (`data/ephemeris/reference/`), et l'application ne les
-lit pas. Voir [decision_ephemerides.md](decision_ephemerides.md).
+## Choisir la date d'atterrissage (membre 5)
+
+Panneau avant la recherche de zones. Il note chaque date possible, toutes les 12 h sur 3 à
+12 mois, pour les 3 sites candidats. Il exclut les dates sans Soleil ni Terre juste après
+l'atterrissage, ou avec une panne de batterie, puis classe les meilleures fenêtres avec
+leurs « pour » et « contre ». Méthode, poids et recommandation :
+[membre5_decision.md](membre5_decision.md).
 
 ## Règles de visibilité
 - Soleil : visible si plus de la moitié de son disque dépasse l'horizon à son azimut.
   Le flux solaire est pondéré par la fraction visible du disque.
 - Terre : visible si son centre dépasse l'horizon.
-- Horizon : masques du membre 2 (LOLA 120 m) ; MNT réduit à 1,2 km pour les sites
-  personnalisés ; sol lisse en dehors du MNT polaire.
+- Horizon : masques du membre 2 (relief à 20 m près du site, 120 m au loin) ; relief
+  multi-résolution à la demande pour les sites personnalisés ; sol lisse en dehors du MNT polaire.
+- Les cartes officielles LOLA comptent la Terre visible dès que son bord dépasse : leurs
+  pourcentages sont plus élevés de quelques points. Voir [validation_lola.md](validation_lola.md).
 
 ## Organisation du code
 ```
@@ -194,6 +205,12 @@ app/src/
   astro/horizonTiled.ts  horizon multi-résolution à la demande (sites personnalisés)
   astro/horizon.worker.ts, astro/onDemand.ts  exécution en arrière-plan (Web Worker)
   astro/analysis.ts    simulation dans le temps, fenêtres, indicateurs, mois lunaires
-  components/          SkyPanorama, Timeline, MetricCards, Seasonal, PoleMap, SiteDetails, Comparison
+  astro/relay.ts       passages du relais LRO
+  astro/budget.ts      bilan énergie (batterie, panneaux) et télécom (débit, volume) — membre 4
+  astro/landing.ts     notation des dates d'atterrissage — membre 5
+  optim/               recherche de zones (Web Worker), scores, profils
+  components/          SkyPanorama, Timeline, MetricCards, Seasonal, PoleMap, SiteDetails, Comparison,
+                       BudgetPanel, LandingPlanner, Optimizer
+app/scripts/           sync-data, validate-ephemeris, validate-lola, mission-report
   App.tsx              état (site, dates, curseur, scénarios) et mise en page
 ```

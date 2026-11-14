@@ -11,7 +11,12 @@ data/
   dem/          MNT LOLA (téléchargé, non versionné) + preview/ (carte réduite pour l'app)
   sites/        sites.json, sites_summary.csv        ← membre 2
   horizons/     masques d'horizon par site (CSV + JSON) ← membre 2
-  ephemeris/    références JPL Horizons pour la validation (l'app calcule elle-même)
+  ephemeris/    Soleil et Terre vus de la Lune (JPL Horizons, 2026 à 2030), source officielle
+  relays/       orbite du relais LRO (JPL Horizons) et orbites modèles (Gateway, Queqiao-2)
+  calendar/     calendrier site × mois lunaire
+  lroc/         fond d'image LROC du pôle Sud
+  diviner/      températures Diviner (non versionné)
+  validation_lola/  cartes officielles LOLA et comparaison (non versionnées)
 docs/           notes de chaque membre
 scripts/        traitements Python
 app/            application web React                  ← membre 3
@@ -57,10 +62,25 @@ Puis ouvrir http://localhost:5173. Détails : [docs/membre3_application.md](docs
 4. `scripts/build_psr.py` : zones d'ombre permanente et distance des sites aux ombres (~10 s).
 5. `scripts/build_diviner.py` : températures et profondeur de la glace (Diviner) sur les
    régions et aux sites (~1 min ; télécharge 605 Mo la première fois).
-6. `scripts/fetch_relay_ephemeris.py` : orbite du relais LRO depuis JPL Horizons (~2 min pour
+6. `scripts/fetch_ephemeris.py` : Soleil et Terre vus du centre de la Lune, JPL Horizons
+   2026 à 2030 (~30 s). C'est la source officielle des éphémérides.
+7. `scripts/fetch_relay_ephemeris.py` : orbite du relais LRO depuis JPL Horizons (~2 min pour
    6 mois).
-7. `scripts/build_relay_models.py` : orbites modèles de Gateway (NRHO) et Queqiao-2.
-8. `cd app && npm run calendar` : calendrier site × mois lunaire (`data/calendar/`).
+8. `scripts/build_relay_models.py` : orbites modèles de Gateway (NRHO) et Queqiao-2.
+9. `cd app && npm run calendar` : calendrier site × mois lunaire (`data/calendar/`).
+
+## Validations
+
+| Commande | Contrôle | Résultat |
+|---|---|---|
+| `npm run validate-ephemeris` (dans `app/`) | Éphémérides vs JPL Horizons | ≤ 0,003° ([membre1_ephemerides.md](docs/membre1_ephemerides.md)) |
+| `npm run validate-lola` puis `.venv/Scripts/python scripts/validate_lola.py` | Ombres permanentes et éclairement moyen vs cartes officielles LOLA | IoU 0,80–0,93, RMS 2,5 pts ([validation_lola.md](docs/validation_lola.md)) |
+| `.venv/Scripts/python scripts/validate_curvature.py` | Courbure lunaire : avec ou sans | avec courbure RMS 3,1 pts, sans 11 pts |
+| `npm run mission-report` (dans `app/`) | Bilan énergie et télécom, meilleures dates  | [membre4](docs/membre4_energie_telecom.md), [membre5](docs/membre5_decision.md) |
+
+Les cartes officielles LOLA (60 Mo) se téléchargent depuis https://pgda.gsfc.nasa.gov/products/69
+dans `data/validation_lola/` (voir l'en-tête de `scripts/validate_lola.py`). Il faut aussi
+`tifffile` et `imagecodecs` dans l'environnement Python.
 
 Chaque script Python se lance avec `.venv/Scripts/python scripts/<nom>.py`. Utiliser
 Python ≥ 3.11 pour créer le venv, car numpy 2.5 le demande :
