@@ -83,4 +83,15 @@ seul tenant au milieu du graphique, quel que soit le site.
 Une relecture indépendante de la branche a conclu « prêt après corrections ». Les cinq points
 importants sont corrigés, chacun avec un test (cache de l'horizon d'un point personnalisé partagé
 par lien, noms de régions et libellés radio traduits, texte honnête d'un point personnalisé,
-carte qui ne capte plus le défilement). Points mineurs reportés : voir le registre de l'exécution.
+carte qui ne capte plus le défilement).
+
+Points mineurs reportés, à traiter si le temps le permet :
+- aucune mention quand la période sort de la table JPL Horizons (2026 à 2030) : les séries
+  intégrées prennent le relais en silence ;
+- le choix de durée affiche une valeur fausse quand la durée n'est pas 3 jours, 7 jours ou un
+  jour lunaire (par exemple 3 mois venant du Lab, ou une fenêtre de 14 jours) ;
+- le nom court d'un point personnalisé garde le point décimal et les lettres E/W en français ;
+- Play ne réagit pas si l'on colle un nouveau lien `#site=` dans la barre d'adresse sans recharger ;
+- deux gris bleutés (`--bg-3` et le dégradé de l'accueil) sortent légèrement de la plage noire ;
+- accessibilité : barres des mois lunaires (boutons dans une image) et `aria-controls` des
+  onglets inactifs.
