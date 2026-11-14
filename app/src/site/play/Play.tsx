@@ -43,6 +43,13 @@ export function Play() {
   useEffect(() => {
     if (sites.length && !st) setSt(initialPlayState(window.location.hash, sites.map((s) => s.id), Date.now()));
   }, [sites, st]);
+  // A new #site=... link pasted in the address bar (or Back between two links) reloads the view
+  useEffect(() => {
+    if (!sites.length) return;
+    const onHash = () => setSt(initialPlayState(window.location.hash, sites.map((s) => s.id), Date.now()));
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, [sites]);
 
   const site: SiteRecord | null = useMemo(() => {
     if (!st) return null;

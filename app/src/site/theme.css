@@ -369,10 +369,11 @@ img, canvas, svg { max-width: 100%; }
 @media print {
   @page { size: A4 portrait; margin: 12mm; }
   html, body { background: var(--bg) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body * { visibility: hidden; }
-  .mission-sheet, .mission-sheet * { visibility: visible; }
+  /* Only the sheet takes space: hidden content kept its height and added a blank page */
+  #main > .page > *:not(.mission-sheet) { display: none !important; }
+  .page { padding-top: 0 !important; min-height: 0 !important; }
   .nav, .footer { display: none !important; }
-  .mission-sheet { display: block; position: absolute; left: 0; top: 0; width: 100%; padding: 0; color: var(--text); font-size: 10.5pt; }
+  .mission-sheet { display: block; position: static; width: 100%; padding: 0; color: var(--text); font-size: 10.5pt; }
   .sheet-head { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line-strong); padding-bottom: 8px; margin-bottom: 14px; }
   .sheet-kicker { font-size: 8pt; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ice); }
   .mission-sheet h1 { font-size: 22pt; font-weight: 300; margin: 0 0 4px; }

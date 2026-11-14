@@ -91,7 +91,6 @@ Points mineurs reportés, à traiter si le temps le permet :
 - le choix de durée affiche une valeur fausse quand la durée n'est pas 3 jours, 7 jours ou un
   jour lunaire (par exemple 3 mois venant du Lab, ou une fenêtre de 14 jours) ;
 - le nom court d'un point personnalisé garde le point décimal et les lettres E/W en français ;
-- Play ne réagit pas si l'on colle un nouveau lien `#site=` dans la barre d'adresse sans recharger ;
 - deux gris bleutés (`--bg-3` et le dégradé de l'accueil) sortent légèrement de la plage noire ;
 - accessibilité : barres des mois lunaires (boutons dans une image) et `aria-controls` des
   onglets inactifs.
