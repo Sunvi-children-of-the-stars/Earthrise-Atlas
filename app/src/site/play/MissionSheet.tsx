@@ -2,6 +2,7 @@
  * One-page mission sheet, shown only when printing (the browser's "Save as PDF" makes the PDF).
  * Same figures as the Play page, laid out for an A4 page.
  */
+import type { RefObject } from "react";
 import type { Fragility, Metrics, Sample } from "../../astro/analysis";
 import type { HorizonMask } from "../../astro/horizon";
 import type { SiteRecord } from "../../data";
@@ -18,16 +19,19 @@ interface Props {
   relay: { linkPct: number; longestNoLinkH: number; passesPerDay: number } | null; relayWindows: { start: number; end: number }[] | null;
   link: string;
   centerAz: number;
+  /** Rendered off-screen for the PDF capture. */
+  capture?: boolean;
+  sheetRef?: RefObject<HTMLElement>;
 }
 
-export function MissionSheet({ centerAz, site, source, start, hours, samples, mask, m, frag, verdict, relay, relayWindows, link }: Props) {
+export function MissionSheet({ capture = false, sheetRef, centerAz, site, source, start, hours, samples, mask, m, frag, verdict, relay, relayWindows, link }: Props) {
   const { t, fmt, lang } = useI18n();
   const x = siteText(site, lang, source);
   const row = (label: string, value: string, note?: string) => (
     <div className="sheet-stat"><div className="stat-label">{label}</div><div className="sheet-value">{value}</div>{note && <div className="sheet-note">{note}</div>}</div>
   );
   return (
-    <section className="mission-sheet" aria-hidden="true">
+    <section ref={sheetRef} className={capture ? "mission-sheet capture" : "mission-sheet"} aria-hidden="true">
       <header className="sheet-head">
         <div className="brand"><Logo size={22} />{t("brand")}</div>
         <div className="sheet-kicker">{t("sheet.title")}</div>

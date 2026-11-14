@@ -360,6 +360,8 @@ export const en = {
   "td.photo": "Show the LROC photo",
   "td.exag": "Double the relief height",
   "td.legend": "{km} km × {km} km of real relief (LOLA, 200 m). The Sun is the only light: move the time to watch the shadows sweep. Gold: the Sun. Ice green: the Earth and the landing site. Drag to turn, scroll to zoom.",
+  "sheet.busy": "Preparing the PDF",
+  "sheet.error": "PDF failed, try again",
 } as const;
 
 export type MessageKey = keyof typeof en;

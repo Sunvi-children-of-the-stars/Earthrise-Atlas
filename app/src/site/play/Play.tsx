@@ -1,5 +1,5 @@
 /** Play: pick a site and a date, see the sky, the timeline and what it means for a mission. */
-import { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { fragility, metrics, seasonal, simulate, SYNODIC_DAYS } from "../../astro/analysis";
 import { relayAnalysis } from "../../astro/relay";
 import type { SiteRecord } from "../../data";
@@ -12,6 +12,7 @@ import { navigate } from "../router";
 import { StatCard } from "../ui/StatCard";
 import { DelayNearby } from "./DelayNearby";
 import { MissionSheet } from "./MissionSheet";
+import { downloadSheet, sheetFileName } from "./pdf";
 
 const Terrain3D = lazy(() => import("./Terrain3D"));
 import { Tabs } from "../ui/Tabs";
@@ -39,6 +40,8 @@ export function Play() {
   const [playing, setPlaying] = useState(false);
   const [copied, setCopied] = useState(false);
   const [showDelay, setShowDelay] = useState(false);
+  const [pdfState, setPdfState] = useState<"idle" | "busy" | "error">("idle");
+  const sheetRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (sites.length && !st) setSt(initialPlayState(window.location.hash, sites.map((s) => s.id), Date.now()));
@@ -102,6 +105,21 @@ export function Play() {
     catch { /* clipboard refused: the URL in the address bar is the link */ }
   };
   // Centre the panorama on the Earth's mean direction: it stays in one piece in the middle of the chart
+  const exportPdf = async () => {
+    setPdfState("busy");
+    try {
+      // let React render the off-screen sheet, then capture it
+      await new Promise((r) => setTimeout(r, 80));
+      await new Promise((r) => requestAnimationFrame(() => r(null)));
+      if (!sheetRef.current) throw new Error("sheet not rendered");
+      const bg = getComputedStyle(document.documentElement).getPropertyValue("--bg").trim() || "black";
+      await downloadSheet(sheetRef.current, sheetFileName(siteText(site, "en", source).short, st.start), bg);
+      setPdfState("idle");
+    } catch {
+      setPdfState("error");
+      setTimeout(() => setPdfState("idle"), 4000);
+    }
+  };
   const centerAz = samples.length ? circularMeanDeg(samples.map((s) => s.eAz)) : site.lat < 0 ? 180 : 0;
   const now = m?.now;
 
@@ -134,7 +152,7 @@ export function Play() {
           <button className="btn btn-ghost btn-small" onClick={() => setShowDelay((v) => !v)} aria-expanded={showDelay}>{t("play.delay")}</button>
           <button className="btn btn-ghost btn-small" onClick={share}>{copied ? t("play.copied") : t("play.share")}</button>
           <button className="btn btn-ghost btn-small" onClick={() => navigate("lab", window.location.hash)}>{t("play.openLab")}</button>
-          <button className="btn btn-ghost btn-small" onClick={() => window.print()} disabled={!m}>{t("sheet.print")}</button>
+          <button className="btn btn-ghost btn-small" onClick={exportPdf} disabled={!m || pdfState === "busy"}>{pdfState === "busy" ? t("sheet.busy") : pdfState === "error" ? t("sheet.error") : t("sheet.print")}</button>
         </div>
       </div>
 
@@ -241,7 +259,7 @@ export function Play() {
         </>
       )}
       {m && mask && samples.length > 0 && (
-        <MissionSheet centerAz={centerAz} site={site} source={source} start={st.start} hours={st.hours} samples={samples} mask={mask} m={m} frag={frag}
+        <MissionSheet capture={pdfState === "busy"} sheetRef={sheetRef} centerAz={centerAz} site={site} source={source} start={st.start} hours={st.hours} samples={samples} mask={mask} m={m} frag={frag}
           verdict={verdict} relay={rs} relayWindows={rs ? relay!.windows : null} link={shareUrl(playShare(st), window.location.href)} />
       )}
     </section>

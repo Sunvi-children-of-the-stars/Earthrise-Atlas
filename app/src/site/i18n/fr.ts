@@ -362,4 +362,6 @@ export const fr: Record<MessageKey, string> = {
   "td.photo": "Afficher la photo LROC",
   "td.exag": "Doubler la hauteur du relief",
   "td.legend": "{km} km × {km} km de relief réel (LOLA, 200 m). Le Soleil est la seule lumière : déplacez le temps pour voir les ombres tourner. Or : le Soleil. Vert d'eau : la Terre et le site. Glisser pour tourner, molette pour zoomer.",
+  "sheet.busy": "Préparation du PDF",
+  "sheet.error": "Échec du PDF, réessayez",
 };
