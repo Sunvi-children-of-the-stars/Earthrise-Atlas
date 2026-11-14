@@ -319,6 +319,20 @@ export const en = {
   "station.dsn34": "Deep Space Network, 34 m dish",
   "station.dsn70": "Deep Space Network, 70 m dish",
   "station.com12": "Commercial station, 12 m dish",
+  "delay.search": "Find better spots nearby",
+  "delay.running": "Searching the region around the site: {pct}%",
+  "delay.noRegion": "No detailed region map around this site: the neighbourhood search covers the south pole candidate regions only.",
+  "delay.error": "The region maps could not be loaded.",
+  "delay.v.same": "Still a good site a month later.",
+  "delay.v.worse": "Worse a month later.",
+  "delay.v.better": "Better a month later.",
+  "delay.v.lost": "No longer feasible a month later.",
+  "delay.v.gained": "Becomes feasible a month later.",
+  "delay.v.never": "Not feasible at either date.",
+  "delay.score": "Score {before} then {after} (small solar lander profile).",
+  "delay.noAlt": "No feasible spot within 10 km at the new date.",
+  "delay.distance": "Distance",
+  "delay.method": "Best spots within 10 km at the delayed date, from the 200 m horizon map of {region}.",
 } as const;
 
 export type MessageKey = keyof typeof en;

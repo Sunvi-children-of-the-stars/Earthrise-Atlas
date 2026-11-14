@@ -10,6 +10,7 @@ import { useI18n, type MessageKey } from "../i18n";
 import { siteText } from "../i18n/sites";
 import { navigate } from "../router";
 import { StatCard } from "../ui/StatCard";
+import { DelayNearby } from "./DelayNearby";
 import { Tabs } from "../ui/Tabs";
 import { SkyChart } from "../viz/SkyChart";
 import { TimelineChart } from "../viz/TimelineChart";
@@ -153,6 +154,8 @@ export function Play() {
                   <div className="delay-vals">{fmt.hours(delay[0].longestNightH)} <span className="faint">→</span> <strong>{fmt.hours(delay[1].longestNightH)}</strong></div></div>
               </div>
               <p className="muted small">{t("play.delay.note", { date: fmt.date(delay[1].start) })}</p>
+              <DelayNearby lat={site.lat} lon={site.lon} start={st.start} hours={st.hours}
+                onOpen={(lat, lon, start) => { setSt({ siteId: st.siteId, custom: { lat, lon }, start, hours: st.hours, cursor: 0 }); setShowDelay(false); window.scrollTo(0, 0); }} />
             </div>
           )}
 

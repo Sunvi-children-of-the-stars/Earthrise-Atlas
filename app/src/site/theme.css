@@ -355,3 +355,5 @@ img, canvas, svg { max-width: 100%; }
 .atlas-panel .site-card .facts dd { margin-bottom: 0; }
 .atlas-card-mobile .site-card .facts { grid-template-columns: 1fr 1fr; gap: 12px 16px; }
 .atlas-card-mobile .site-card .facts dd { margin-bottom: 0; }
+.delay-nearby { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+.delay .btn-primary { margin-top: 6px; }
